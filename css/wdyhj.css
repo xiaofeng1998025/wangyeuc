@@ -1,0 +1,48 @@
+body{
+    background: #f4f4f6;
+}
+.list{
+    padding: 0.2rem;
+}
+.list li{
+    background: #fff;
+    border-radius: 4px;
+    padding: 0.2rem;
+    margin-top: 0.2rem;
+}
+.list_top{
+    display: -webkit-box;
+    display: flex;
+}
+.list_top_l>p{
+    font-size: 0.34rem;
+    color:#F6B241 ;
+}
+.list_top_l>div{
+    font-size: 0.24rem;
+    color: #999;
+    margin-top: 0.2rem;
+}
+.list_top_r{
+    margin-left: auto;
+    color: #F6B241;
+    font-size:0.24rem ;
+}
+.list_top_r>span{
+    font-size: 0.6rem;
+}
+.list_boo{
+    font-size:0.24rem ;
+    color: #999;
+    margin-top: 0.4rem;
+}
+.list .list_hoer {
+    background:#E5E5E5 ;
+    color: #fff;
+}
+.list_hoer .list_top_r,.list_hoer .list_top_l>p,.list_hoer .list_boo{
+    color: #fff;
+}
+.list_hoer .list_top_l>div{
+    color: #FF4040;
+}

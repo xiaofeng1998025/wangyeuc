@@ -1,0 +1,110 @@
+body{
+  background: #f4f4f6;
+}
+
+.dyk{
+    padding: 0 0.2rem;
+    margin-top: 0.2rem;
+}
+.dyk>textarea{
+    color:#999;
+    background: #fff;
+    padding: 0.4rem 0.3rem;
+    min-height: 4.5rem;
+    width: 6.5rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 0.3rem;
+}
+.title{
+    padding: 0 0.2rem;
+    line-height: 1rem;
+    font-size: 0.3rem;
+    color: #999;
+}
+.dek{
+    padding: 0 0.2rem;
+}
+.dek ul{
+    background: #fff;
+    padding-bottom: 0.26rem;
+    border-radius: 5px;
+    display: -webkit-box;
+    display: flex;
+    flex-wrap: wrap;
+}
+.dek li{
+    position: relative;
+    margin-left: 0.28rem;
+    margin-top: 0.26rem;
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-align: center;
+            align-items: center;
+    height: 2rem;
+}
+.dek li:nth-child(3){
+     margin-right: 0;
+}
+
+.dek li img{
+    width: 2rem;
+    height: 2rem;
+}
+.dek li i{
+    width: 0.4rem;
+    height: 0.4rem;
+    position: absolute;
+    top:-9px;
+    right: -9px;
+}
+.dek li i img{
+    width: 100%;
+    height:100%;
+}
+.dek .dek_tj img{
+    width: 1.6rem;
+    height: 1.6rem;
+}
+#imgInp{
+    width: 1.6rem;
+    height: 1.6rem;
+    overflow: hidden;
+    position: absolute;
+    top:0.2rem;
+    opacity: 0;
+}
+
+.dsk{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(000,000,000,0.7);
+    top:0;
+}
+.dsk p{
+    height: 100%;
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+            flex-direction: column;
+    -webkit-box-pack: center;
+            justify-content: center;
+}
+.dsk p img{
+    width: 95%;
+    max-height: 98%;
+    margin: auto;
+}
+.tijiao{
+    width: 7.1rem;
+    margin: auto;
+    margin-top: 0.5rem;
+    text-align: center;
+    color: #fff;
+    font-size:0.36rem ;
+    background: #474C5A;
+    border-radius: 4px;
+    line-height: 1rem;
+}

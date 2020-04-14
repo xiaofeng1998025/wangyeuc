@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title>确认叫车</title>
+    <meta name="renderer" content="webkit">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="email=no" name="format-detection">
+    <meta name="msapplication-tap-highlight" content="no">
+    <link rel="stylesheet" href="css/qrjc.css?2019_08_14">
+    <link rel="stylesheet" href="css/style.css?2019_08_14">
+    <link rel="stylesheet" href="css/mobileSelect.css?2019_08_14">
+    <script type="text/javascript" charset="utf-8" src="js/jquery.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/style.js?2019_08_14"></script>
+    <script type="text/javascript" charset="utf-8" src="js/mobileSelect.min.js"></script>
+
+<!--    <script  type="text/javascript" charset="utf-8" src="https://res.wx.qq.com/open/js/jweixin-1.4.0.js"></script>-->
+</head>
+<body>
+
+<script type="text/javascript" charset="utf-8" src="js/times.js?2019_08_14"></script>
+<script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.15&key=be83f8d0d2149d28be18794b6336d4a2"></script>
+<div id="page" style="display:none;">
+<!--    第一块-->
+    <div class="dyk">
+            <div class="dyk_cont">
+                <div class="dyk_cont_top">
+                    <div>
+                        <span class="dyk_cont_top_cfd"></span>
+                        →
+                        <span class="dyk_cont_top_mdd"></span>
+                    </div>
+                    <span class="dyk_cont_top_huh"><img src="img/hsqehuan.png" alt=""></span>
+                </div>
+                <div class="dyk_cont_tjc">
+                    <i><img src="img/xiaoche.png" alt=""></i>
+                    已为您推荐上下车点
+                    <img class="dyk_cont_tjc_img" src="img/shanc.png" alt="">
+                </div>
+                <div class="dyk_cont_bott">
+                    <div class="dyk_cont_bott_t">
+                        <i></i>
+                         <div class="dyk_cont_bott_cfd"></div>
+                            <span><img src="img/hsgd.png" alt=""></span>
+
+                    </div>
+                    <div class="dyk_cont_bott_b">
+                        <i></i>
+                        <div class="dyk_cont_bott_mdd "></div>
+                            <span><img src="img/hsgd.png" alt=""></span>
+                    </div>
+                </div>
+            </div>       
+    </div>
+<!--    d第二块-->
+    <div class="dek">
+        <div class="dek_cont">
+            <ul>
+                <li>
+                    <i><img src="img/yonghu@2x.png" alt=""></i>
+                    <input type="text" placeholder="乘车人姓名" id="cd_name">
+                </li>
+                <li>
+                    <i><img src="img/dianhua-copy@2x.png" alt=""></i>
+                    <input type="text" maxlength="11"  id="cd_phone" οnkeyup="value=value.replace(/[^\d\.]/g,'')" placeholder="乘车人手机号">
+                </li>
+                <li id="trigger1">
+                    <i><img src="img/shijianx.png" alt=""></i>
+                    <span>请选择时间</span>
+                    <div>
+                        <img src="img/hsgd.png" alt="">
+                    </div>
+                </li>
+                <li  id="trigger2">
+                    <i><img src="img/zuowei@2x.png" alt=""></i>
+                    <span>乘坐人数：</span>
+                         <p>1人</p>
+                    <div>
+                        <img src="img/hsgd.png" alt="">
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+<!--    第三块-->
+    <div class="dsk">
+        <div class="dsk_cont">
+            <div class="yhj">
+                <i><img src="img/youhuiquan.png" alt=""></i>
+                优惠券
+                <span>无</span>
+                <b><img src="img/hsgd.png" alt=""></b>
+            </div>
+        </div>
+        <div class="dsk_cont dsk_cont_bzxx">
+            <div class="bzxx">
+                <i><img src="img/xie@2x.png" alt=""></i>
+                备注信息
+                <input type="text" id="beizhu" placeholder="如：有大件物品">
+            </div>
+        </div>
+
+    </div>
+<!--    第四块-->
+    <div class="dsik">
+        支付代表您已同意同港网约车
+        <a href="javascript:void(0);" class="dqzfsm">支付说明</a>
+    </div>
+<!--    第五块 支付-->
+    <div class="dwk">
+        <div class="jine"><div>需支付：</div><span>￥<b class="jine_jine"></b></span></div>
+        <div class="qzhif">去支付</div>
+    </div>
+<!--    选择上车地点弹出层-->
+    <div class="xzscdd" style="display: none">
+        <div class="xzscdd_cont">
+            <div class="xzscdd_cont1">
+                <p>选择上车地点</p>
+                <div>乘客您好，目前仅支持以下地点上车</div>
+                <ul>
+                    <li class="xuanzh_hov">
+                        <b><i></i></b>
+                        江北机场
+                    </li>
+                    <li>
+                        <b><i></i></b>
+                        重庆北站
+                    </li>
+                </ul>
+                <button>确认</button>
+            </div>
+        </div>
+    </div>
+<!--    支付说明弹窗-->
+    <div class="zfsm_mkt" style="display:none;">
+        <div class="zfsm">
+            <div class="zfsm_cont">
+                <h3>支付说明</h3>
+                <p class="banche"></p>
+                <div class="zfsm_cont_qd">确定</div>
+            </div>
+        </div>
+    </div>
+<!--    获取定位-->
+</div>
+<script>
+    let token=GJ.get_cache("token");  //用户id
+    let lineid=GJ.getUrlString("lineid") ;  //专线id
+    let type=GJ.getUrlString("type");
+    let zcbc=GJ.getUrlString("zcbc");       //班车还是专车
+    let assignid=GJ.getUrlString("assignid"); //专车id
+    let orderid='';             //订单id
+    let cfd='';                 //toP出发地
+    let mdd="";                //top目的地
+    let xzscdd_cont1_li_t='';      //上车选择列表
+    let xzscdd_cont1_li_b='';      //下车选择列表
+    let xzh_cfd='';                //选择的出发地
+    let xzh_mdd='';                //选择的目的地
+    let hunc_cfd=null;               //缓存的发出地
+    let hunc_mdd=null;               //缓存的目的地
+    let url = window.location.href;   //获取前地址
+    let czren=["1人","2人",'3人','4人','5人','6人'];
+    let price="";                     //价格
+    let address='';                  //下单地址
+    let orderlongitudeandlatitude="";     //下单经纬度
+    let ordernum=1;                      //乘坐人数
+    let xiaos_name=[];                  //下车时间
+    // times(token,lineid,type);
+    // 初始化
+    GJ.loadShow()
+    function chushih(datas){
+        GJ.loadShow();
+        $.ajax({
+            url: appPara.mwurl + "app/specialline/getSpeciallineById",
+            type: 'POST',
+            dataType: 'json',
+            data: {
+                token:token,
+                lineid:lineid,
+                type:datas
+            },
+            success: function (data) {
+                console.log(data);
+                if(data.code==0){
+                    let list=data.data;
+                    cfd=list.startName;
+                    mdd=list.endName;
+                    xiaos_name=list.times
+                    $(".dyk_cont_top_cfd").text(list.startName);
+                    $(".dyk_cont_top_mdd").text(list.endName);
+                    price=list.price;
+                    if(list.onestart.length>0){
+                        console.log(JSON.parse(GJ.get_cache("cfd"))==null);
+                        if(JSON.parse(GJ.get_cache("cfd"))==null){
+                            xzh_cfd={
+                                name:list.onestart[0].nameabbr,
+                                longitudeandlatitude: list.onestart[0].longitudeandlatitude
+                            };
+                            // 存缓存
+                            GJ.set_cache("cfd",`{"vale":"${list.onestart[0].nameabbr}","longitudeandlatitude":"${list.onestart[0].longitudeandlatitude}"}`);
+                            $(".dyk_cont_bott_cfd").text(list.onestart[0].nameabbr).attr("data-longitudeandlatitude",list.onestart[0].longitudeandlatitude).removeClass("dyk_cont_bott_hov");
+                        }else{
+                            hunc_cfd=JSON.parse(GJ.get_cache("cfd"));
+                            $(".dyk_cont_bott_cfd").text(hunc_cfd.vale).attr("data-longitudeandlatitude",hunc_cfd.longitudeandlatitude).removeClass("dyk_cont_bott_hov");
+                        }
+
+                        xzscdd_cont1_li_t='';
+                        for(key in list.onestart){
+                            xzscdd_cont1_li_t+=`
+                            <li data-longitudeandlatitude="${list.onestart[key].longitudeandlatitude}" data-val="${list.onestart[key].nameabbr}">
+                                <b><i></i></b>
+                                ${list.onestart[key].nameabbr}
+                            </li>
+                        `
+                        }
+                    }else{
+                        xzscdd_cont1_li_t=''
+                    }
+                    if(list.twoend.length>0){
+                        if(JSON.parse(GJ.get_cache("mdd"))==null){
+                            xzh_mdd={
+                                name:list.twoend[0].nameabbr,
+                                longitudeandlatitude: list.twoend[0].longitudeandlatitude
+                            };
+                            console.log(xzh_mdd);
+                            // 存缓存
+                            GJ.set_cache("mdd",`{"vale":"${list.twoend[0].nameabbr}","longitudeandlatitude":"${list.twoend[0].longitudeandlatitude}"}`)
+                            $(".dyk_cont_bott_mdd").text(list.twoend[0].nameabbr).attr("data-longitudeandlatitude",list.twoend[0].longitudeandlatitude).removeClass("dyk_cont_bott_hov");
+                        }else{
+                            hunc_mdd=JSON.parse(GJ.get_cache("mdd"));
+                            $(".dyk_cont_bott_mdd").text(hunc_mdd.vale).attr("data-longitudeandlatitude",hunc_mdd.longitudeandlatitude).removeClass("dyk_cont_bott_hov");
+                        }
+                        xzscdd_cont1_li_b='';
+                        for(key in list.twoend){
+                            xzscdd_cont1_li_b+=`
+                            <li data-longitudeandlatitude="${list.twoend[key].longitudeandlatitude}" data-val="${list.twoend[key].nameabbr}">
+                                <b><i></i></b>
+                                ${list.twoend[key].nameabbr}
+                            </li>
+                        `
+                        }
+
+                    }else{
+                        xzscdd_cont1_li_b=''
+                    }
+
+                    if(list.onestart.length==0){
+                        // console.log(JSON.parse(GJ.get_cache("cfd"))!==null);
+                        if(JSON.parse(GJ.get_cache("cfd"))!==null){
+                            hunc_cfd=JSON.parse(GJ.get_cache("cfd"));
+                            $(".dyk_cont_bott_cfd").text(hunc_cfd.vale).attr("data-longitudeandlatitude",hunc_cfd.longitudeandlatitude).removeClass("dyk_cont_bott_hov");
+                        }else{
+                            $(".dyk_cont_bott_cfd").text("请选择出发地").addClass("dyk_cont_bott_hov").attr("data-longitudeandlatitude",'');
+                            localStorage.removeItem("cfd");
+                        }
+                        // GJ.set_cache("cfd",'')
+
+                    }
+
+                    if(list.twoend.length==0){
+                        // console.log(JSON.parse(GJ.get_cache("mdd"))!==null);
+                        if(JSON.parse(GJ.get_cache("mdd"))!==null){
+                            hunc_mdd=JSON.parse(GJ.get_cache("mdd"));
+                            $(".dyk_cont_bott_mdd").text(hunc_mdd.vale).attr("data-longitudeandlatitude",hunc_mdd.longitudeandlatitude).removeClass("dyk_cont_bott_hov");
+                        }else{
+                            $(".dyk_cont_bott_mdd").text("请选择目的地").addClass("dyk_cont_bott_hov").attr("data-longitudeandlatitude",'');
+                            localStorage.removeItem("mdd");
+                        }
+                        // GJ.set_cache("mdd",'')
+                    }
+                    if(ordernum==1){
+                        if(Number.isInteger(price)){
+                            $(".jine>span").html(`￥<b class="jine_jine">${price}</b>.00`);
+                        }else{
+                            // price=price.toFixed(2);
+                            $(".jine>span").html(`￥<b class="jine_jine">${price.substr(0, amount(price))}</b>${price.substr(amount(price))}`);
+                        }
+                    }
+                    GJ.loadHide();
+                }else if(data.code==101){
+                    let dqurl=window.location.href;
+                    window.location.href=`${appPara.mwurl}/app/webchatCall?url=${dqurl}`
+                }else{
+                    GJ.msg(data.msg,2000);
+                    GJ.loadHide()
+                }
+
+            },
+            timeout: 20000,
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                GJ.loadHide();
+                GJ.msg("网络太忙了，请稍后再试！",2000);
+            }
+        });
+    };
+    chushih(type);
+    // 获取用户地址
+    AMap.plugin('AMap.Geolocation', function() {
+        var geolocation = new AMap.Geolocation({
+            enableHighAccuracy: true,//是否使用高精度定位，默认:true
+            timeout: 10000,          //超过10秒后停止定位，默认：5s
+            buttonPosition:'LB',    //定位按钮的停靠位置
+            buttonOffset: new AMap.Pixel(10, 20),//定位按钮与设置的停靠位置的偏移量，默认：Pixel(10, 20)
+            zoomToAccuracy: true,   //定位成功后是否自动调整地图视野到定位点
+
+        });
+        geolocation.getCurrentPosition(function(status,result){
+            if(status=='complete'){
+                onComplete(result)
+            }else{
+                onError(result)
+            }
+        });
+    });
+    //解析定位结果
+    function onComplete(data) {
+        address=data.formattedAddress;
+        orderlongitudeandlatitude=data.position.lng+","+data.position.lat
+    }
+    //解析定位错误信息
+    function onError(data) {
+        console.log(data)
+    }
+    // 出发地切换
+    if(zcbc=='zuanche'){
+        $(".dyk_cont_top_huh").hide();
+        $("#trigger1").hide();
+    }else if(zcbc=='banche'){
+        $(".dyk_cont_top_huh").click(function () {
+            let indxtpye=url.slice(0, -1);
+            localStorage.removeItem("cfd");
+            localStorage.removeItem("mdd");
+            if(type==0){
+                type=1;
+                url=indxtpye+1
+            }else{
+                type=0;
+                url=indxtpye+0
+            }
+            chushih(type);
+        });
+    }
+    // 出发地选择框
+    $(".dyk_cont_bott_t").click(function (event) {
+        if(xzscdd_cont1_li_t){
+            $(".xzscdd_cont1>ul").html(xzscdd_cont1_li_t);
+            $(".xzscdd").css({display:'block'})
+        }else{
+
+            window.location.href=`xzxcd.html?lineid=${lineid}&type=${type}&zcbc=${zcbc}&assignid=${assignid}&zxx=cfd`;
+        }
+        cfdmdd('cfd');
+        event.stopPropagation();//阻止事件冒泡即可
+    });
+    // 目的地选择框
+    $(".dyk_cont_bott_b").click(function (event) {
+        if(xzscdd_cont1_li_b){
+            $(".xzscdd_cont1>ul").html(xzscdd_cont1_li_b);
+            $(".xzscdd").css({display:'block'})
+        }else{
+            window.location.href=`xzxcd.html?lineid=${lineid}&type=${type}&zcbc=${zcbc}&assignid=${assignid}&zxx=mdd`;
+        }
+        cfdmdd('mdd');
+        event.stopPropagation();//阻止事件冒泡即可
+    });
+      // 地点选择框
+    function  cfdmdd(data){
+        // 选择框选中
+        $(".xzscdd_cont1 li").on("click",function () {
+            $(this).addClass("xuanzh_hov").siblings().removeClass("xuanzh_hov");
+            let val=$(this).attr("data-val");
+            let longitudeandlatitude=$(this).attr("data-longitudeandlatitude");
+            $(".xzscdd_cont1 button").attr('data-val',val).attr('data-longitudeandlatitude',longitudeandlatitude);
+        });
+        // 选择框确定
+        $(".xzscdd_cont1 button").one("click",function () {
+           let val=$(this).attr("data-val");
+           let localeid=$(this).attr("data-longitudeandlatitude");
+         if(val!==undefined&&val.length>0){
+             if(data=='cfd'){
+                 $(".dyk_cont_bott_cfd").text(val).attr("data-longitudeandlatitude",localeid).removeClass("dyk_cont_bott_hov");
+                 // 存缓存
+                 GJ.set_cache("cfd",`{"vale":"${val}","longitudeandlatitude":"${localeid}"}`);
+             }
+             if(data=='mdd'){
+                 $(".dyk_cont_bott_mdd").text(val).attr("data-longitudeandlatitude",localeid).removeClass("dyk_cont_bott_hov");
+                 // 存缓存
+                 GJ.set_cache("mdd",`{"vale":"${val}","longitudeandlatitude":"${localeid}"}`);
+             }
+         }
+           $(this).attr("data-val",'').attr("data-longitudeandlatitude",'');
+            $(".xzscdd").hide()
+        });
+    }
+    // 删除推荐地点
+    $(".dyk_cont_tjc_img").click(function () {
+        $(".dyk_cont_bott_cfd").text("请选择出发地").addClass("dyk_cont_bott_hov").attr("data-longitudeandlatitude",'');
+        $(".dyk_cont_bott_mdd").text("请选择目的地").addClass("dyk_cont_bott_hov").attr("data-longitudeandlatitude",'');
+    });
+    // 选择时间
+    setTimeout(function () {
+        var mobileSelect1 = new MobileSelect({
+            trigger: '#trigger1',
+            title: '',
+            wheels: [
+                {data:nyn_name},
+                {data:xiaos_name}
+            ],
+            position:[0], //初始化定位 打开时默认选中的哪个 如果不填默认为0
+            transitionEnd:function(indexArr, data){
+                // console.log(data);
+            },
+            callback:function(indexArr, data){
+                console.log(data);
+                let xzsj=data.join(" ");
+                // $("#trigger1>span").text(xzsj)
+                $("#trigger1").html(`<i><img src="img/shijian@2x.png" alt=""></i>
+                    <span style="color: #3366FD;">${xzsj}</span>
+                    <div>
+                        <img src="img/hsgd.png" alt="">
+                    </div>
+                    `)
+            }
+        });
+    },500)
+    // 选择人数
+    // 价格分割
+    function amount(data) {
+        let amount=data.indexOf(".");
+        return amount
+    }
+    var mobileSelect2 = new MobileSelect({
+        trigger: '#trigger2',
+        title: '',
+        wheels: [
+            {data:czren}
+        ],
+        position:[0], //初始化定位 打开时默认选中的哪个 如果不填默认为0
+        transitionEnd:function(indexArr, data){
+            // console.log(data);
+        },
+        callback:function(indexArr, data){
+            console.log(data);
+            let xzsj=data.join(" ");
+             $("#trigger2").html(`
+             <i><img src="img/zuowei@2x.png" alt=""></i>
+                    <span>乘坐人数：</span>
+                         <p>${xzsj}</p>
+                    <div>
+                        <img src="img/hsgd.png" alt="">
+                    </div>
+             `);
+            ordernum=xzsj.substring(0,1);
+          let text=price*ordernum;
+          if(Number.isInteger(text)){
+              $(".jine>span").html(`￥<b class="jine_jine">${text}</b>.00`);
+          }else{
+              text=text.toFixed(2);
+              $(".jine>span").html(`￥<b class="jine_jine">${text.substr(0, amount(text))}</b>${text.substr(amount(text))}`);
+          }
+        }
+    });
+    // 支付说明
+    $(".dqzfsm").click(function(){
+        // 支付说明
+        if(zcbc=='zuanche'){
+            $(".banche").text(`温馨提示：乘客们请注意，订单支付成功后，若取消按预定费用20%收取，若车已出发则不允许取消。`)
+        }else{
+            $(".banche").text(`温馨提示：乘客们请注意，预定后若要退订，退订费收取说明如下：派单前退订不收取任何费用；派单后车未到或未上车，按预定费用20%收取；派单后车已到或已上车，按费用100%收取。`)
+        }
+        $(".zfsm_mkt").show();
+
+    });
+    $(".zfsm_cont_qd").click(function () {
+        $(".zfsm_mkt").hide();
+    });
+    // 获取用户信息
+    $.ajax({
+        url: appPara.mwurl + "app/user/getUserInfo",
+        type: 'POST',
+        dataType: 'json',
+        data: {
+            token:token,
+        },
+        success: function (data) {
+            console.log(data);
+                if(data.code==0){
+                    $("#cd_name").val(data.data.nickname);
+                    $("#cd_phone").val(data.data.oldphone);
+                }else{
+                    GJ.msg(data.msg,2000)
+                }
+            GJ.loadHide();
+        },
+        timeout: 20000,
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+            GJ.loadHide();
+            GJ.msg("网络太忙了，请稍后再试！",2000);
+        }
+    });
+
+    // 去下单
+    $(".qzhif").click(function () {
+        let name=$("#cd_name").val();
+        let phone=$("#cd_phone").val();
+        let orderuptime='';
+        let oderupaddress=$(".dyk_cont_bott_cfd").text();
+        let orderuplongitudeandlatitude=$(".dyk_cont_bott_cfd").attr("data-longitudeandlatitude");
+        let orderdownaddress=$(".dyk_cont_bott_mdd").text();
+        let orderdownlongitudeandlatitude=$(".dyk_cont_bott_mdd").attr("data-longitudeandlatitude");
+        let memo=$("#beizhu").val();
+        if(zcbc=='banche'){
+            orderuptime=$('#trigger1>span').text();
+        }else{
+            orderuptime=''
+        }
+        console.log(orderlongitudeandlatitude);
+        console.log(orderdownaddress);
+        console.log(zcbc=='zuanche'||orderuptime!=="请选择时间")
+        if(orderdownaddress!=="请选择目的地"&&oderupaddress!=="请选择目的地"){
+            if(zcbc=='zuanche'||orderuptime!=="请选择时间"){
+                GJ.loadShow();
+                $.ajax({
+                    url: appPara.mwurl + "app/specialline/addOrder",
+                    type: 'POST',
+                    dataType: 'json',
+                    data: {
+                        token:token,
+                        lineid:lineid,
+                        type:type,
+                        name:name,
+                        phone:phone,
+                        address:address,
+                        orderlongitudeandlatitude:orderlongitudeandlatitude,
+                        orderuptime:orderuptime,
+                        oderupaddress:oderupaddress,
+                        orderuplongitudeandlatitude:orderuplongitudeandlatitude,
+                        orderdownaddress:orderdownaddress,
+                        orderdownlongitudeandlatitude:orderdownlongitudeandlatitude,
+                        memo:memo,
+                        ordernum:ordernum,
+                        assignid:assignid
+                    },
+                    success: function (data) {
+                        console.log(data);
+                        if(data.code==0){
+                            orderid=data.data.orderid;
+                            $.ajax({
+                                url: appPara.mwurl + "app/specialline/prepayOrder",
+                                type: 'POST',
+                                dataType: 'json',
+                                data: {
+                                    token:token,
+                                    orderid:orderid,
+                                    payplatform:0
+                                },
+                                success: function (data) {
+                                    console.log(data);
+                                    let appId=data.data.appId;
+                                    let timeStamp=data.data.timeStamp;
+                                    let nonceStr=data.data.nonceStr;
+                                    let package=data.data.package;
+                                    let signType=data.data.signType;
+                                    let paySign=data.data.paySign;
+                                    if(data.code==0){
+                                        if (typeof WeixinJSBridge == "undefined"){
+                                            if( document.addEventListener ){
+                                                document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
+                                            }else if (document.attachEvent){
+                                                document.attachEvent('WeixinJSBridgeReady', onBridgeReady);
+                                                document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
+                                            }
+                                        }else{
+                                            onBridgeReady(appId,timeStamp,nonceStr,package,signType,paySign);
+                                        }
+                                    }else if(data.code==101){
+                                        let dqurl=window.location.href;
+                                        window.location.href=`${appPara.mwurl}/app/webchatCall?url=${dqurl}`
+                                    }else{
+                                        GJ.msg(data.msg,2000)
+                                    }
+
+                                    // if(data.code==0){
+                                    //     wx.chooseWXPay({
+                                    //         timestamp: data.data.timeStamp, // 支付签名时间戳，注意微信jssdk中的所有使用timestamp字段均为小写。但最新版的支付后台生成签名使用的timeStamp字段名需大写其中的S字符
+                                    //         nonceStr: data.data.nonceStr, // 支付签名随机串，不长于 32 位
+                                    //         package: data.data.package, // 统一支付接口返回的prepay_id参数值，提交格式如：prepay_id=\*\*\*）
+                                    //         signType: data.data.signType, // 签名方式，默认为'SHA1'，使用新版支付需传入'MD5'
+                                    //         paySign: data.data.paySign, // 支付签名
+                                    //         success: function (res) {
+                                    //             // 支付成功后的回调函数
+                                    //             console.log(res);
+                                    //             localStorage.removeItem("cfd");
+                                    //             localStorage.removeItem("mdd");
+                                    //             window.location.href=`ddxq?orderid=${orderid}`;
+                                    //         }
+                                    //     });
+                                    // }else{
+                                    //     GJ.msg(data.msg,2000)
+                                    // }
+
+                                    GJ.loadHide();
+                                },
+                                timeout: 20000,
+                                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                                    GJ.loadHide();
+                                    GJ.msg("网络太忙了，请稍后再试！",2000);
+                                }
+                            });
+                        }else{
+                            GJ.loadHide();
+                            GJ.msg(data.msg,2000)
+                        }
+                        GJ.loadHide();
+                    },
+                    timeout: 20000,
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        GJ.loadHide();
+                        GJ.msg("网络太忙了，请稍后再试！",2000);
+                    }
+                });
+            }else{
+                GJ.msg("请选择时间",2000)
+            }
+
+        }else{
+            GJ.msg("请选择目的地",2000)
+        }
+
+
+    });
+    function onBridgeReady(appId,timeStamp,nonceStr,package,signType,paySign) {
+        WeixinJSBridge.invoke("getBrandWCPayRequest",{
+            "appId":appId,  //公众号名称，由商户传入
+            "timeStamp":timeStamp, //时间戳 这里随意使用了一个值
+            "nonceStr":nonceStr, //随机串
+            "package":package,
+            "signType":signType, //微信签名方式:MD5
+            "paySign":paySign //微信签名
+        },function(res){
+            if(res.err_msg == "get_brand_wcpay_request:fail"){
+                //支付失败
+            }else if (res.err_msg == "get_brand_wcpay_request:cancel"){
+                //支付过程中用户取消
+            }else if(res.err_msg == "get_brand_wcpay_request:ok"){
+                //支付成功
+                localStorage.removeItem("cfd");
+                localStorage.removeItem("mdd");
+                window.location.href=`ddxq.html?orderid=${orderid}`;
+            }
+        });
+    }
+    document.onreadystatechange = function(){ //当页面加载状态改变的时候执行function
+        if(document.readyState == "complete"){ 　　//当页面加载状态为完全结束时进入
+            $("#page").show();
+            GJ.loadHide()
+        }
+    }
+// console.log(JSON.parse(GJ.get_cache("cfd")))
+</script>
+</body>
+</html>

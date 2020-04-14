@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title>同港网约车</title>
+    <meta name="renderer" content="webkit">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="email=no" name="format-detection">
+    <meta name="msapplication-tap-highlight" content="no">
+    <link rel="stylesheet" href="css/style.css?2019_08_14">
+    <link rel="stylesheet" href="css/srmdd.css?2019_9_4">
+    <link rel="stylesheet" href="css/mobileSelect.css?2019_08_14">
+    <script type="text/javascript" charset="utf-8" src="js/jquery.min.js"></script>
+    <script src="https://webapi.amap.com/maps?v=1.4.15&key=be83f8d0d2149d28be18794b6336d4a2"></script>
+    <script type="text/javascript" charset="utf-8" src="js/City.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/style.js?2019_08_14"></script>
+    <script type="text/javascript" charset="utf-8" src="js/mobileSelect.min.js"></script>
+</head>
+<body>
+<div id="container"></div>
+<div class="top">
+    <div class="top_city" id="trigger"><i></i>重庆市 </div>
+    <input type="text" id="shuruk" placeholder="搜索地址" >
+    <span class="quxiao">取消</span>
+</div>
+<div class="coint" style="display: none">
+    <div>
+        <ul>
+<!--            <li><i></i> 象屿·两江公元1期-3号门</li>-->
+        </ul>
+    </div>
+</div>
+<div class="qued" >
+    <p style="display:none;">当前选择：<span></span></p>
+    <div>确定</div>
+</div>
+</body>
+<script>
+    let city=GJ.getUrlString("city"); //城市+
+    let shfc=GJ.getUrlString("shfc"); //是否首页顺风车出发地跳转
+    let sfmm=GJ.getUrlString("sfmm"); //是否顺风车目的地跳转
+    let dianqing={
+        value:'',
+        district:'',
+        location:'',
+        formattedAddress:'',
+        province:'',
+        city:"",
+        district1:''
+    };
+    // 初始化地图
+    var map = new AMap.Map('container', {
+        resizeEnable: true, //是否监控地图容器尺寸变化
+        zoom:15, //初始化地图层级
+    });
+    MapArea(city);
+    // 历史搜索
+    let lishisou=[];
+    let qudhuanc=GJ.get_cache('lishisou');
+    let contlist='';
+    let lishisou1s=JSON.parse(qudhuanc);
+    if(lishisou1s){
+        for(key in lishisou1s){
+            if(key<15){
+                contlist+=`<li data-id="${lishisou1s[key].name}" data-location="${lishisou1s[key].location}" data-value="${lishisou1s[key].value}" ><i></i>${lishisou1s[key].value}<span>${lishisou1s[key].name}</span></li>`;
+                lishisou.push(JSON.stringify(lishisou1s[key]))
+            }
+        }
+    }
+    $(".coint ul").html(contlist);
+    // 获取输入提示信息
+    function autoInput(keywords,city){
+        // console.log(city)
+        // var keywords = document.getElementById("input").value;
+        AMap.plugin('AMap.Autocomplete', function(){
+            // 实例化Autocomplete
+            var autoOptions = {
+                city:city,
+                citylimit:true,
+                datatype:'all'
+            };
+            var autoComplete = new AMap.Autocomplete(autoOptions);
+            autoComplete.search(keywords, function(status, result) {
+                console.log(result);
+                let contlist='';
+
+                if(status === 'complete'){
+                    result.tips.forEach(item=>{contlist+=`<li data-id="${item.district}" data-value="${item.name}" data-location="${item.location.lng},${item.location.lat}" ><i></i>${item.name}<span>${item.district}</span></li>`})
+                }
+                // 搜索成功时，result即是对应的匹配数据
+                $(".coint ul").html(contlist);
+            })
+        });
+
+    }
+
+    $("#shuruk").on('input',function () {
+        let keywords=$(this).val();
+        if(keywords){
+             autoInput(keywords,city);
+        }
+    });
+    $("#shuruk").on('focus',function () {
+        $(".coint").show()
+    });
+    $("#shuruk").on('blur',function () {
+        setTimeout(function () {
+            $(".coint").hide()
+        },300)
+    });
+    // 点标记
+    let  marker = new AMap.Marker({
+        map:map,
+        icon: "./img/user1.png",
+        offset: new AMap.Pixel(-13, -30),
+        draggable:true,
+        raiseOnDrag:true
+    });
+    //为地图注册click事件获取鼠标点击出的经纬度坐标
+    map.on('click', function(e) {
+        // console.log(e.lnglat.getLng()+","+e.lnglat.getLat());
+        $(".qued>p").show();
+        marker.setPosition([e.lnglat.getLng(),e.lnglat.getLat()]);
+        dianqing.location=e.lnglat.getLng()+","+e.lnglat.getLat();
+        regeoCode([e.lnglat.getLng(),e.lnglat.getLat()])
+    });
+    // 地址解析 赋值起始点上车位置
+  function regeoCode(lnglat) {
+        let geocoder = new AMap.Geocoder({
+            radius: 1000, //范围，默认：500
+            extensions:"all"
+        });
+       geocoder.getAddress(lnglat, function(status, result) {
+            if (status === 'complete'&&result.regeocode) {
+                // console.log(result);
+                var address = result.regeocode.formattedAddress;
+                    $(".qued>p>span").text(address);
+                    dianqing.value=result.regeocode.pois[0].name;
+                    dianqing.district=result.regeocode.addressComponent.province+result.regeocode.addressComponent.city+result.regeocode.addressComponent.district;
+                    dianqing.formattedAddress=address;
+                    dianqing.province=result.regeocode.addressComponent.province;
+                    dianqing.city=result.regeocode.addressComponent.city;
+                    dianqing.district1=result.regeocode.addressComponent.district;
+            }else{
+                console.log('根据经纬度查询地址失败')
+            }
+        });
+    }
+
+    // 确定跳转
+    $(".qued>div").click(function () {
+        console.log(shfc&&!sfmm);
+        if(!sfmm&&shfc){
+            GJ.set_cache("shfcgetLng",`{"getlng":"${dianqing.location.substr(0,dianqing.location.indexOf(","))}","getlat":"${dianqing.location.substr(dianqing.location.indexOf(",")+1)}","xiangxdz":"${dianqing.formattedAddress}","City":{"province":"${dianqing.province}","city":"${dianqing.city}","district":"${dianqing.district1}"}}`);
+            window.location.href=`index.html?shfc=${shfc}`
+        }else{
+            if(qudhuanc){
+                value=`{"name":"${dianqing.district}","value":"${dianqing.value}","location":"${dianqing.location}"}`;
+                if(!JSON.parse(`[${lishisou.join(",")}]`).some(item=>{return item.value==dianqing.value})){
+                    lishisou.unshift(value);
+                    GJ.set_cache('lishisou',`[${lishisou}]`);
+                }
+            }else{
+                GJ.set_cache('lishisou',`[{"name":"${dianqing.district}","value":"${dianqing.value}","location":"${dianqing.location}"}]`);
+            }
+            GJ.set_cache("mdgetLng",`{"getlng":"${dianqing.location.substr(0,dianqing.location.indexOf(','))}","getlat":"${dianqing.location.substr(dianqing.location.indexOf(',')+1)}","xiangxdz":"${dianqing.formattedAddress}"}`);
+            if(sfmm){
+                window.location.href=`hjshf.html`
+            }else{
+                window.location.href=`kcqrjc.html?city=${city}`
+            }
+
+        }
+
+    });
+    // 城市联动
+    // 专车地区联动
+    var mobileSelect= new MobileSelect({
+        trigger: '#trigger',
+        title: '选择城市',
+        titleColor:"#3366FD",
+        ensureBtnColor:"#09BB07",
+        triggerDisplayData:false,
+        wheels: [
+            {data:City}
+        ],
+        position:[0], //初始化定位 打开时默认选中的哪个 如果不填默认为0
+        transitionEnd:function(indexArr, data){
+            // console.log(data);
+        },
+        callback:function(indexArr, data){
+            console.log(data);
+            $("#trigger").html(`<i></i>${data[1].value}`);
+            city=data[1].value;
+            MapArea(data[0].value+data[1].value+data[2].value)
+            // console.log(startid+"----"+endid)
+        }
+    });
+    $("#trigger").html(`<i></i>${city}`);
+
+    function MapArea(data){
+        console.log(data);
+        AMap.plugin('AMap.Geocoder', function(){
+            let geocoder =new AMap.Geocoder({});
+            geocoder.getLocation(data, function(status, result) {
+               // console.log(result)
+                if (status === 'complete') {
+                  let   dinglng = result.geocodes[0].location;
+                    map.setZoomAndCenter(15,[dinglng.lng,dinglng.lat])   //回到定位起始点
+                }else{
+                    console.log('根据经纬度查询地址失败')
+                }
+            });
+        });
+    }
+    $(document).on("click",'.coint>div>ul>li',function(){
+        let value1=$(this).attr("data-value");
+        let district=$(this).attr("data-id");
+        let location=$(this).attr('data-location');
+        if(!sfmm&&shfc){
+            GJ.set_cache("shfcgetLng",`{"getlng":"${location.substr(0,location.indexOf(','))}","getlat":"${location.substr(location.indexOf(',')+1)}","xiangxdz":"${district}${$(this).attr("data-value")}","City":{"province":"${dianqing.province}","city":"${dianqing.city}","district":"${dianqing.district1}"}}`);
+            window.location.href=`index.html?shfc=${shfc}`
+        }else{
+            if(qudhuanc){
+                value=`{"name":"${district}","value":"${value1}","location":"${location}"}`;
+                if(!JSON.parse(`[${lishisou.join(",")}]`).some(item=>{return item.value==value1})){
+                    lishisou.unshift(value);
+                    GJ.set_cache('lishisou',`[${lishisou}]`);
+                }
+            }else{
+                GJ.set_cache('lishisou',`[{"name":"${district}","value":"${value}","location":"${location}"}]`);
+            }
+
+            GJ.set_cache("mdgetLng",`{"getlng":"${location.substr(0,location.indexOf(','))}","getlat":"${location.substr(location.indexOf(',')+1)}","xiangxdz":"${district}${$(this).attr("data-value")}"}`);
+            if(sfmm){
+                window.location.href=`hjshf.html`
+            }else{
+                window.location.href=`kcqrjc.html?city=${city}`
+            }
+        }
+
+    });
+    $(".quxiao").click(function () {
+        window.location.href=`index.html`
+    })
+</script>
+</html>

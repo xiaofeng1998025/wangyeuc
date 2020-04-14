@@ -1,0 +1,66 @@
+.dek_shh{
+    margin-top: 0.2rem;
+    display: -webkit-box;
+    display: flex;
+    color:#999 ;
+    font-size: 0.3rem;
+}
+
+
+.yzmmk{
+    margin-top: 1rem;
+    padding: 0 0.4rem;
+}
+.yzmmk_cont{
+    margin-top: 0.3rem;
+    position: relative;
+}
+.yzmmk .yzmmk_cont>input{
+    width: 100%;
+    color: transparent;
+    position: absolute;
+    top:0;
+    left: 0;
+    height: 100%;
+    border:none;
+    background: transparent;
+    caret-color:transparent;
+    opacity: 0;
+}
+.yzmmk>p{
+    font-size: 0.26rem;
+    color: #999;
+}
+.shurk>ul{
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-pack: space-evenly;
+            justify-content: space-evenly;
+    font-size: 0.3rem;
+}
+.shurk>ul li{
+    width: 0.95rem;
+    line-height: 0.95rem;
+    height: 0.95rem;
+    border:1px solid #E5E5E5;
+    text-align: center;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+.shurk>ul li:nth-child(1){
+    margin-left: 0;
+}
+.shurk .shurk_jjhov{
+    border-color:#EA5F5A;
+}
+.shurk .shurk_jjhov i{
+    display:inline-block;
+}
+.shurk>ul li i{
+    width: 0.02rem;
+    height: 0.77rem;
+    background: #EA5F5A;
+    position:relative ;
+    top:0.09rem;
+    display: none;
+}

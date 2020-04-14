@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery.min.js"></script>
+    <script src="https://webapi.amap.com/maps?v=1.4.15&key=be83f8d0d2149d28be18794b6336d4a2"></script>
+    <style>
+        html{
+            height: 100%;
+        }
+        body{
+            height: 100%;
+        }
+        #container{
+            height: 100%;
+            width: 100%;
+        }
+        .dsad{
+            position: absolute;
+            top:0;
+            z-index: 10000;
+        }
+        .hqdw{
+            position: absolute;
+            top:100px;
+            font-size: 20px;
+            z-index: 10000;
+            width: 300px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+        <div class="txqd">腾讯签到</div>
+ <div id="container" style="z-index: 1000;" data-id="10">dadadada</div>
+
+<ul class="dsad">
+
+</ul> -->
+
+<button class="hqdw">获取定位</button>
+
+
+<div class="seseee">
+</div>
+<script src="js/jquery.min.js"></script>
+<script>
+    let div=document.getElementById("container");
+    div.onclick=function(e){
+        console.log(div.getAttribute("data-id"));
+        console.log(div.style.zIndex)
+    }
+    $(".txqd").click(function(){
+         function clearAllCookie() {
+                var date=new Date();
+                date.setTime(date.getTime()-10000);
+                var keys=document.cookie.match(/[^ =;]+(?=\=)/g);
+                console.log("需要删除的cookie名字："+keys);
+                if (keys) {
+                    for (var i =  keys.length; i--;)
+                      document.cookie=keys[i]+"=0; expire="+date.toGMTString()+"; path=/";
+                }
+            }
+        fetch('https://vip.video.qq.com/fcgi-bin/comm_cgi?name=hierarchical_task_system&cmd=2&_=1573203663793&callback=Zepto1573203623995',{
+            method: "GET",
+            mode: "no-cors",
+           credentials: 'include', // 强制加入凭据头
+        })
+        .then(function(response){ if(response.status==200){  alert("签到成功")}})
+
+        fetch(`https://access.video.qq.com/danmu_manage/danmu_post?vappid=97767206&vsecret=c0bdcbae120669fff425d0ef853674614aa659c605a613a4&raw=1&vversion_name=5.2.0.1234&vplatform=5`,{
+        method: "POST",
+       // Accept: 'application/json, text/javascript, */*; q=0.01',
+        credentials: 'include', // 强制加入凭据头
+        body:JSON.stringify({
+            DMContentKey: "type=2&bubble_flag=1&cid=mzc00200ot41ksh&targetid=4385779727&vid=d0032azmot2",
+            bb_head: "https://puui.qpic.cn/vupload/0/20181108_vrbs64jccp/0",
+            dwTimePoint: 50,
+            richIdType: 2,
+            sContent: "前排0055",
+            stStarInfo: {bIsStar: false},
+            strColorInfoJson: "",
+            strRichId: "911",
+            userVipDegree: 7
+        }),
+    })
+        .then(function(response){return response.json()})
+        .then(function(res){
+            console.log(res)
+        });
+    })
+
+
+//     var map = new AMap.Map('container', {
+//             resizeEnable: true, //是否监控地图容器尺寸变化
+//         zoom:15, //初始化地图层级
+
+//     });
+//     let html='';
+//     function dingwei(){
+//         // 初始化定位
+//         AMap.plugin('AMap.Geolocation', function() {
+//             var geolocation = new AMap.Geolocation({
+//                 enableHighAccuracy: true,//是否使用高精度定位，默认:true
+//                 zoom:15,
+//                 timeout: 10000,          //超过10秒后停止定位，默认：5s
+//                 buttonPosition: 'RB',    //定位按钮的停靠位置
+//                 buttonOffset: new AMap.Pixel(0, 0),//定位按钮与设置的停靠位置的偏移量，默认：Pixel(10, 20)
+//                 // zoomToAccuracy: true,   //定位成功后是否自动调整地图视野到定位点
+//                 showMarker:false
+//             });
+//             map.addControl(geolocation);
+//             geolocation.getCurrentPosition(function(status,result){
+//                 if(status=='complete'){
+//                     onComplete(result)
+//                 }else{
+//                     onError(result)
+//                 }
+//             });
+//         });
+//         function onComplete(data) {
+//             let div=document.getElementsByClassName("dsad")[0];
+//             console.log(data);
+//             console.log(div);
+//             html+=`<li>${data.formattedAddress}</li>`;
+//             div.innerHTML=html
+//             // div.innerText(data.formattedAddress)
+//         }
+//     }
+//     dingwei();
+//     let button=document.getElementsByClassName("hqdw")[0];
+//     let o=0;
+//     button.onclick=function () {
+//         dingwei()
+//     };
+
+//   async  function sdd(data){
+//       let a=10;
+//      let s= await dsd();
+//        function dsd() {
+//            return new Promise(function (resolve, reject) {
+//                setTimeout(function () {
+//                    resolve([{data:1,mas:"第一"},{data:2,mas:"第二"}])
+//                },500);
+//            })
+//      };
+//      return  s
+//   }
+
+//   sdd(10).then(e=>{return e})
+
+
+
+
+
+
+
+
+    let productList = [], shopList = [], url = "https://api.m.jd.com/client.action";
+    function autoPost(id,type){
+        fetch(`${url}?timestamp=${new Date().getTime()}`,{method: "POST",mode: "cors",credentials: "include",headers:{"Content-Type": "application/x-www-form-urlencoded"},body:`functionId=raisepacket_collectScore&body={"type":${type},"ext":"${id}","appsign":1,"msgsign":2}&client=wh5`})
+            .then(function(response){return response.json()})
+            .then(function(res){
+                console.log(res)
+                console.log(res.data.biz_msg);
+            });
+    }
+
+    function start(){
+        fetch(`${url}?${new Date().getTime()}`,{method: "POST",mode: "cors",credentials: "include",headers:{"Content-Type": "application/x-www-form-urlencoded"},body:'functionId=raisepacket_getShopAndProductList&body=&client=wh5'})
+            .then(function(response){return response.json()})
+            .then(function(res){
+                productList = res.data.result.productList;
+                shopList  = res.data.result.shopList;
+                console.log(`获取到任务,商品：${productList.length} 商品：${shopList.length}`);
+                autoProductTask();
+            });
+    }
+    //逛商品
+    function autoProductTask(){
+        for(let i = 0,leng = productList.length;i<leng;i++){
+            (function(index){
+                setTimeout(()=>{
+                    let item = productList[index];
+                    autoPost(item['id'],4);
+                    console.log(`商品总任务数：${leng} 当前任务数：${index + 1}`);
+                    if( leng-1 == index){
+                        autoShopTask();
+                    }
+                },index*2000)
+            })(i)
+        }
+    }
+    //逛店铺
+    function autoShopTask(){
+        for(let i = 0,leng = shopList.length;i<leng;i++){
+            (function(index){
+                setTimeout(()=>{
+                    let item = shopList[index];
+                    autoPost(item['id'],2);
+                    console.log(`商铺总任务数：${leng} 当前任务数：${index + 1}`);
+                    if( leng-1 == index){
+                        autoPlay();
+                    }
+                },index*2000)
+            })(i)
+        }
+    }
+    //好玩互动
+    function autoPlay(){
+        for(let i = 0,leng = 4;i<leng;i++){
+            (function(index){
+                setTimeout(()=>{
+                    autoPost(0,5);
+                    console.log(`好玩互动：${leng} 当前任务数：${index + 1}`);
+                    if( leng-1 == index){
+                        autoInteract();
+                    }
+                },index*2000)
+            })(i)
+        }
+    }
+    //视频直播
+    function autoInteract(){
+        for(let i = 0,leng = 4;i<leng;i++){
+            (function(index){
+                setTimeout(()=>{
+                    autoPost(0,10);
+                    console.log(`视频直播：${leng} 当前任务数：${index + 1}`);
+                    if( leng-1 == index){
+                        autoShopping();
+                    }
+                },index*2000)
+            })(i)
+        }
+    }
+    //精彩会场
+    function autoShopping(){
+        for(let i = 0,leng = 3;i<leng;i++){
+            (function(index){
+                setTimeout(()=>{
+                        autoPost(0,3);
+                        console.log(`精彩会场：${leng} 当前任务数：${index + 1}`);
+                    },
+                    index*2000)
+            })(i)
+        }
+    }
+    // start();
+
+    // fetch(`https://access.video.qq.com/danmu_manage/danmu_post?vappid=97767206&vsecret=c0bdcbae120669fff425d0ef853674614aa659c605a613a4&raw=1&vversion_name=5.2.0.1234&vplatform=5`,{
+    //     method: "POST",
+    //     Accept: 'application/json, text/javascript, */*; q=0.01',
+    //     credentials: 'include', // 强制加入凭据头
+    //     body:JSON.stringify({
+    //         DMContentKey: "type=2&bubble_flag=1&cid=mzc00200ot41ksh&targetid=4385779727&vid=d0032azmot2",
+    //         bb_head: "https://puui.qpic.cn/vupload/0/20181108_vrbs64jccp/0",
+    //         dwTimePoint: 50,
+    //         richIdType: 2,
+    //         sContent: "前排0055",
+    //         stStarInfo: {bIsStar: false},
+    //         strColorInfoJson: "",
+    //         strRichId: "911",
+    //         userVipDegree: 7
+    //     }),
+    // })
+        // .then(function(response){return response.json()})
+        // .then(function(res){
+        //     console.log(res)
+        // });
+        // fetch('https://vip.video.qq.com/fcgi-bin/comm_cgi?name=hierarchical_task_system&cmd=2&_=1573203663793&callback=Zepto1573203623995',{
+        //     method: "GET",
+        //     credentials: 'include', // 强制加入凭据头
+        // })
+        // .then(function(response){ if(response.status==200){  alert("签到成功")}})
+        // fetch(' https://vip.video.qq.com/fcgi-bin/comm_cgi?name=spp_vscore_user_mashup&type=1&_=1573203666068&callback=Zepto1573203623996',{
+        //     method: "GET",
+        //     credentials: 'include', // 强制加入凭据头
+        // })
+        
+    //     .then(function(response){ if(response.status==200){  alert("签到成功")}})
+       
+        fetch('https://iyouxi3.vip.qq.com/ams3.0.php?_c=page&actid=403490&g_tk=akvi*aH4JdgteTBWi66HJFwNzBRFiJkgXED*-V0O*AY_&callback=jQuery1720349843177321693_1573610127857&_=1573610159204',{
+            method: "GET",
+            mode: "no-cors",
+            credentials: 'include', // 强制加入凭据头
+        })
+        .then(function(res){
+            console.log(res)
+        });
+
+        fetch(`https://h5.qzone.qq.com/proxy/domain/vip.qzone.qq.com/fcg-bin/v2/fcg_mobile_vip_site_checkin?t=0.8568646983904038&g_tk=182431899`,{
+        method: "POST",
+       // Accept: 'application/json, text/javascript, */*; q=0.01',
+       mode: "no-cors",
+        credentials: 'include', // 强制加入凭据头
+        body:JSON.stringify({
+            uin:1162518059,
+            format:'json',
+            inCharset:'utf-8',
+            outCharset:'utf-8'
+        }),
+    })
+        .then(function(res){
+            console.log(res)
+        });
+</script>
+</body>
+</html>
+
+

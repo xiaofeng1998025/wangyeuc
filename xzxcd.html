@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title>选择上下车点</title>
+    <meta name="renderer" content="webkit">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="email=no" name="format-detection">
+    <meta name="msapplication-tap-highlight" content="no">
+    <link rel="stylesheet" href="css/style.css?2019_08_14">
+    <script type="text/javascript" charset="utf-8" src="js/jquery.min.js"></script>
+    <style>
+        body{
+            height: 100%;
+        }
+        #page{
+            height: 88%;
+        }
+        .qued{
+            width:100%;
+            position: fixed;
+            bottom:0;
+        }
+        .qued>p{
+            background: #fff;
+            line-height: 0.6rem;
+            padding: 0 0.2rem;
+            color: #000;
+        }
+        .qued>div{
+            line-height: 1rem;
+            text-align: center;
+            font-size: 0.34rem;
+            color: #fff;
+            background:#474C5A;
+            width:100%;
+        }
+        .qued .tisi{
+            font-size: 0.28rem;
+            color: #F6B241;
+            background:#FFF9F1;
+        }
+        .qued{
+            border-top:1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+<script type="text/javascript" charset="utf-8" src="js/style.js?2019_08_14"></script>
+<div id="page" >
+    <iframe id="mapPage" width="100%" height="100%" frameborder=0
+            src="https://m.amap.com/picker/?zoom=15&center=&key=be83f8d0d2149d28be18794b6336d4a2">
+    </iframe>
+    <div class="qued"><p class="tisi">说明：可在途经点上下车，县城内包送</p><div>确定</div></div>
+</div>
+<div class="tisi"></div>
+<script>
+    let longitudeandlatitude='';
+    let poiaddress='';
+    let lineid=GJ.getUrlString("lineid") ;  //专线id
+    let type=GJ.getUrlString("type");
+    let zcbc=GJ.getUrlString("zcbc");       //班车还是专车
+    let assignid=GJ.getUrlString("assignid"); //专车id
+    let url='';
+    let zxx=GJ.getUrlString("zxx");
+    if(zcbc=='zuanche'){
+       url=`qrjc.html?lineid=${lineid}&type=${type}&zcbc=${zcbc}&assignid=${assignid}`;
+    }else{
+        url=`qrjc.html?lineid=${lineid}&type=${type}&zcbc=${zcbc}`;
+    }
+    (function(){
+        var iframe = document.getElementById('mapPage').contentWindow;
+        document.getElementById('mapPage').onload = function(){
+            iframe.postMessage('hello','https://m.amap.com/picker/');
+        };
+        window.addEventListener("message", function(e){
+            longitudeandlatitude=e.data.location;
+            poiaddress=e.data.name;
+            console.log('您选择了:' + e.data.name + ',' +e.data.location);
+           $(".qued>p").text(`当前选择：${e.data.name}`).removeClass("tisi")
+        }, false);
+    }());
+    $(".qued>div").click(function () {
+        if(poiaddress){
+            if(zxx=='cfd'){
+                GJ.set_cache("cfd",`{"vale":"${poiaddress}","longitudeandlatitude":"${longitudeandlatitude}"}`)
+            }else if(zxx=='mdd'){
+                GJ.set_cache("mdd",`{"vale":"${poiaddress}","longitudeandlatitude":"${longitudeandlatitude}"}`)
+            }
+        }
+        window.location.href=url
+    })
+</script>
+</body>
+</html>

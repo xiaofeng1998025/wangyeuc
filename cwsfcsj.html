@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title>同港网约车</title>
+    <meta name="renderer" content="webkit">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="email=no" name="format-detection">
+    <meta name="msapplication-tap-highlight" content="no">
+    <link rel="stylesheet" href="css/style.css?2019_08_14">
+    <link rel="stylesheet" href="css/cwsfcsj.css?2019_11_15">
+    <link rel="stylesheet" href="css/mobileSelect.css?2019_08_14">
+</head>
+<body>
+<div class="top">
+    <a href="javascript:void(0)">
+        <img src="img/zuofan.png" alt=""> 成为顺风车司机
+    </a>
+</div>
+<div class="top_img"><img src="img/seqa.png" alt=""></div>
+<div class="page">
+    <div class="titleh1">
+        填写信息 <span>为了便于审核，需要你如实填写</span>
+    </div>
+    <div class="PersonajInformoj">
+        个人信息
+    </div>
+    <ul class="Listo">
+        <li>
+            <div class="Listo_l">
+                <span>*</span>
+                申请人姓名
+            </div>
+            <div class="Listo_r">
+                <input type="text" id="username" placeholder="请填写姓名">
+            </div>
+        </li>
+        <li>
+            <div class="Listo_l">
+                <span>*</span>
+                手机号码
+            </div>
+            <div class="Listo_r">
+                <input type="text" id="phone" placeholder="请填写手机号码">
+                <span class="yanzcs">验证</span>
+            </div>
+        </li>
+        <li>
+            <div class="Listo_l">
+                <span>*</span>
+                性别
+            </div>
+            <div class="Listo_r" id="trigger_Sekso">
+                <span>请选择</span>
+                <i></i>
+            </div>
+        </li>
+        <li>
+            <div class="Listo_l">
+                <span>*</span>
+                出生日期
+            </div>
+            <div class="Listo_r" id="trigger_Date">
+                <span>请选择</span>
+                <i></i>
+            </div>
+        </li>
+        <li>
+            <div class="Listo_l">
+
+                紧急联系人
+            </div>
+            <div class="Listo_r">
+                <input type="text" id="emergencycontact" placeholder="请填写姓名">
+            </div>
+        </li>
+        <li>
+            <div class="Listo_l">
+
+                紧急联系人电话
+            </div>
+            <div class="Listo_r">
+                <input type="text" id="emergencycontactphone" placeholder="请填写手机号码">
+            </div>
+        </li>
+        <li>
+            <div class="Listo_l">
+
+                紧急联地址
+            </div>
+            <div class="Listo_r">
+                <input type="text" id="emergencycontactaddress" placeholder="请填写地址">
+            </div>
+        </li>
+<!--        <li>-->
+<!--            <div class="Listo_l">-->
+<!--                国籍-->
+<!--            </div>-->
+<!--            <div class="Listo_r">-->
+<!--                <span>请选择</span>-->
+<!--                <i></i>-->
+<!--            </div>-->
+<!--        </li>-->
+        <li>
+            <div class="Listo_l">
+                婚姻状况
+            </div>
+            <div class="Listo_r" id="trigger_Marital">
+                <span>请选择</span>
+                <i></i>
+            </div>
+        </li>
+        <li>
+            <div class="Listo_l">
+                <span>*</span>
+                通讯地址
+            </div>
+            <div class="Listo_r">
+                <input type="text" id="drivercontactaddress" placeholder="请填写通讯地址">
+            </div>
+        </li>
+        <li>
+            <div class="Listo_l">
+                <span>*</span>
+                注册地区
+            </div>
+            <div class="Listo_r" id="trigger_Area">
+                <span>请选择</span>
+                <i></i>
+            </div>
+        </li>
+<!--        <li>-->
+<!--            <div class="Listo_l">-->
+<!--                外语能力-->
+<!--            </div>-->
+<!--            <div class="Listo_r" id="trigger_Foreig">-->
+<!--                <span>请选择</span>-->
+<!--                <i></i>-->
+<!--            </div>-->
+<!--        </li>-->
+        <li>
+            <div class="Listo_l">
+               学历
+            </div>
+            <div class="Listo_r" id="trigger_Education">
+                <span>请选择</span>
+                <i></i>
+            </div>
+        </li>
+        <li>
+            <div class="Listo_l">
+                <span>*</span>
+                民族
+            </div>
+            <div class="Listo_r" id="trigger_Nation">
+                <span>请选择</span>
+                <i></i>
+            </div>
+        </li>
+        <li>
+            <div class="Listo_l">
+                <span>*</span>
+                是否巡游出租车驾驶员
+            </div>
+            <div class="Listo_r" id="trigger_Driver">
+                <span>请选择</span>
+                <i></i>
+            </div>
+        </li>
+        <li>
+            <div class="Listo_l">
+                是否专职驾驶员
+            </div>
+            <div class="Listo_r" id="trigger_Fulltime">
+                <span>请选择</span>
+                <i></i>
+            </div>
+        </li>
+<!--        <li>-->
+<!--            <div class="Listo_l">-->
+<!--                <span>*</span>-->
+<!--                服务类型-->
+<!--            </div>-->
+<!--            <div class="Listo_r" id="trigger_Type">-->
+<!--                <span>请选择</span>-->
+<!--                <i></i>-->
+<!--            </div>-->
+<!--        </li>-->
+        <li>
+            <div class="Listo_l">
+                <span>*</span>
+                报备日期
+            </div>
+            <div class="Listo_r" id="trigger_Dateoffiling">
+                <span>请选择</span>
+                <i></i>
+            </div>
+        </li>
+    </ul>
+    <div class="zhucew">注册成为顺风车司机</div>
+</div>
+<!--验证弹出框-->
+<div class="tanchuk" style="display: none">
+    <div>
+        <div class="tanchukcont">
+            <p>验证手机号码</p>
+            <div class="tantitle">
+                验证码已发送到<span>132****1447</span>
+            </div>
+            <div class="taninput">
+                <input type="text" placeholder="请输入验证码"/>
+            </div>
+            <div class="quxqd">
+                <span class="quxiao">取消</span>
+                <span class="quedi">确定</span>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" charset="utf-8" src="js/jquery.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/style.js?2019_08_14"></script>
+<script type="text/javascript" charset="utf-8" src="js/mobileSelect.min.js"></script>
+<script src="js/times.js"></script>
+<script src="js/City.js"></script>
+<script src="js/Nation.js"></script>
+<script>
+    let token=GJ.get_cache("token");  //用户id
+    let drivergender='';                       //性别
+    let driverbirthday="";                    //出生日期
+    let drivermaritalstatus='';                     //婚姻状态
+    let areaid='';                           //注册区域
+    let drivernation="";                    //民族
+    let taxidriver="";                     //是否巡游出租车驾驶员
+    let fulltimedriver="";                 //是否专职驾驶员
+    let qualifytype="";                    //服务类型
+    let registerdate="";                  //报备日期
+    let phonesw=null;                   //验证码手机
+    let yanzheng=false;                    //是否验证手机号成功
+    let phonecode=null;                    //验证码返回值
+    let yzocde=null;                       //验证码
+    // 顶部返回
+    $(".top>a>img").click(function () {
+       window.location.href=`index.html`
+    });
+    // 性别
+    var mobileSelect_Sekso= new MobileSelect({
+        trigger: '#trigger_Sekso',
+        title: '性别',
+        titleColor:"#3366FD",
+        ensureBtnColor:"#09BB07",
+        triggerDisplayData:false,
+        wheels: [
+            {data:[{value:"男",id:1},{value:"女",id:2}]}
+        ],
+        position:[0], //初始化定位 打开时默认选中的哪个 如果不填默认为0
+        transitionEnd:function(indexArr, data){
+            // console.log(data);
+        },
+        callback:function(indexArr, data){
+          //  console.log(data);
+            $("#trigger_Sekso").text(data[0].value);
+            drivergender=data[0].id
+        }
+    });
+    //出生日期
+    var  trigger_Date= new MobileSelect({
+        trigger: '#trigger_Date',
+        title: '出生日期',
+        titleColor:"#3366FD",
+        ensureBtnColor:"#09BB07",
+        triggerDisplayData:false,
+        wheels: [
+            {data:[
+                    {id:0,value:0,
+                        childs:[{
+                            id:0,value:0,childs:[{
+                                id:0,value:0
+                            }]
+                        }]}
+                ]}
+        ],
+        position:[0], //初始化定位 打开时默认选中的哪个 如果不填默认为0
+        transitionEnd:function(indexArr, data){
+            // console.log(data);
+        },
+        callback:function(indexArr, data){
+           // console.log(data);
+            $("#trigger_Date").text(`${data[0].value}-${data[1].value}-${data[2].value}`);
+            driverbirthday=`${data[0].value}-${data[1].value}-${data[2].value}`
+        }
+    });
+    $("#trigger_Date").click(function () {
+        trigger_Date.updateWheels(Dato(70))
+    });
+    //婚姻
+    var trigger_Marital= new MobileSelect({
+        trigger: '#trigger_Marital',
+        title: '婚姻状况',
+        titleColor:"#3366FD",
+        ensureBtnColor:"#09BB07",
+        triggerDisplayData:false,
+        wheels: [
+            {data:['未婚','已婚','离异']}
+        ],
+        position:[0], //初始化定位 打开时默认选中的哪个 如果不填默认为0
+        transitionEnd:function(indexArr, data){
+            // console.log(data);
+        },
+        callback:function(indexArr, data){
+            console.log(data);
+            $("#trigger_Marital").text(data);
+            drivermaritalstatus=data;
+        }
+    });
+    // 注册地区
+    var trigger_Area=new  MobileSelect({
+        trigger: '#trigger_Area',
+        title: '注册地区',
+        titleColor:"#3366FD",
+        ensureBtnColor:"#09BB07",
+        triggerDisplayData:false,
+        wheels: [
+            {data:City}
+        ],
+        position:[21], //初始化定位 打开时默认选中的哪个 如果不填默认为0
+        transitionEnd:function(indexArr, data){
+            // console.log(data);
+        },
+        callback:function(indexArr, data){
+          //  console.log(data);
+            $("#trigger_Area").text(`${data[0].value} ${data[1].value} ${data[2].value}`);
+            areaid=data[2].id;
+        }
+    });
+    // 外语能力
+    // var trigger_Foreig=new MobileSelect({
+    //     trigger: '#trigger_Foreig',
+    //     title: '外语能力',
+    //     titleColor:"#3366FD",
+    //     ensureBtnColor:"#09BB07",
+    //     triggerDisplayData:false,
+    //     wheels: [
+    //         {data:['优秀','良好','一般','差']}
+    //     ],
+    //     position:[0], //初始化定位 打开时默认选中的哪个 如果不填默认为0
+    //     transitionEnd:function(indexArr, data){
+    //         // console.log(data);
+    //     },
+    //     callback:function(indexArr, data){
+    //         console.log(data);
+    //         $("#trigger_Foreig").text(data)
+    //     }
+    // });
+    // 学历
+    var trigger_Education=new MobileSelect({
+        trigger: '#trigger_Education',
+        title: '学历',
+        titleColor:"#3366FD",
+        ensureBtnColor:"#09BB07",
+        triggerDisplayData:false,
+        wheels: [
+            {data:['博士','硕士','本科','专科','高中','初中','小学']}
+        ],
+        position:[0], //初始化定位 打开时默认选中的哪个 如果不填默认为0
+        transitionEnd:function(indexArr, data){
+            // console.log(data);
+        },
+        callback:function(indexArr, data){
+            console.log(data);
+            $("#trigger_Education").text(data)
+        }
+    });
+    // 民族
+    var trigger_Nation=new MobileSelect({
+        trigger: '#trigger_Nation',
+        title: '民族',
+        titleColor:"#3366FD",
+        ensureBtnColor:"#09BB07",
+        triggerDisplayData:false,
+        wheels: [
+            {data:Nation}
+        ],
+        position:[0], //初始化定位 打开时默认选中的哪个 如果不填默认为0
+        transitionEnd:function(indexArr, data){
+            // console.log(data);
+        },
+        callback:function(indexArr, data){
+            //console.log(data);
+            $("#trigger_Nation").text(data[0].value);
+            drivernation=data[0].value;
+        }
+    });
+    //是否巡游出租车驾驶员
+    var trigger_Driver=new MobileSelect({
+        trigger: '#trigger_Driver',
+        title: '是否巡游出租车驾驶员',
+        titleColor:"#3366FD",
+        ensureBtnColor:"#09BB07",
+        triggerDisplayData:false,
+        wheels: [
+            {data:[{id:1,value:'是'},{id:0,value:'否'}]}
+        ],
+        position:[0], //初始化定位 打开时默认选中的哪个 如果不填默认为0
+        transitionEnd:function(indexArr, data){
+            // console.log(data);
+        },
+        callback:function(indexArr, data){
+           // console.log(data);
+            $("#trigger_Driver").text(data[0].value);
+            taxidriver=data[0].id;
+        }
+    });
+    // 是否专职驾驶员
+    var trigger_Fulltime=new MobileSelect({
+        trigger: '#trigger_Fulltime',
+        title: '是否专职驾驶员',
+        titleColor:"#3366FD",
+        ensureBtnColor:"#09BB07",
+        triggerDisplayData:false,
+        wheels: [
+            {data:[{id:1,value:'是'},{id:0,value:'否'}]}
+        ],
+        position:[0], //初始化定位 打开时默认选中的哪个 如果不填默认为0
+        transitionEnd:function(indexArr, data){
+            // console.log(data);
+        },
+        callback:function(indexArr, data){
+           // console.log(data);
+            $("#trigger_Fulltime").text(data[0].value);
+            fulltimedriver=data[0].id;
+        }
+    });
+    // 服务类型
+    // var trigger_Type=new MobileSelect({
+    //     trigger: '#trigger_Type',
+    //     title: '服务类型',
+    //     titleColor:"#3366FD",
+    //     ensureBtnColor:"#09BB07",
+    //     triggerDisplayData:false,
+    //     wheels: [
+    //         {data:[{id:0,value:'网约预约出租车'},{id:1,value:'巡游出租汽车'},{id:2,value:'私人小客车合乘'},{id:3,value:'公务用车'}]}
+    //     ],
+    //     position:[0], //初始化定位 打开时默认选中的哪个 如果不填默认为0
+    //     transitionEnd:function(indexArr, data){
+    //         // console.log(data);
+    //     },
+    //     callback:function(indexArr, data){
+    //       //  console.log(data);
+    //         $("#trigger_Type").text(data[0].value);
+    //         qualifytype=data[0].id;
+    //     }
+    // });
+    // 报备日期
+    var trigger_Dateoffiling=new MobileSelect({
+        trigger: '#trigger_Dateoffiling',
+        title: '报备日期',
+        titleColor:"#3366FD",
+        ensureBtnColor:"#09BB07",
+        triggerDisplayData:false,
+        wheels: [
+            {data:[
+                    {id:0,value:0,
+                        childs:[{
+                            id:0,value:0,childs:[{
+                                id:0,value:0
+                            }]
+                        }]}
+                ]}
+        ],
+        position:[0], //初始化定位 打开时默认选中的哪个 如果不填默认为0
+        transitionEnd:function(indexArr, data){
+            // console.log(data);
+        },
+        callback:function(indexArr, data){
+           // console.log(data);
+            $("#trigger_Dateoffiling").text(`${data[0].value}-${data[1].value}-${data[2].value}`);
+            registerdate=`${data[0].value}-${data[1].value}-${data[2].value}`
+        }
+    });
+    $("#trigger_Dateoffiling").click(function () {
+        trigger_Dateoffiling.updateWheels(Dato(30))
+    });
+    
+    //验证手机号
+    $(".yanzcs").click(function () {
+        let phone=$("#phone").val();
+        if(phone.length==11){
+            phonesw=phone;
+        $(".tanchuk").show();
+        $(".tantitle>span").text(`${phone.substr(0,3)}****${phone.substr(-4)}`)
+        $.ajax({
+            url: appPara.mwurl + "app/getyzcode",
+            type: 'POST',
+            dataType: 'json',
+            data: {
+                phone:phone,
+                type:11,
+                token:token
+            },
+            success: function (data) {
+                GJ.loadHide();
+                if(data.code==0){
+                    GJ.loadHide();
+                    GJ.msg("获取成功",2000)
+                }else if(data.code==101){
+                    let dqurl=window.location.href;
+                    window.location.href=`${appPara.mwurl}/app/webchatCall?url=${dqurl}`
+                }else{
+                    GJ.msg(data.msg,2000);
+                    GJ.loadHide()
+                }
+            },
+            timeout: 20000,
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                GJ.loadHide();
+                GJ.msg("网络太忙了，请稍后再试！",2000);
+            }
+        });
+        }else{
+            GJ.msg("请填写正确的手机号",2000);
+        }
+       
+    });
+    // 弹出框取消
+    $(".quxiao").click(function () {
+        $(".tanchuk").hide();
+    });
+    //弹出框确定
+    $(".quedi").click(function () {
+        let yzcode=$(".taninput input").val();
+        yzocde=yzcode;
+        $.ajax({
+            url: appPara.mwurl + "app/authyzcode",
+            type: 'POST',
+            dataType: 'json',
+            data: {
+                phone:phonesw,
+                type:11,
+                yzcode:yzcode
+            },
+            success: function (data) {
+                GJ.loadHide();
+                console.log(data);
+                if(data.code==0){
+                    yanzheng=true;
+                    phonecode=data.data.phonecode;
+                    $(".tanchuk").hide();
+                    $(".yanzcs").hide();
+                    GJ.msg("验证成功",2000);
+                    GJ.loadHide();
+                }else if(data.code==101){
+                    let dqurl=window.location.href;
+                    window.location.href=`${appPara.mwurl}/app/webchatCall?url=${dqurl}`
+                }else{
+                    GJ.msg(data.msg,2000);
+                    GJ.loadHide()
+                }
+            },
+            timeout: 20000,
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                GJ.loadHide();
+                GJ.msg("网络太忙了，请稍后再试！",2000);
+            }
+        });
+    });
+    // 点击注册成为司机
+    $(".zhucew").click(function () {
+        let username=$("#username").val();     //姓名
+        let phones=$("#phone").val();           //手机号
+        let emergencycontact=$("#emergencycontact").val();                 //紧急联系人
+        let emergencycontactphone=$("#emergencycontactphone").val();      //紧急联系人电话
+        let emergencycontactaddress=$("#emergencycontactaddress").val();  //紧急联系人地址
+        let drivercontactaddress=$("#drivercontactaddress").val();                    //通讯地址
+        if(yanzheng){
+            $.ajax({
+                url: appPara.mwurl + "app/user/registerDriver",
+                type: 'POST',
+                dataType: 'json',
+                data: {
+                    username:username,
+                    phone:phones,
+                    drivergender:drivergender,
+                    driverbirthday:driverbirthday,
+                    emergencycontact:emergencycontact,
+                    emergencycontactphone:emergencycontactphone,
+                    emergencycontactaddress:emergencycontactaddress,
+                    drivermaritalstatus:drivermaritalstatus,
+                    drivercontactaddress:drivercontactaddress,
+                    areaid:areaid,
+                    drivernation:drivernation,
+                    taxidriver:taxidriver,
+                    fulltimedriver:fulltimedriver,
+                    qualifytype:2,
+                    registerdate:registerdate,
+                    phonecode:phonecode,
+                    yzocde:yzocde
+                },
+                success: function (data) {
+                    GJ.loadHide();
+                    console.log(data);
+                    if(data.code==0){
+                        GJ.msg("注册成功",2000);
+                        setTimeout(function () {
+                            window.location.href=`zccg.html?phone=${phones.substr(0,3)}*****${phones.substr(-3)}`
+                        },2000)
+
+                    }else if(data.code==101){
+                        let dqurl=window.location.href;
+                        window.location.href=`${appPara.mwurl}/app/webchatCall?url=${dqurl}`
+                    }else{
+                        GJ.msg(data.msg,2000);
+                        GJ.loadHide()
+                    }
+                },
+                timeout: 20000,
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    GJ.loadHide();
+                    GJ.msg("网络太忙了，请稍后再试！",2000);
+                }
+            });
+        }else{
+            GJ.msg("请先验证手机号",2000)
+        }
+
+    })
+    
+</script>
+</body>
+
+</html>

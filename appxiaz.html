@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title>同港网约车</title>
+    <meta name="renderer" content="webkit">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="email=no" name="format-detection">
+    <meta name="msapplication-tap-highlight" content="no">
+    <link rel="stylesheet" href="css/style.css?2019_08_14">
+    <script type="text/javascript" charset="utf-8" src="js/jquery.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/style.js?2019_08_14"></script>
+    <style>
+        .body{
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top:0;
+            background: rgba(000,000,000,0.6);
+        }
+        .body_cont{
+            position: relative;
+        }
+        .body_cont img{
+            width: 5.74rem;
+            height: 7.2rem;
+            position: absolute;
+            right:0.5rem;
+        }
+    </style>
+</head>
+<body>
+<div class="body" style="display: none">
+    <div class="body_cont">
+        <img src="img/app.png" alt="">
+    </div>
+</div>
+<script>
+    $(".body").click(function () {
+        $(this).hide()
+    });
+    window.location.href=`http://upload.tonggangfw.com/image/tonggangfuwu_driver.apk`;
+    var ua = navigator.userAgent.toLowerCase();
+    var isWeixin = ua.indexOf('micromessenger') != -1;
+    if (isWeixin) {
+        console.log("是");
+        $(".body").show();
+    }else{
+        console.log("不是");
+    }
+
+    GJ.onreadystatechange()
+</script>
+</body>
+</html>

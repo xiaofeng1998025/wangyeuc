@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title>同港网约车</title>
+    <meta name="renderer" content="webkit">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="email=no" name="format-detection">
+    <meta name="msapplication-tap-highlight" content="no">
+    <link rel="stylesheet" href="css/style.css?2019_08_14">
+    <link rel="stylesheet" href="css/dengl.css?2019_08_14">
+    <link rel="stylesheet" href="css/dengl2.css?2019_08_14">
+    <script src="js/jquery.min.js"></script>
+</head>
+<body>
+<script type="text/javascript" charset="utf-8" src="js/style.js?2019_08_14"></script>
+<div id="page">
+    <!--    第一块账号登录-->
+    <div class="dyk">
+        <a href="dengl.html"><img src="img/zuofan.png" alt=""></a>
+        账号登录
+    </div>
+    <div class="dek">
+        <h2>获取验证码</h2>
+        <p>验证码已经发到您的手机</p>
+        <div class="dek_shh"><span>+86 &nbsp;</span><div>18576747421</div></div>
+    </div>
+    <div class="yzmmk">
+        <p>6位数字验证码</p>
+        <div class="yzmmk_cont">
+            <div class="shurk">
+                <ul>
+                    <li><i></i></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div>
+            <input  type="text" maxlength="6" οnkeyup="value=value.replace(/[^\d\.]/g,'')" oninput="Password()" onclick="Passworddq()">
+        </div>
+    </div>
+    <!--   高亮 xyb_hov-->
+    <div class="xyb ">
+        登录
+    </div>
+</div>
+<script>
+    let sjh=GJ.getUrlString("sjh");  //手机号
+    let Inputval='';   //输入框密码
+    let dengl=false;
+    GJ.msg("验证码发送成功",2000);
+    function Password() {
+         Inputval=$(".yzmmk_cont input").val();
+        if(Inputval!==undefined){
+            $(".shurk li").eq(0).text(Inputval.substring(0,1));
+            $(".shurk li").eq(1).text(Inputval.substring(1,2));
+            $(".shurk li").eq(2).text(Inputval.substring(2,3));
+            $(".shurk li").eq(3).text(Inputval.substring(3,4));
+            $(".shurk li").eq(4).text(Inputval.substring(4,5));
+            $(".shurk li").eq(5).text(Inputval.substring(5,6));
+        }
+        if(Inputval.length<6){
+            $(".shurk li").eq(Inputval.length).addClass("shurk_jjhov").siblings().removeClass("shurk_jjhov");
+            $(".shurk li").eq(Inputval.length).html(`<i></i>`);
+            $(".xyb").removeClass("xyb_hov");
+            dengl=false;
+        }
+        if(Inputval.length==6){
+            $(".shurk li").siblings().removeClass("shurk_jjhov");
+            $(".xyb").addClass("xyb_hov");
+            dengl=true
+        }
+    }
+    function Passworddq() {
+        if(Inputval.length==0){
+            $(".shurk li").eq(0).addClass("shurk_jjhov")
+        }
+    }
+     $(".dek_shh>div").text(sjh);
+    $(".xyb").click(function () {
+        GJ.loadShow();
+        $.ajax({
+            url: appPara.mwurl + "app/user/register",
+            type: 'POST',
+            dataType: 'json',
+            data: {
+                phone:sjh,
+                yzcode:Inputval,
+                token: GJ.get_cache("token")
+            },
+            success: function (data) {
+                 console.log(data);
+                GJ.loadHide();
+                if(data.code==0){
+                    GJ.set_cache("token",data.data.token);
+                    window.location.href=`index.html`;
+                }else{
+                    GJ.msg(data.msg,2000)
+                }
+            },
+            timeout: 20000,
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                GJ.loadHide();
+                GJ.msg("网络太忙了，请稍后再试！",2000);
+            }
+        });
+    })
+</script>
+</body>
+</html>

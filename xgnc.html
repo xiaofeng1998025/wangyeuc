@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title>同港网约车</title>
+    <meta name="renderer" content="webkit">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="email=no" name="format-detection">
+    <meta name="msapplication-tap-highlight" content="no">
+    <link rel="stylesheet" href="css/style.css?2019_08_14">
+    <link rel="stylesheet" href="css/xgnc.css?2019_08_14">
+    <script type="text/javascript" charset="utf-8" src="js/jquery.min.js"></script>
+</head>
+<body>
+<script type="text/javascript" charset="utf-8" src="js/style.js?2019_08_14"></script>
+<div id="page">
+    <!--     头部-->
+    <div class="dyk_top">
+        <a href="wdxx.html"><img src="img/zuofan.png" alt=""></a>
+        修改呢称
+    </div>
+    <div class="dek">
+        <div>昵称
+            <input type="text" placeholder="请输入呢称">
+        </div>
+    </div>
+    <div class="tcdl">提交</div>
+</div>
+<script>
+    let token=GJ.get_cache("token");  //用户id
+    let name=GJ.getUrlString("name");
+    let phone=GJ.getUrlString("phone");
+    $(".dyk_top>a").attr("href",`wdxx.html?name=${name}&phone=${phone}`);
+    $(".dek input").val(name);
+    $(".tcdl").click(function () {
+        GJ.loadShow();
+       let nickname=$(".dek input").val();
+        $.ajax({
+            url: appPara.mwurl + "app/user/editUserInfo",
+            type: 'POST',
+            dataType: 'json',
+            data: {
+                token:token,
+                nickname:nickname,
+            },
+            success: function (data) {
+                console.log(data);
+                if(data.code==0){
+                    GJ.msg(data.msg,2000);
+                    window.location.href=`wdxx.html?name=${nickname}&phone=${phone}`
+                }else if(data.code==101){
+                    let dqurl=window.location.href;
+                    window.location.href=`${appPara.mwurl}/app/webchatCall?url=${dqurl}`
+                }else{
+                    GJ.msg(data.msg,2000)
+                }
+                GJ.loadHide();
+            },
+            timeout: 20000,
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                GJ.loadHide();
+                GJ.msg("网络太忙了，请稍后再试！",2000);
+            }
+        });
+    })
+</script>
+</body>
+</html>

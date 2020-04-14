@@ -1,0 +1,95 @@
+body{
+    background:#efeff4 ;
+}
+.dyk_top{
+    line-height: 1.1rem;
+    text-align: center;
+    font-size: 0.34rem;
+    font-weight: 500;
+    padding: 0 0.2rem;
+    background: #fff;
+}
+.dyk_top>a{
+    float: left;
+    margin-top: 0.4rem;
+}
+.dyk_top>a>img{
+    width: 0.18rem;
+    height: 0.3rem;
+}
+.dek{
+    line-height: 1rem;
+    padding: 0 0.2rem;
+    color: #999;
+    font-size: 0.24rem;
+}
+.dsk{
+    background: #fff;
+    padding: 0 0.2rem;
+}
+.dsk>div{
+    line-height: 1rem;
+    font-size: 0.34rem;
+    display: -webkit-box;
+    display: flex;
+    height: 1rem;
+    border-bottom: 1px solid #F2F2F2;
+}
+.dsk .dsk_yzm>input{
+    width: 75%;
+    border: none;
+    font-size: 0.34rem;
+}
+.dsk>div:nth-child(3){
+    border-bottom: none;
+}
+.dsk>div input{
+    border: none;
+    width: 100%;
+}
+
+.tcdl{
+    width: 7.1rem;
+    line-height: 0.92rem;
+    text-align: center;
+    color: #fff;
+    background: #474c5a;
+    font-size:0.36rem ;
+    margin: 1rem auto 0 auto;
+    border-radius: 4px;
+}
+.dek_cont{
+    background: #fff;
+    padding: 0 0.2rem;
+    margin-top: 0.2rem;
+}
+.dek_cont>div{
+    display: -webkit-box;
+    display: flex;
+    line-height: 1rem;
+    height: 1rem;
+    -webkit-box-align: center;
+            align-items: center;
+}
+.dek_cont>div:nth-child(1){
+    border-bottom: 1px solid #F2F2F2;
+}
+.dek_cont>div>input{
+    width:5.5rem;
+    border:none;
+    font-size: 0.34rem;
+}
+.dek_cont>div>div{
+    width: 1.8rem;
+    margin-left: auto;
+}
+.hqyzm{
+    color:#3366FD;
+    font-size: 0.3rem;
+    text-align: right;
+    width: 25%;
+}
+#v_container{
+     width: 90px;
+     height:35px;
+}

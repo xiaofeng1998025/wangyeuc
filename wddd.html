@@ -1,0 +1,1137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title>我的订单</title>
+    <meta name="renderer" content="webkit">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="email=no" name="format-detection">
+    <meta name="msapplication-tap-highlight" content="no">
+    <link rel="stylesheet" href="css/style.css?2019_08_14">
+    <link rel="stylesheet" href="css/wddd.css?2019_08_14">
+    <script type="text/javascript" charset="utf-8" src="js/jquery.min.js"></script>
+    <script  type="text/javascript" charset="utf-8"  src="js/iscroll.js"></script>
+    <script  type="text/javascript" charset="utf-8" src="https://res.wx.qq.com/open/js/jweixin-1.4.0.js"></script>
+</head>
+<body>
+<script type="text/javascript" charset="utf-8" src="js/style.js?2019_08_14"></script>
+<div id="page">
+<!--    头部切换-->
+    <div class="dyk_top">
+        <ul>
+            <li class=" dyk_top_jxz qih_hov">
+                进行中
+                <p><i></i></p>
+
+            </li>
+            <li class="dyk_top_ywc">
+                已完成
+                <p><i></i></p>
+
+            </li>
+            <li class="dyk_top_yqx">
+                已取消
+                <p><i></i></p>
+
+            </li>
+        </ul>
+        <ul class="dyk_top_sx">
+            <li value="0" >快车</li>
+            <li value="1">班车</li>
+            <li value="2">专车</li>
+            <li value="3">顺风车</li>
+        </ul>
+    </div>
+<!--    内容列表-->
+    <div class="dek_list" id="wrapper">
+        <div id="scroller">
+            <ul>
+<!--                            <li>-->
+<!--                                <div class="dek_list_top">-->
+<!--                                    <div class="dek_list_top_ti">-->
+<!--                                        <div>2019-05-26 15:00—15:30</div>-->
+<!--                                        <span class="dzf_ho">待支付</span>-->
+<!--                                    </div>-->
+<!--                                    <div class="dek_list_top_an">-->
+<!--                                        <span>-->
+<!--                                            去支付-->
+<!--                                        </span>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                                <div class="dek_list_cont">-->
+<!--                                    <p><i></i>江北机场</p>-->
+<!--                                    <p><i></i>万州</p>-->
+<!--                                </div>-->
+<!--                                <div class="dek_list_bott">-->
+<!--                                    <div class="dek_list_bott_l" style="display: none"><p>乘坐人数：</p><span>1人</span></div>-->
+<!--                                    <div class="dek_list_bott_l">车牌号：<span>渝AT330L</span></div>-->
+<!--                                    <div class="dek_list_bott_r"><span>实付金额：</span><div>￥<span>200</span>.00</div></div>-->
+<!--                                </div>-->
+<!--                            </li>-->
+                <!--            <li>-->
+                <!--                <div class="dek_list_top">-->
+                <!--                    <div class="dek_list_top_ti">-->
+                <!--                        <div>2019-05-26 15:00—15:30</div>-->
+                <!--                        <span class="pdz_ho">派单中</span>-->
+                <!--                    </div>-->
+                <!--                    <div class="dek_list_top_an">-->
+                <!--                        <span>-->
+                <!--                            取消订单-->
+                <!--                        </span>-->
+                <!--                    </div>-->
+                <!--                </div>-->
+                <!--                <div class="dek_list_cont">-->
+                <!--                    <p><i></i>江北机场</p>-->
+                <!--                    <p><i></i>万州</p>-->
+                <!--                </div>-->
+                <!--                <div class="dek_list_bott">-->
+                <!--                    <div class="dek_list_bott_l"><p>乘坐人数：</p><span>1人</span></div>-->
+                <!--                    <div class="dek_list_bott_r"><span>实付金额：</span><div>￥<span>200</span>.00</div></div>-->
+                <!--                </div>-->
+
+                <!--            </li>-->
+                <!--            <li>-->
+                <!--                <div class="dek_list_top">-->
+                <!--                    <div class="dek_list_top_ti">-->
+                <!--                        <div>2019-05-26 15:00—15:30</div>-->
+                <!--                        <span class="ypd_ho">已派单</span>-->
+                <!--                    </div>-->
+                <!--                    <div class="dek_list_top_an">-->
+                <!--                        <span>-->
+                <!--                            取消订单-->
+                <!--                        </span>-->
+                <!--                    </div>-->
+                <!--                </div>-->
+                <!--                <div class="dek_list_cont">-->
+                <!--                    <p><i></i>江北机场</p>-->
+                <!--                    <p><i></i>万州</p>-->
+                <!--                </div>-->
+                <!--                <div class="dek_list_bott">-->
+                <!--                    <div class="dek_list_bott_l"><p>乘坐人数：</p><span>1人</span></div>-->
+                <!--                    <div class="dek_list_bott_r"><span>实付金额：</span><div>￥<span>200</span>.00</div></div>-->
+                <!--                </div>-->
+
+                <!--            </li>-->
+            </ul>
+            <div class="pull_loading" style="display: none">
+                <i class="pull_loading_img" style="display: none"><img src="img/xiangg.png" alt=""></i>
+                <i class="pull_loading_img1" style="display: none"><img src="img/loading.png" alt=""></i>
+                <span>上拉加载</span>
+            </div>
+        </div>
+
+    </div>
+<!--    底部导航-->
+    <div class="daoh">
+        <div>
+            <a href="./index.html">
+                <i><img src="img/index1.png" alt=""></i>
+                <div>首页</div>
+            </a>
+        </div>
+        <div class="db_hov">
+            <a href="./wddd.html">
+                <i><img src="img/dingd2.png" alt=""></i>
+                <div>订单</div>
+            </a>
+        </div>
+        <div>
+            <a href="./grzx.html">
+                <i><img src="img/name1.png" alt=""></i>
+                <div>我的</div>
+            </a>
+        </div>
+    </div>
+<!--    对话框弹出层-->
+    <div class="Eject" style="display: none">
+        <div  class="Eject_mtk">
+            <div class="Eject_cont">
+                <div class="Eject_cont_top">取消订单</div>
+                <p>确认要取消该订单吗？</p>
+                <div class="Eject_cont_bottom">
+                    <span class="Eject_cont_bottom_qx">取消</span>
+                    <span class="Eject_cont_bottom_qd">确定</span>
+                </div>
+            </div>
+        </div>
+    </div>
+<!--    取消订单弹出层-->
+    <div class="qxddtcc" style="display: none">
+        <div class="qxddtcc_mtc">
+            <div class="qxddtcc_cont">
+                <div class="qxddtcc_cont_top">
+                    <div>取消订单</div>
+                    <p>请告知取消原因，我们将努力改善</p>
+                    <ul>
+<!--                        <li class="yyxz_hov"><i></i>-->
+<!--                            行程有变，暂时不需要用车-->
+<!--                            <b><i></i></b>-->
+<!--                        </li>-->
+<!--                        <li><i></i>-->
+<!--                            填错了上下车点-->
+<!--                            <b><i></i></b>-->
+<!--                        </li>-->
+<!--&lt;!&ndash;                       -->
+                    </ul>
+                    <div class="qtyy" style="display: none;">
+                        <textarea placeholder="请输入原因" ></textarea>
+                    </div>
+                    <div class="qindqx">
+                        <div class="zbqx">暂不取消</div>
+                        <div class="qdqx">确定取消</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!--    评价弹出层-->
+    <div class="pjtcc" style="display: none">
+        <div class="pjtcc_mtk">
+            <div class="pjtcc_cont">
+                <div class="pjtcc_cont_gab"><i><img class="pjtcc_cont_gab_img" src="img/shanc.png" alt=""></i></div>
+                <div class="pjtcc_cont_titl">亲，您对您的行程还满意吗？<span>匿名</span></div>
+                <div class="pjtcc_cont_name">
+                    <i><img  class="pjtcc_cont_name_img" src="img/toux.png" alt=""></i>
+                    <span class="pjtcc_cont_name_nam"></span>
+                </div>
+                <div class="pjtcc_cont_xuanx">
+                    <ul class="pjtcc_cont_xuanx_ul">
+                        <li value="0"><img src="img/pigjx1.png"  alt=""></li>
+                        <li value="1"><img src="img/pigjx1.png"  alt=""></li>
+                        <li value="2"><img src="img/pigjx1.png"  alt=""></li>
+                        <li value="3"><img src="img/pigjx1.png"  alt=""></li>
+                        <li value="4"><img src="img/pigjx1.png"  alt=""></li>
+                    </ul>
+                    <p></p>
+                </div>
+                <div class="pjtcc_cont_pjgjc">
+                    <ul>
+                        <!--                        <li class="pjtcc_cont_pjgjc_hov">车内整洁</li>-->
+                        <!--                        <li>驾驶平稳</li>-->
+                        <!--                        <li class="pjtcc_cont_pjgjc_hov">服务恶劣</li>-->
+                        <!--                        <li>车内异味</li>-->
+                    </ul>
+                </div>
+                <div class="pjtcc_cont_tijia">匿名提交</div>
+
+            </div>
+        </div>
+    </div>
+<!--    空消息弹出-->
+    <div class="zwxxtc">
+        <div>
+            <div>
+                <p><img src="img/zawdd.png" alt=""></p>
+                <div>暂无订单</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+   let token=GJ.get_cache("token");  //用户id
+   let orderid='';
+   let page=1;             //分页
+   let count=10;            //一页条数
+   let index=10;
+   let type='';             //类型（0：快车 1：班车 2：专车 3：顺风车 其余表示全部）
+   let cont_list='';         //内容
+   let status=0;           //状态（0进行中，1已完成，2已取消）
+   let height=document.documentElement.clientHeight;
+   $("#wrapper").css({height:height});
+    // 初始化获取
+   chushi();
+
+   function chushi() {
+       GJ.loadShow();
+       cont_list='';
+       setTimeout(function () {
+               $.ajax({
+                   url: appPara.mwurl + "app/netcarorder/getMyAllOrder",
+                   type: 'POST',
+                   dataType: 'json',
+                   data: {
+                       token:token,
+                       type:type,
+                       page:1,
+                       count:count,
+                       status:status
+                   },
+                   success: function (data) {
+                       console.log(data);
+                       if(data.code==0){
+                           let list=data.data;
+                           index=list.length;
+                           if(index==0){
+                               $(".zwxxtc").show();
+                           }else{
+                               $(".zwxxtc").hide();
+                           }
+                           for(key in list){
+                               cont_list+= `<li data-orderid="${list[key].orderid}" data-Type="${list[key].type}" data-status="${list[key].status}">
+                <div class="dek_list_top" >
+                    <div class="dek_list_top_ti">
+                        <div>${list[key].ordertime}</div>
+                         <span class="${cases(list[key].type,list[key].status)}">${paidzt(list[key].type,list[key].status)}</span>
+                    </div>
+                    <div class="dek_list_top_r" style="display: ${list[key].type==0||list[key].type==3?"block":"none"}">
+                         <div class="dek_list_top_an" style="display: ${list[key].status==5?"block":'none'}">
+                            <span class="dek_list_top_qzf" data-orderid="${list[key].orderid}" data-type="${list[key].type}">
+                                去支付
+                            </span>
+                        </div>
+                        <div class="dek_list_top_an" style="display: ${list[key].status==0||list[key].status==1||list[key].status==2?"block":'none'}">
+                            <span class="dek_list_top_qxdd" data-orderid="${list[key].orderid}" data-type="${list[key].type}">
+                                取消订单
+                            </span>
+                        </div>
+                        <div class="dek_list_top_an" style="display: ${list[key].status==6?"block":'none'}">
+                            <span class="dek_list_top_qpj" data-orderid="${list[key].orderid}" data-username="${list[key].username}" data-avatar="${list[key].avatar}" data-type="${list[key].type}">
+                                去评价
+                            </span>
+                        </div>
+                    </div>
+                    <div class="dek_list_top_r" style="display: ${list[key].type==1||list[key].type==2?"block":"none"}">
+                         <div class="dek_list_top_an" style="display: ${list[key].status==0?"block":'none'}">
+                            <span class="dek_list_top_qzf" data-orderid="${list[key].orderid}" data-type="${list[key].type}">
+                                去支付
+                            </span>
+                        </div>
+                        <div class="dek_list_top_an" style="display: ${list[key].status==1||list[key].status==2?"block":'none'}">
+                            <span class="dek_list_top_qxdd" data-orderid="${list[key].orderid}" data-type="${list[key].type}">
+                                取消订单
+                            </span>
+                        </div>
+                        <div class="dek_list_top_an" style="display: ${list[key].status==4?"block":'none'}">
+                            <span class="dek_list_top_qpj" data-orderid="${list[key].orderid}" data-username="${list[key].username}" data-avatar="${list[key].avatar}" data-type="${list[key].type}">
+                                去评价
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dek_list_cont" style="display:${list[key].type==0||list[key].type==3?"block":"none"};">
+                    <p><i></i>${list[key].oderupaddress}</p>
+                    <p><i></i>${list[key].orderdownaddress}</p>
+                </div>
+                <div class="dek_list_cont" style="display:${list[key].type==1||list[key].type==2?"block":"none"};">
+                    <p><i></i>${list[key].beginName}</p>
+                    <p><i></i>${list[key].endName}</p>
+                </div>
+                <div class="dek_list_bott">
+                    <div class="dek_list_bott_l" style="display:${list[key].type==1||list[key].type==2?"flex":"none"};"><p>乘坐人数：</p><span>${list[key].peopleNum}人</span></div>
+                    <div class="dek_list_bott_l" style="display:${list[key].type==0||list[key].type==3?"flex":"none"};">车牌号：<span>${list[key].licenceplate}</span></div>
+                    <div class="dek_list_bott_r" style="display:${list[key].type==1||list[key].type==2?"flex":"none"};"><span>实付金额：</span><div>￥<span>${(list[key].payamount).substr(0,amount(list[key].payamount))}</span>${(list[key].payamount).substr(amount(list[key].payamount,0))}</div></div>
+                    <div class="dek_list_bott_r" style="display:${list[key].type==0||list[key].type==3?"flex":"none"};"><span>车费：</span><div>￥<span>${(list[key].payamount).substr(0,amount(list[key].payamount))}</span>${(list[key].payamount).substr(amount(list[key].payamount,0))}</div></div>
+                </div>
+            </li>`
+                           }
+                           $(".dek_list ul").html(cont_list);
+
+                           dqqzf(); //绑定去支付
+                           tz_ddxq(); //跳转订单详情
+                           dq_qxdd();  //取消订单
+                           dq_qpj();   //去评价
+                       }else if(data.code==101){
+                           let dqurl=window.location.href;
+                           window.location.href=`${appPara.mwurl}/app/webchatCall?url=${dqurl}`
+                       }else{
+                           GJ.msg(data.msg,2000)
+                       }
+                       myscroll.refresh();
+                       GJ.loadHide();
+                   },
+                   timeout: 20000,
+                   error: function (XMLHttpRequest, textStatus, errorThrown) {
+                       GJ.loadHide();
+                       GJ.msg("网络太忙了，请稍后再试！",2000);
+                   }
+               });
+           },500)
+   }
+   // 订单状态
+    function  paidzt(type,data) {
+        if(type==0||type==3){
+            if(data==0){
+                return "已下单"
+            }else if(data==1){
+                return "已派车"
+            }else if(data==2){
+                return "已接单"
+            }else if(data==3){
+                return "已上车"
+            }else if(data==4){
+                return "行程中"
+            }else if(data==5){
+                return "待支付"
+            }else if(data==6){
+                return "已支付"
+            }else if(data==7){
+                return "已评价"
+            }else if(data==8){
+                return "乘客取消"
+            }else if(data==9){
+                return "司机取消"
+            }
+        }
+        if(type==1||type==2){
+            if(data==0){
+                return "待支付"
+            }else if(data==1){
+                return "未派单"
+            }else if(data==2){
+                return "已派单"
+            }else if(data==3){
+                return "行程中"
+            }else if(data==4){
+                return "已结束"
+            }else if(data==5){
+                return "已评价"
+            }else if(data==6){
+                return "已取消"
+            }
+        }
+
+    }
+   //class 订单颜色
+    function  cases(type,data) {
+       if(type==0||type==3){
+            if(data==6){
+                return  "yqx_ho"
+            }else{
+                return  'pdz_ho'
+            }
+        }
+        if(type==1||type==2){
+            if(data==8||data==9){
+                return  "yqx_ho"
+            }else{
+                return  'pdz_ho'
+            }
+        }
+    }
+    function amount(data) {
+      let amount=data.indexOf(".");
+      return amount
+  }
+  // 进行中
+  $(".dyk_top_jxz").click(function () {
+      status=0;
+      page=1;
+      $(this).addClass("qih_hov").siblings().removeClass("qih_hov");
+      chushi();
+      myscroll.scrollTo(0,0,1);
+  });
+  // 已完成
+    $(".dyk_top_ywc").click(function () {
+        status=1;
+        page=1;
+        $(this).addClass("qih_hov").siblings().removeClass("qih_hov");
+        chushi();
+        myscroll.scrollTo(0,0,1);
+    });
+    // 已取消
+   $(".dyk_top_yqx").click(function () {
+       status=2;
+       page=1;
+       $(this).addClass("qih_hov").siblings().removeClass("qih_hov");
+       chushi();
+       myscroll.scrollTo(0,0,1);
+   });
+   // 快车班车专车筛选
+   $(".dyk_top_sx>li").click(function () {
+       let value=$(this).val();
+       type=value;
+       chushi();
+       $(this).addClass("dyk_top_sx_hov").siblings().removeClass("dyk_top_sx_hov");
+   });
+   //点击去支付
+   function dqqzf(){
+       $(".dek_list_top_qzf").click(function () {
+            orderid=$(this).attr("data-orderid");
+            let Type=$(this).attr("data-type");
+            // 专车班车
+            if(Type==1||Type==2){
+                $.ajax({
+                    url: appPara.mwurl + "app/specialline/prepayOrder",
+                    type: 'POST',
+                    dataType: 'json',
+                    data: {
+                        token:token,
+                        orderid:orderid,
+                        payplatform:0
+                    },
+                    success: function (data) {
+                        console.log(data);
+                        if(data.code==0){
+                            let appId=data.data.appId;
+                            let timeStamp=data.data.timeStamp;
+                            let nonceStr=data.data.nonceStr;
+                            let package=data.data.package;
+                            let signType=data.data.signType;
+                            let paySign=data.data.paySign;
+                            if (typeof WeixinJSBridge == "undefined"){
+                                if( document.addEventListener ){
+                                    document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
+                                }else if (document.attachEvent){
+                                    document.attachEvent('WeixinJSBridgeReady', onBridgeReady);
+                                    document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
+                                }
+                            }else{
+                                onBridgeReady(appId,timeStamp,nonceStr,package,signType,paySign);
+                            }
+                        }else if(data.code==101){
+                            let dqurl=window.location.href;
+                            window.location.href=`${appPara.mwurl}/app/webchatCall?url=${dqurl}`
+                        }else{
+                            GJ.msg(data.msg,2000)
+                        }
+                        // if(data.code==0){
+                        //     wx.chooseWXPay({
+                        //         timestamp: data.data.timeStamp, // 支付签名时间戳，注意微信jssdk中的所有使用timestamp字段均为小写。但最新版的支付后台生成签名使用的timeStamp字段名需大写其中的S字符
+                        //         nonceStr: data.data.nonceStr, // 支付签名随机串，不长于 32 位
+                        //         package: data.data.package, // 统一支付接口返回的prepay_id参数值，提交格式如：prepay_id=\*\*\*）
+                        //         signType: data.data.signType, // 签名方式，默认为'SHA1'，使用新版支付需传入'MD5'
+                        //         paySign: data.data.paySign, // 支付签名
+                        //         success: function (res) {
+                        //             // 支付成功后的回调函数
+                        //             console.log(res)
+                        //             window.location.href=`ddxq?orderid=${orderid}`;
+                        //         }
+                        //     });
+                        // }else{
+                        //     GJ.msg(data.msg,2000)
+                        // }
+                        GJ.loadHide();
+                    },
+                    timeout: 20000,
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        GJ.loadHide();
+                        GJ.msg("网络太忙了，请稍后再试！",2000);
+                    }
+                });
+            }
+            // 快车
+            if(Type==0){
+                $.ajax({
+                    url: appPara.mwurl + "app/netcarorder/prepayOrder",
+                    type: 'POST',
+                    dataType: 'json',
+                    data: {
+                        token:token,
+                        orderid:orderid,
+                        payplatform:0
+                    },
+                    success: function (data) {
+                        console.log(data);
+                        if(data.code==0){
+                            let appId=data.data.appId;
+                            let timeStamp=data.data.timeStamp;
+                            let nonceStr=data.data.nonceStr;
+                            let package=data.data.package;
+                            let signType=data.data.signType;
+                            let paySign=data.data.paySign;
+                            if (typeof WeixinJSBridge == "undefined"){
+                                if( document.addEventListener ){
+                                    document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
+                                }else if (document.attachEvent){
+                                    document.attachEvent('WeixinJSBridgeReady', onBridgeReady);
+                                    document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
+                                }
+                            }else{
+                                onBridgeReady(appId,timeStamp,nonceStr,package,signType,paySign);
+                            }
+                        }else if(data.code==101){
+                            let dqurl=window.location.href;
+                            window.location.href=`${appPara.mwurl}/app/webchatCall?url=${dqurl}`
+                        }else{
+                            GJ.msg(data.msg,2000)
+                        }
+
+                        GJ.loadHide();
+                    },
+                    timeout: 20000,
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        GJ.loadHide();
+                        GJ.msg("网络太忙了，请稍后再试！",2000);
+                    }
+                });
+            }
+            // 顺风车
+           if(Type==3){
+               $.ajax({
+                   url: appPara.mwurl + "app/netcarorder/prepayLiftOrder",
+                   type: 'POST',
+                   dataType: 'json',
+                   data: {
+                       token:token,
+                       orderid:orderid,
+                       payplatform:0
+                   },
+                   success: function (data) {
+                       console.log(data);
+                       if(data.code==0){
+                           let appId=data.data.appId;
+                           let timeStamp=data.data.timeStamp;
+                           let nonceStr=data.data.nonceStr;
+                           let package=data.data.package;
+                           let signType=data.data.signType;
+                           let paySign=data.data.paySign;
+                           if (typeof WeixinJSBridge == "undefined"){
+                               if( document.addEventListener ){
+                                   document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
+                               }else if (document.attachEvent){
+                                   document.attachEvent('WeixinJSBridgeReady', onBridgeReady);
+                                   document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
+                               }
+                           }else{
+                               onBridgeReady(appId,timeStamp,nonceStr,package,signType,paySign);
+                           }
+                       }else if(data.code==101){
+                           let dqurl=window.location.href;
+                           window.location.href=`${appPara.mwurl}/app/webchatCall?url=${dqurl}`
+                       }else{
+                           GJ.msg(data.msg,2000)
+                       }
+
+                       GJ.loadHide();
+                   },
+                   timeout: 20000,
+                   error: function (XMLHttpRequest, textStatus, errorThrown) {
+                       GJ.loadHide();
+                       GJ.msg("网络太忙了，请稍后再试！",2000);
+                   }
+               });
+           }
+
+           return false
+       })
+   }
+   // 点击取消订单
+    function dq_qxdd(){
+       let orderid="";
+       let Type="";
+        $(".dek_list_top_qxdd").click(function () {
+            orderid=$(this).attr("data-orderid");
+            Type=$(this).attr("data-type");
+            $(".Eject").show();
+            return false
+        });
+        $(".Eject_cont_bottom_qx").click(function () {
+            $(".Eject").hide();
+        });
+        $(".Eject_cont_bottom_qd").click(function () {
+            let qxddyy="";
+            $.ajax({
+                url: appPara.mwurl + "app/getAttrachinfo",
+                type: 'POST',
+                dataType: 'json',
+                data: {
+                    token:token,
+                    type:'1'
+                },
+                success: function (data) {
+                    console.log(data);
+                    if(data.code==0){
+                        list=data.data;
+                        for(key in list){
+                            qxddyy +=`
+                        <li><i></i>
+                        <span>${list[key].name}</span>
+                    <b><i></i></b>
+                    </li>
+                    `
+                        }
+
+                        $(".qxddtcc_cont_top ul").html(qxddyy);
+                        huqdyy();
+                        GJ.loadHide();
+                    }else if(data.code==101){
+                        let dqurl=window.location.href;
+                        window.location.href=`${appPara.mwurl}/app/webchatCall?url=${dqurl}`
+                    }else{
+                        GJ.msg(data.msg,2000);
+                        GJ.loadHide()
+                    }
+                },
+                timeout: 20000,
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    GJ.loadHide();
+                    GJ.msg("网络太忙了，请稍后再试！",2000);
+                }
+            });
+            $(".Eject").hide();
+            $(".qxddtcc").show();
+        });
+        function huqdyy() {
+            let qxyy="";
+            $(".qxddtcc_cont_top ul>li").click(function () {
+                $(this).addClass("yyxz_hov").siblings().removeClass("yyxz_hov");
+                if($(this).children("span").text()=="其他"){
+                    $(".qtyy").show();
+                }else{
+                    $(".qtyy").hide();
+                }
+            });
+            $(".zbqx").click(function () {
+                $(".qxddtcc").hide();
+            });
+            $(".qdqx").click(function () {
+                if($(".yyxz_hov span").text()!=="其他"){
+                    qxyy=$(".yyxz_hov span").text();
+                }else{
+                    qxyy=$(".qtyy textarea").val()
+                }
+                // 班车 专车
+                if(Type==1||Type==2){
+                    $.ajax({
+                        url: appPara.mwurl + "app/specialline/cancleOrder",
+                        type: 'POST',
+                        dataType: 'json',
+                        data: {
+                            token:token,
+                            orderid:orderid,
+                            reason:qxyy
+                        },
+                        success: function (data) {
+                            console.log(data);
+                            if(data.code==0){
+                                $(".qxddtcc").hide();
+                                GJ.msg("取消成功",2000);
+                                location.reload()
+                            }else if(data.code==101){
+                                let dqurl=window.location.href;
+                                window.location.href=`${appPara.mwurl}/app/webchatCall?url=${dqurl}`
+                            }else{
+                                GJ.msg(data.msg,2000)
+                            }
+                            GJ.loadHide();
+                        },
+                        timeout: 20000,
+                        error: function (XMLHttpRequest, textStatus, errorThrown) {
+                            GJ.loadHide();
+                            GJ.msg("网络太忙了，请稍后再试！",2000);
+                        }
+                    });
+                }
+                // 快车
+                if(Type==0){
+                    $.ajax({
+                        url: appPara.mwurl + "app/netcarorder/cancleOrder",
+                        type: 'POST',
+                        dataType: 'json',
+                        data: {
+                            token:token,
+                            orderid:orderid,
+                            canclereson:qxyy
+                        },
+                        success: function (data) {
+                            console.log(data);
+                            if(data.code==0){
+                                $(".qxddtcc").hide();
+                                GJ.msg("取消成功",2000);
+                                location.reload()
+                            }else if(data.code==101){
+                                let dqurl=window.location.href;
+                                window.location.href=`${appPara.mwurl}/app/webchatCall?url=${dqurl}`
+                            }else{
+                                GJ.msg(data.msg,2000)
+                            }
+                            GJ.loadHide();
+                        },
+                        timeout: 20000,
+                        error: function (XMLHttpRequest, textStatus, errorThrown) {
+                            GJ.loadHide();
+                            GJ.msg("网络太忙了，请稍后再试！",2000);
+                        }
+                    });
+                }
+                //顺风车
+                if(Type==3){
+                    $.ajax({
+                        url: appPara.mwurl + "app/netcarorder/cancleLiftOrder",
+                        type: 'POST',
+                        dataType: 'json',
+                        data: {
+                            token:token,
+                            orderid:orderid,
+                            canclereson:qxyy
+                        },
+                        success: function (data) {
+                            console.log(data);
+                            if(data.code==0){
+                                $(".qxddtcc").hide();
+                                GJ.msg("取消成功",2000);
+                                location.reload()
+                            }else if(data.code==101){
+                                let dqurl=window.location.href;
+                                window.location.href=`${appPara.mwurl}/app/webchatCall?url=${dqurl}`
+                            }else{
+                                GJ.msg(data.msg,2000)
+                            }
+                            GJ.loadHide();
+                        },
+                        timeout: 20000,
+                        error: function (XMLHttpRequest, textStatus, errorThrown) {
+                            GJ.loadHide();
+                            GJ.msg("网络太忙了，请稍后再试！",2000);
+                        }
+                    });
+                }
+            })
+        }
+    }
+    // 点击去评价
+   function dq_qpj(){
+       let orderid='';
+       let leval=0;
+       let pingj_index='';
+       let Type="";
+       $(".dek_list_top_qpj").click(function () {
+           $(".pjtcc").show();
+           orderid=$(this).attr("data-orderid");
+           Type=$(this).attr("data-type");
+           let username=$(this).attr("data-username");
+           let avatar=$(this).attr("data-avatar");
+           $(".pjtcc_cont_name_img").attr("src",avatar);
+           $(".pjtcc_cont_name_nam").text(username);
+           return false
+       });
+       $(".pjtcc_cont_gab_img").unbind("click").click(function () {
+           $(".pjtcc").hide()
+       });
+       $(".pjtcc_cont_xuanx_ul li").unbind("click").click(function () {
+           let val=$(this).val();
+           pingj_index=val+1;
+           if(val==4){
+               $(".pjtcc_cont_xuanx>p").text("非常满意");
+               pjne(3);
+               leval=0;
+           }else if(leval==0){
+               leval++;
+               $(".pjtcc_cont_xuanx>p").text("不满意");
+               pjne(2);
+           }
+
+           for(let i=0;i<=4;i++){
+               if(i<=val){
+                   $(".pjtcc_cont_xuanx_ul li").eq(i).children("img").attr("src","img/pigjx2.png");
+               }else{
+                   $(".pjtcc_cont_xuanx_ul li").eq(i).children("img").attr("src","img/pigjx1.png");
+               }
+           }
+           function pjne(data) {
+               GJ.loadShow();
+               let pingj_list="";
+               $.ajax({
+                   url: appPara.mwurl + "app/getAttrachinfo",
+                   type: 'POST',
+                   dataType: 'json',
+                   data: {
+                       token:token,
+                       type:data
+                   },
+                   success: function (data) {
+                       console.log(data);
+                       if(data.code==0){
+                           let list=data.data;
+                           for(let key in list){
+                               pingj_list+=`
+                         <li data-zt="0">${list[key].name}</li>
+                    `;
+                           }
+                           $(".pjtcc_cont_pjgjc ul").html(pingj_list);
+                           $(".pjtcc_cont_pjgjc ul li").click(function () {
+                               let zt=$(this).attr("data-zt");
+                               if(zt==0){
+                                   $(this).addClass("pjtcc_cont_pjgjc_hov");
+                                   $(this).attr("data-zt",'1')
+                               }else{
+                                   $(this).removeClass("pjtcc_cont_pjgjc_hov");
+                                   $(this).attr("data-zt",'0')
+                               }
+                           });
+                           GJ.loadHide();
+                       }else if(data.code==101){
+                           let dqurl=window.location.href;
+                           window.location.href=`${appPara.mwurl}/app/webchatCall?url=${dqurl}`
+                       }else{
+                           GJ.msg(data.msg,2000);
+                           GJ.loadHide()
+                       }
+
+                   },
+                   timeout: 20000,
+                   error: function (XMLHttpRequest, textStatus, errorThrown) {
+                       GJ.loadHide();
+                       GJ.msg("网络太忙了，请稍后再试！",2000);
+                   }
+               });
+           }
+           return false
+       });
+       // 匿名评价
+       $(".pjtcc_cont_tijia").unbind("click").click(function () {
+           let list_name="";
+           $(".pjtcc_cont_pjgjc_hov").each(function () {
+               list_name+=$(this).text()+"#";
+           });
+           if(Type==1||Type==2){
+               $.ajax({
+                   url: appPara.mwurl + "app/specialline/evaluateOrder",
+                   type: 'POST',
+                   dataType: 'json',
+                   data: {
+                       token:token,
+                       orderid:orderid,
+                       starnum:pingj_index,
+                       comments:list_name
+                   },
+                   success: function (data) {
+                       console.log(data);
+                       if(data.code==0){
+                           GJ.msg("评价成功",2000);
+                           $(".pjtcc").hide();
+                           location.reload()
+                       }else if(data.code==101){
+                           let dqurl=window.location.href;
+                           window.location.href=`${appPara.mwurl}/app/webchatCall?url=${dqurl}`
+                       }else{
+                           GJ.msg(data.msg,2000);
+                       }
+                       GJ.loadHide();
+                   },
+                   timeout: 20000,
+                   error: function (XMLHttpRequest, textStatus, errorThrown) {
+                       GJ.loadHide();
+                       GJ.msg("网络太忙了，请稍后再试！",2000);
+                   }
+               });
+           }
+          if(Type==0||Type3==3){
+              $.ajax({
+                  url: appPara.mwurl + "app/netcarorder/evaluateOrder",
+                  type: 'POST',
+                  dataType: 'json',
+                  data: {
+                      token:token,
+                      orderid:orderid,
+                      starnum:pingj_index,
+                      comments:list_name
+                  },
+                  success: function (data) {
+                      console.log(data);
+                      if(data.code==0){
+                          GJ.msg("评价成功",2000);
+                          $(".pjtcc").hide();
+                          location.reload()
+                      }else if(data.code==101){
+                          let dqurl=window.location.href;
+                          window.location.href=`${appPara.mwurl}/app/webchatCall?url=${dqurl}`
+                      }else{
+                          GJ.msg(data.msg,2000);
+                      }
+                      GJ.loadHide();
+                  },
+                  timeout: 20000,
+                  error: function (XMLHttpRequest, textStatus, errorThrown) {
+                      GJ.loadHide();
+                      GJ.msg("网络太忙了，请稍后再试！",2000);
+                  }
+              });
+          }
+
+
+       });
+       return false
+   }
+   // 跳转订单详情
+    function  tz_ddxq() {
+        $(".dek_list li").click(function () {
+            let Type=$(this).attr("data-type");
+            let orderid=$(this).attr("data-orderid");
+            let status=$(this).attr("data-status");
+            if(Type==1||Type==2){
+                window.location.href=`ddxq.html?orderid=${orderid}`
+            }
+           if(Type==0||Type==3){
+                if(status==6||status==7||status==8||status==9){
+                    window.location.href=`xcjs.html?orderid=${orderid}`
+                }else{
+                    window.location.href=`ddyd.html?orderid=${orderid}`
+                }
+           }
+        })
+    }
+    // 上拉触底加载
+   function pullOnLoad(){
+       GJ.loadShow();
+       if(index==count){
+           page++;
+           console.log(page);
+           setTimeout(function () {
+               $.ajax({
+                   url: appPara.mwurl + "app/netcarorder/getMyAllOrder",
+                   type: 'POST',
+                   dataType: 'json',
+                   data: {
+                       token:token,
+                       type:type,
+                       page:page,
+                       count:count,
+                       status:status
+                   },
+                   success: function (data) {
+                       console.log(data);
+                       if(data.code==0){
+                           let list=data.data;
+                           index=list.length;
+                           for(key in list){
+                               cont_list+= `<li data-orderid="${list[key].orderid}" data-Type="${list[key].type}" data-status="${list[key].status}">
+                <div class="dek_list_top" >
+                    <div class="dek_list_top_ti">
+                        <div>${list[key].ordertime}</div>
+                         <span class="${cases(list[key].type,list[key].status)}">${paidzt(list[key].type,list[key].status)}</span>
+                    </div>
+                    <div class="dek_list_top_r" style="display: ${list[key].type==0||list[key].type==3?"block":"none"}">
+                         <div class="dek_list_top_an" style="display: ${list[key].status==5?"block":'none'}">
+                            <span class="dek_list_top_qzf" data-orderid="${list[key].orderid}" data-type="${list[key].type}">
+                                去支付
+                            </span>
+                        </div>
+                        <div class="dek_list_top_an" style="display: ${list[key].status==0||list[key].status==1||list[key].status==2?"block":'none'}">
+                            <span class="dek_list_top_qxdd" data-orderid="${list[key].orderid}" data-type="${list[key].type}">
+                                取消订单
+                            </span>
+                        </div>
+                        <div class="dek_list_top_an" style="display: ${list[key].status==6?"block":'none'}">
+                            <span class="dek_list_top_qpj" data-orderid="${list[key].orderid}" data-username="${list[key].username}" data-avatar="${list[key].avatar}" data-type="${list[key].type}">
+                                去评价
+                            </span>
+                        </div>
+                    </div>
+                    <div class="dek_list_top_r" style="display: ${list[key].type==1||list[key].type==2?"block":"none"}">
+                         <div class="dek_list_top_an" style="display: ${list[key].status==0?"block":'none'}">
+                            <span class="dek_list_top_qzf" data-orderid="${list[key].orderid}" data-type="${list[key].type}">
+                                去支付
+                            </span>
+                        </div>
+                        <div class="dek_list_top_an" style="display: ${list[key].status==1||list[key].status==2?"block":'none'}">
+                            <span class="dek_list_top_qxdd" data-orderid="${list[key].orderid}" data-type="${list[key].type}">
+                                取消订单
+                            </span>
+                        </div>
+                        <div class="dek_list_top_an" style="display: ${list[key].status==4?"block":'none'}">
+                            <span class="dek_list_top_qpj" data-orderid="${list[key].orderid}" data-username="${list[key].username}" data-avatar="${list[key].avatar}" data-type="${list[key].type}">
+                                去评价
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dek_list_cont" style="display:${list[key].type==0||list[key].type==3?"block":"none"};">
+                    <p><i></i>${list[key].oderupaddress}</p>
+                    <p><i></i>${list[key].orderdownaddress}</p>
+                </div>
+                <div class="dek_list_cont" style="display:${list[key].type==1||list[key].type==2?"block":"none"};">
+                    <p><i></i>${list[key].beginName}</p>
+                    <p><i></i>${list[key].endName}</p>
+                </div>
+                <div class="dek_list_bott">
+                    <div class="dek_list_bott_l" style="display:${list[key].type==1||list[key].type==2?"flex":"none"};"><p>乘坐人数：</p><span>${list[key].peopleNum}人</span></div>
+                    <div class="dek_list_bott_l" style="display:${list[key].type==0||list[key].type==3?"flex":"none"};">车牌号：<span>${list[key].licenceplate}</span></div>
+                    <div class="dek_list_bott_r" style="display:${list[key].type==1||list[key].type==2?"flex":"none"};"><span>实付金额：</span><div>￥<span>${(list[key].payamount).substr(0,amount(list[key].payamount))}</span>${(list[key].payamount).substr(amount(list[key].payamount,0))}</div></div>
+                    <div class="dek_list_bott_r" style="display:${list[key].type==0||list[key].type==3?"flex":"none"};"><span>车费：</span><div>￥<span>${(list[key].payamount).substr(0,amount(list[key].payamount))}</span>${(list[key].payamount).substr(amount(list[key].payamount,0))}</div></div>
+                </div>
+            </li>`
+                           }
+                           $(".dek_list ul").html(cont_list);
+                           if(data.data.length==0){
+                               $(".pull_loading span").text("暂无更多数据");
+                               $(".pull_loading_img1").hide();
+                           }
+                           dqqzf(); //绑定去支付
+                           tz_ddxq(); //跳转订单详情
+                           dq_qxdd();  //取消订单
+                           dq_qpj();   //去评价
+                       }else if(data.code==101){
+                           let dqurl=window.location.href;
+                           window.location.href=`${appPara.mwurl}/app/webchatCall?url=${dqurl}`
+                       }else{
+                           GJ.msg(data.msg,2000)
+                       }
+                       myscroll.refresh();
+                       GJ.loadHide();
+                   },
+                   timeout: 20000,
+                   error: function (XMLHttpRequest, textStatus, errorThrown) {
+                       GJ.loadHide();
+                       GJ.msg("网络太忙了，请稍后再试！",2000);
+                   }
+               });
+           },500)
+       }else{
+           $(".pull_loading span").text("暂无更多数据");
+           $(".pull_loading_img1").hide();
+           GJ.loadHide();
+       }
+   }
+   var myscroll = new iScroll("wrapper", {
+           onScrollMove: function () { //拉动时
+               //上拉加载
+               if (this.y < this.maxScrollY) {
+                   $(".pull_loading span").text("释放加载");
+                   $(".pull_loading").addClass("loading");
+                   $(".pull_loading_img").show().addClass("pull_loading_img_xz");
+                   $(".pull_loading_img1").hide();
+               } else {
+                   $(".pull_loading span").text("上拉加载");
+                   $(".pull_loading").removeClass("loading");
+                   $(".pull_loading_img").show().removeClass("pull_loading_img_xz");
+                   $(".pull_loading_img1").hide();
+               }
+           },
+           onScrollEnd: function () { //拉动结束时
+               //上拉加载
+               if ($(".pull_loading").hasClass('loading')) {
+                   $(".pull_loading span").text("加载中...");
+                   $(".pull_loading_img1").show();
+                   $(".pull_loading_img").hide().removeClass("pull_loading_img_xz");
+                    pullOnLoad();
+               }
+           },
+       onRefresh: function () {
+               let nr_height=$("#scroller").height()+$(".dyk_top").height()+$(".daoh").height();
+               if(nr_height<height){
+                   $('.pull_loading').hide();
+               }else{
+                   $('.pull_loading').show();
+               }
+       }
+       });
+
+   function onBridgeReady(appId,timeStamp,nonceStr,package,signType,paySign) {
+       WeixinJSBridge.invoke("getBrandWCPayRequest",{
+           "appId":appId,  //公众号名称，由商户传入
+           "timeStamp":timeStamp, //时间戳 这里随意使用了一个值
+           "nonceStr":nonceStr, //随机串
+           "package":package,
+           "signType":signType, //微信签名方式:MD5
+           "paySign":paySign //微信签名
+       },function(res){
+           if(res.err_msg == "get_brand_wcpay_request:fail"){
+               //支付失败
+           }else if (res.err_msg == "get_brand_wcpay_request:cancel"){
+               //支付过程中用户取消
+           }else if(res.err_msg == "get_brand_wcpay_request:ok"){
+               //支付成功
+               localStorage.removeItem("cfd");
+               localStorage.removeItem("mdd");
+               window.location.href=`ddxq.html?orderid=${orderid}`;
+           }
+       });
+   }
+</script>
+</body>
+</html>

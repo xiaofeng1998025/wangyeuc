@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title>同港网约车</title>
+    <meta name="renderer" content="webkit">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="email=no" name="format-detection">
+    <meta name="msapplication-tap-highlight" content="no">
+    <link rel="stylesheet" href="css/index.css?2019_08_14">
+    <link rel="stylesheet" href="css/style.css?2019_08_14">
+    <link rel="stylesheet" href="css/mobileSelect.css?2019_08_14">
+</head>
+<body>
+
+<div id="page" style="display: none">
+<!--    t头部-->
+    <div class="dyk_top">
+        <ul>
+            <li value="1" class="dyk_top_hov">
+                <p>快车</p>
+                <div><i></i></div>
+            </li>
+            <li value="2">
+                <p>班车</p>
+                <div><i></i></div>
+            </li>
+            <li value="3">
+                <p>专车</p>
+                <div><i></i></div>
+            </li>
+            <li value="4" >
+                <p>顺风车</p>
+                <div><i></i></div>
+            </li>
+        </ul>
+    </div>
+<!--    内容-->
+    <div class="content">
+<!--        快车-->
+        <div class="cont1">
+            <div id="container"></div>
+            <div class="kuaiche">
+                    <div class="kuaiche_cont">
+                            <a class="baojing" href="tel:110"><img src="img/baojing.png" alt=""></a>
+                            <span class="hudind"><img src="img/hddingwe.png" alt=""></span>
+                        <div class="kuaiche_cont_dyk">
+                            <div class="kuaiche_cont_dyk_t">
+                                <span data-id="xianz" class="kuaiche_cont_dyk_t_hov">现在</span>
+                                <span data-id="yuyue" >预约</span>
+                            </div>
+                            <div class="kuaiche_cont_dyk_c"  style="display: none;">
+                                <div class="kuaiche_cont_dyk_yushj" id="trigger4">预约时间 <img src="img/jinru.png" alt=""></div>
+                                <div id="trigger5">选择车型 <img src="img/jinru.png" alt=""></div>
+                            </div>
+
+                            <div class="kuaiche_cont_dyk_b">
+                                <div>
+                                    <i></i>
+                                    <span class="kuaiche_cont_dyk_b_cf"></span>
+                                </div>
+                                <div>
+                                    <i></i>
+                                    <span class="kuaiche_cont_dyk_b_hs">您要去哪儿</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+            <div class="top_city" id="trigger6"><i></i> </div>
+        </div>
+        <!--  同港班车-->
+        <div class="cont2" style="display: none">
+            <!--    出发地-->
+            <div class="dek">
+                <div class="dek_dyk">
+                    <div>
+                        <p>出发地</p>
+                        <div id="trigger1" class="">请选择</div>
+                    </div>
+                    <div class="dek_dyk_img">
+                        <div class="dek_huh">
+                            <img src="img/qiehuan@2x.png" alt="">
+                        </div>
+                    </div>
+                    <div>
+                        <p>目的地</p>
+                        <div  id="trigger2">请选择</div>
+                    </div>
+                </div>
+                <div class="dek_sou">
+                    搜索
+                </div>
+            </div>
+            <!--    班车列表-->
+            <div class="dsk">
+                <div class="dsk_top">
+                    <i><img src="img/bclb.png" alt=""></i>
+                    班车列表
+                </div>
+                <ul class="dsk_list">
+                    <!--            <li>-->
+                    <!--                <div class="dsk_list_l">-->
+                    <!--                    <span>重庆</span>-->
+                    <!--                    <i><img src="img/zhixiang@2x.png" alt=""></i>-->
+                    <!--                    <span>彭水</span>-->
+                    <!--                </div>-->
+                    <!--                <span class="dsk_list_r">已有2736人拼车</span>-->
+                    <!--            </li>-->
+                    <!--            <li>-->
+                    <!--                <div class="dsk_list_l">-->
+                    <!--                    <span>重庆</span>-->
+                    <!--                    <i><img src="img/zhixiang@2x.png" alt=""></i>-->
+                    <!--                    <span>彭水</span>-->
+                    <!--                </div>-->
+                    <!--                <span class="dsk_list_r">已有2736人拼车</span>-->
+                    <!--            </li>-->
+                    <!--          -->
+                </ul>
+            </div>
+        </div>
+        <!--    同港专车-->
+        <div class="dwk cont3" style="display: none">
+            <div class="dwk_dyk">
+                <div class="dwk_top">
+                    <span  id="trigger3">线路 <i></i></span>
+                    <span id="timesx" data-id="0">时间 <img src="img/paixu.png" alt=""></span>
+                </div>
+                <div class="dwk_ssjg">搜索结果 <div>共<span class="dwk_ssjg_ts"></span>条</div></div>
+            </div>
+
+            <div class="dwk_ul" id="wrapper">
+                <div id="scroller">
+                    <ul>
+                        <!--                    <li>-->
+                        <!--                        <ul>-->
+                        <!--                            <li class="dwk_ul_cfd_l"><div><span>重庆</span> → <span>彭水</span></div><span>2019年08月20日 09:30</span></li>-->
+                        <!--                            <li><span>车牌：</span><div>渝AT330L</div></li>-->
+                        <!--                            <li><span>出 行 时 间：</span><div>今天 18:00</div></li>-->
+                        <!--                            <li><span>可 乘 坐 人 数：</span><div>6人</div></li>-->
+                        <!--                            <li class="dwk_ul_ms"><div class="dwk_ul_ms_yc"><span class="wk_ul_ms_ckgd">查看更多</span>描述:重庆到彭水接接包<span class="wk_ul_ms_sq" style="display:none;">收起</span></div></li>-->
+                        <!--                            <li class="dwk_ul_chef"><span>车费：</span><div>￥<b>80</b>.00/人</div></li>-->
+                        <!--                            <li class="dwk_ul_sj">-->
+                        <!--                                <div class="dwk_ul_sj_l">-->
+                        <!--                                    <img src="img/fdsf.jpg" alt="">-->
+                        <!--                                    <span>李**师傅</span>-->
+                        <!--                                </div>-->
+                        <!--                                <div>-->
+                        <!--                                    <a href="">-->
+                        <!--                                        <span class="dwk_ul_sj_r_t">-->
+                        <!--                                        <i><img src="img/dianhua.png" alt=""></i>-->
+                        <!--                                        联系司机-->
+                        <!--                                        </span>-->
+                        <!--                                    </a>-->
+
+                        <!--                                    <span class="dwk_ul_sj_r_b">-->
+                        <!--                                    <i><img src="img/cheche.png" alt=""></i>-->
+                        <!--                                    乘车-->
+                        <!--                                </span>-->
+                        <!--                                </div>-->
+                        <!--                            </li>-->
+                        <!--                        </ul>-->
+                        <!--                    </li>-->
+                    </ul>
+                    <div class="pull_loading" style="display: none">
+                        <i class="pull_loading_img" style="display: none"><img src="img/xiangg.png" alt=""></i>
+                        <i class="pull_loading_img1" style="display: none"><img src="img/loading.png" alt=""></i>
+                        <span>上拉加载</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+<!--        顺风车-->
+        <div class="shunfc cont4" style="display:none;">
+            <div class="shunf_top">
+                <p><span>预约</span></p>
+                <div class="shunf_top_yusj" id="trigger7">出发时间 <img src="img/jinru.png" alt=""></div>
+                <div class="shunf_cont_dyk_b  kuaiche_cont_dyk_b">
+                    <div>
+                        <i></i>
+                        <span class="shunf_cont_dyk_b_cf"></span>
+                    </div>
+                    <div>
+                        <i></i>
+                        <span class="shunf_cont_dyk_b_hs kuaiche_cont_dyk_b_hs">您要去哪儿</span>
+                    </div>
+                </div>
+            </div>
+            <div class="shunf_top_yusj_img">
+                <a href="./cwsfcsj.html"><img src="img/xxdatig.png" alt=""></a>
+            </div>
+        </div>
+    </div>
+<!--    用于判断查看更多显示隐藏-->
+    <div class="dlk_fz">
+        <p id="dsadw"><span></span></p>
+        <div>描述：查看更多</div>
+    </div>
+
+<!--    底部导航-->
+    <div class="daoh">
+        <div  class="db_hov">
+            <a href="./index.html">
+                <i><img src="img/index2.png" alt=""></i>
+                <div>首页</div>
+            </a>
+        </div>
+        <div>
+            <a href="./wddd.html">
+                <i><img src="img/dingd1.png" alt=""></i>
+                <div>订单</div>
+            </a>
+        </div>
+        <div>
+            <a href="./grzx.html">
+                <i><img src="img/name1.png" alt=""></i>
+                <div>我的</div>
+            </a>
+        </div>
+    </div>
+</div>
+
+</body>
+<script src="js/times.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/jquery.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/style.js?2019_08_14"></script>
+<script type="text/javascript" charset="utf-8"  src="js/iscroll.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/City.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/mobileSelect.min.js"></script>
+<script>
+    let token=GJ.get_cache("token");  //用户id
+    let shfc=GJ.getUrlString("shfc");  //是否选择出发地
+    let bance=[];                     //班车列表
+    let cfd='';                       //出发地
+    let mdd='';                         //目的地
+    // 初始化同港专车
+    let startid="";     //出发地
+    let endid="";        //目的地
+    let ordertime='';    //时间排序
+    let page=1;          //分页
+    let count=5;       //条数
+    let index="";
+    let ztlist="";    //内容
+    // ///////////////////////////////////////////////快车 ////////////////////////////////////////////////////////////
+    let dinglng='';     //定位地址
+    let citys='';       //城市
+    let yuyueli=0;      //0即走 1预约
+     let map="";
+    // 初始化地图
+    window.init = function(){
+         map = new AMap.Map('container', {
+        resizeEnable: true, //是否监控地图容器尺寸变化
+            zoom:15
+        });
+        // 点标记
+        let  marker = new AMap.Marker({
+            map:map,
+            icon: "./img/user1.png",
+            offset: new AMap.Pixel(-13, -30),
+            draggable:true,
+            raiseOnDrag:true
+        });
+        let markertext=new AMap.Text({
+            map:map,
+            text: '在这里上车',
+            offset: new AMap.Pixel(3, -50),
+            style:{
+                'padding':'5px 10px',
+                'border-radius':'20px',
+                'border':'none',
+                'box-shadow':'0 0 10px #D2D2D2',
+            }
+        });
+        // 初始化定位
+        AMap.plugin('AMap.Geolocation', function() {
+            var geolocation = new AMap.Geolocation({
+                enableHighAccuracy: true,//是否使用高精度定位，默认:true
+                zoom:15,
+                timeout: 10000,          //超过10秒后停止定位，默认：5s
+                buttonPosition: 'RB',    //定位按钮的停靠位置
+                buttonOffset: new AMap.Pixel(0, 0),//定位按钮与设置的停靠位置的偏移量，默认：Pixel(10, 20)
+                // zoomToAccuracy: true,   //定位成功后是否自动调整地图视野到定位点
+                showMarker:false,
+                showCircle:false,
+                showButton:false
+            });
+            map.addControl(geolocation);
+            geolocation.getCurrentPosition(function(status,result){
+                if(status=='complete'){
+                    onComplete(result)
+                }else{
+                    onError(result)
+                }
+            });
+        });
+        function onComplete(data) {
+            // console.log(data);
+            marker.setPosition([data.position.lng,data.position.lat]);
+            markertext.setPosition([data.position.lng,data.position.lat]);
+            map.add(marker);
+            map.add(markertext);
+            dinglng=[data.position.lng,data.position.lat];
+            regeoCode(data.position.lng+","+data.position.lat);
+        }
+
+        //为地图注册click事件获取鼠标点击出的经纬度坐标
+        map.on('click', function(e) {
+
+            // console.log(e.lnglat.getLng()+","+e.lnglat.getLat());
+            marker.setPosition([e.lnglat.getLng(),e.lnglat.getLat()]);
+            markertext.setPosition([e.lnglat.getLng(),e.lnglat.getLat()]);
+            map.add(marker);
+            map.add(markertext);
+            regeoCode(e.lnglat.getLng()+','+e.lnglat.getLat());
+        });
+
+        // 事件绑定
+        marker.on('dragging', function showInfoDragstart(e) {
+            // console.log(e)
+            markertext.setPosition([e.lnglat.lng,e.lnglat.lat]);
+            map.remove(markertext);
+        });
+        marker.on('dragend', function showInfoDragstart(e) {
+            let getlng=marker.getPosition();
+            markertext.setPosition([getlng.lng,getlng.lat]);
+            map.add(markertext);
+            // console.log(e);
+            regeoCode(getlng.lng+','+getlng.lat);
+        });
+        // 地址解析 赋值起始点上车位置
+        function regeoCode(lnglat) {
+            let geocoder = new AMap.Geocoder({
+                radius: 1000, //范围，默认：500
+                extensions:'all',
+            });
+            geocoder.getAddress(lnglat, function(status, result) {
+                if (status === 'complete'&&result.regeocode) {
+                    // console.log(result)
+                    var address = result.regeocode.formattedAddress;
+                    if(result.regeocode.addressComponent.city){
+                        citys=result.regeocode.addressComponent.city
+                    }else{
+                        citys=result.regeocode.addressComponent.province
+                    }
+                    // console.log(result);
+                        GJ.set_cache("cfgetLng",`{"getlng":"${lnglat.substr(0,lnglat.indexOf(","))}","getlat":"${lnglat.substr(lnglat.indexOf(",")+1)}","xiangxdz":"${address}","City":{"province":"${result.regeocode.addressComponent.province}","city":"${result.regeocode.addressComponent.city}","district":"${result.regeocode.addressComponent.district}"}}`);
+                        if(!GJ.get_cache("shfcgetLng")){
+                            GJ.set_cache("shfcgetLng",`{"getlng":"${lnglat.substr(0,lnglat.indexOf(","))}","getlat":"${lnglat.substr(lnglat.indexOf(",")+1)}","xiangxdz":"${address}","City":{"province":"${result.regeocode.addressComponent.province}","city":"${result.regeocode.addressComponent.city}","district":"${result.regeocode.addressComponent.district}"}}`);
+                        }
+
+                        $(".kuaiche_cont_dyk_b_cf").text(address);
+                        if(!shfc){
+                            $(".shunf_cont_dyk_b_cf").text(address);
+                        }
+                        $("#trigger6").html(`<i></i>${citys}`);
+                }else{
+                    console.log('根据经纬度查询地址失败')
+                }
+            });
+        }
+        // 回到原始起点
+        $(".hudind img").click(function () {
+            marker.setPosition(dinglng);
+            markertext.setPosition(dinglng);
+            map.add(marker);
+            map.add(markertext);
+            map.setZoomAndCenter(15, dinglng);   //回到定位起始点
+            console.log(dinglng[0]);
+            regeoCode(dinglng[0]+","+dinglng[1]);
+
+        });
+     };
+    // 点击切换预约
+    $(".kuaiche_cont_dyk_t>span").click(function () {
+        let id=$(this).attr("data-id");
+        if(id=='yuyue'){
+            $(".kuaiche_cont_dyk_c").show();
+            yuyueli=1;
+        }else{
+            $(".kuaiche_cont_dyk_c").hide();
+            localStorage.removeItem("xzsj");
+            localStorage.removeItem("cxxz");
+            yuyueli=0;
+        }
+        $(this).addClass("kuaiche_cont_dyk_t_hov").siblings().removeClass("kuaiche_cont_dyk_t_hov")
+    });
+    // 预约时间选择
+    $("#trigger4").click(function () {
+        yuyuehsijian();  //时间数据times文件
+        mobileSelect4.updateWheels(nyn_weekDay);
+    });
+    var mobileSelect4= new MobileSelect({
+        trigger: '#trigger4',
+        title: '选择用车时间',
+        titleColor:"#3366FD",
+        ensureBtnColor:"#09BB07",
+        triggerDisplayData:false,
+        wheels: [
+            {data:[{
+                    id:0,
+                    value:"2019-9-4&nbsp;今天",
+                    childs:[{
+                        id:0,
+                        value:"14时",
+                        childs:[{
+                            id:0,
+                            value:"14分",
+                        }]
+                    }]
+                },{
+                    id:1,
+                    value:"2019-9-4&nbsp;今天",
+                    childs:[{
+                        id:1,
+                        value:"14时",
+                        childs:[{
+                            id:1,
+                            value:"14分",
+                        }]
+                    }]
+                }]
+            },
+
+        ],
+        position:[0], //初始化定位 打开时默认选中的哪个 如果不填默认为0
+        transitionEnd:function(indexArr, data){
+            // console.log(data);
+        },
+        callback:function(indexArr, data){
+            console.log(data);
+            $("#trigger4").text(`${(data[0].value).substr(-2)} ${(data[1].value).substr(0,2)}:${(data[2].value).substr(0,2)}`);
+            // console.log(startid+"----"+endid)
+            // console.log(`${(data[1].value).substr(0,2)}`)
+            GJ.set_cache("xzsj",`${(data[0].value).substr(0,data[0].value.indexOf("&"))} ${(data[1].value).substr(0,2)}:${(data[2].value).substr(0,2)}`)
+        }
+    });
+    var mobileSelect5= new MobileSelect({
+        trigger: '#trigger5',
+        title: '选择车型',
+        titleColor:"#3366FD",
+        ensureBtnColor:"#09BB07",
+        triggerDisplayData:false,
+        wheels: [
+            {data:[
+                    {id:0,value:"公务轿车"},
+                    {id:1,value:'商务7座'},
+                    {id:2,value:"豪华轿车"}
+                ]}
+
+        ],
+        position:[0], //初始化定位 打开时默认选中的哪个 如果不填默认为0
+        transitionEnd:function(indexArr, data){
+            // console.log(data);
+        },
+        callback:function(indexArr, data){
+            // console.log(data);
+            $("#trigger5").text(data[0].value);
+            GJ.set_cache("cxxz",`{"id":${data[0].id},"value":"${data[0].value}"}`)
+            // console.log(startid+"----"+endid)
+        }
+    });
+    // 城市联动
+    var mobileSelect6= new MobileSelect({
+        trigger: '#trigger6',
+        title: '选择城市',
+        titleColor:"#3366FD",
+        ensureBtnColor:"#09BB07",
+        triggerDisplayData:false,
+        wheels: [
+            {data:City}
+        ],
+        position:[0], //初始化定位 打开时默认选中的哪个 如果不填默认为0
+        transitionEnd:function(indexArr, data){
+            // console.log(data);
+        },
+        callback:function(indexArr, data){
+            // console.log(data);
+            $("#trigger6").html(`<i></i>${data[1].value}`);
+            citys=data[1].value;
+            MapArea(data[0].value+data[1].value+data[2].value)
+            // console.log(startid+"----"+endid)
+        }
+    });
+    function MapArea(data){
+        console.log(data);
+        AMap.plugin('AMap.Geocoder', function(){
+            let geocoder =new AMap.Geocoder({});
+            geocoder.getLocation(data, function(status, result) {
+                // console.log(result)
+                if (status === 'complete') {
+                    let   dinglng = result.geocodes[0].location;
+                    map.setZoomAndCenter(15,[dinglng.lng,dinglng.lat])   //回到定位起始点
+                }else{
+                    console.log('根据经纬度查询地址失败')
+                }
+            });
+        });
+    }
+    // 跳转输入目的地
+    $(".kuaiche_cont_dyk_b_hs").click(function () {
+        if(yuyueli==0){
+            GJ.set_cache("sfyy",`{"id":0,"name":"立即出发"}`);
+            localStorage.removeItem("xzsj");
+            localStorage.removeItem("cxxz");
+        }else{
+            GJ.set_cache("sfyy",`{"id":1,"name":"预约"}`)
+        }
+        window.location.href=`srmdd.html?city=${citys}`
+    });
+
+
+
+    // ////////////////////////////////////////班车////////////////////////////////////////////////////////////////
+    let height=document.documentElement.clientHeight;
+    $("#wrapper").css({height:height});
+    $.ajax({
+        url: appPara.mwurl + "app/getOpenCity",
+        type: 'POST',
+        dataType: 'json',
+        data: {
+            token:token,
+        },
+        success: function (data) {
+            console.log(data);
+            GJ.loadHide();
+            if(data.code==0){
+                let list=data.data;
+                for(key in list){
+                    bance.push(list[key].name)
+                }
+                var mobileSelect1 = new MobileSelect({
+                    trigger: '#trigger1',
+                    title: '',
+                    wheels: [
+                        {data: bance}
+                    ],
+                    position:[0], //初始化定位 打开时默认选中的哪个 如果不填默认为0
+                    transitionEnd:function(indexArr, data){
+                        // console.log(data);
+                    },
+                    callback:function(indexArr, data){
+                        // console.log(data);
+                        cfd=data.join("");
+                        $("#trigger1").addClass("xzh_hov")
+                    }
+                });
+                var mobileSelect2 = new MobileSelect({
+                    trigger: '#trigger2',
+                    title: '',
+                    wheels: [
+                        {data: bance}
+                    ],
+                    position:[0], //初始化定位 打开时默认选中的哪个 如果不填默认为0
+                    transitionEnd:function(indexArr, data){
+                        // console.log(data);
+                    },
+                    callback:function(indexArr, data){
+                        // console.log(data);
+                        mdd=data.join("");
+                        $("#trigger2").addClass("xzh_hov")
+                    }
+                });
+                GJ.loadHide();
+            }else if(data.code==101){
+                let dqurl=window.location.href;
+                window.location.href=`${appPara.mwurl}/app/webchatCall?url=${dqurl}`
+            }else{
+                GJ.msg(data.msg,2000)
+                GJ.loadHide()
+            }
+        },
+        timeout: 20000,
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+            GJ.loadHide();
+            GJ.msg("网络太忙了，请稍后再试！",2000);
+        }
+    });
+    // 搜索
+    $(".dek_sou").click(function () {
+        if(cfd||mdd){
+            GJ.loadShow();
+            $.ajax({
+                url: appPara.mwurl + "app/specialline/getSpeciallineByStartArea",
+                type: 'POST',
+                dataType: 'json',
+                data: {
+                    token:token,
+                    startName:cfd,
+                    endName:mdd
+                },
+                success: function (data) {
+                    console.log(data);
+                    if(data.code==0){
+                        let list=data.data;
+                        let list_html='';
+                        for(key in list){
+                            list_html +=`<li class="tz_qrrjc" data-lineid="${list[key].lineid}" data-type="${list[key].type}">
+                                        <div class="dsk_list_l">
+                                            <span>${list[key].beginname}</span>
+                                            <i><img src="img/zhixiang@2x.png" alt=""></i>
+                                            <span>${list[key].endname}</span>
+                                        </div>
+<!--                                        <span class="dsk_list_r">已有2736人拼车</span>-->
+                                        </li>`
+                        }
+                        $(".dsk_list").html(list_html);
+                        if(list==null){
+                            GJ.msg(data.msg,2000)
+                        }else if(list.length==0){
+                            GJ.msg("当前行程暂无班次",2000)
+                        }
+                        $(".tz_qrrjc").click(function () {
+                            let lineid=$(this).attr('data-lineid');
+                            let type=$(this).attr('data-type');
+                            localStorage.removeItem("cfd");
+                            localStorage.removeItem("mdd");
+                            window.location.href=`qrjc.html?lineid=${lineid}&type=${type}&zcbc=banche`;
+
+                        });
+                        GJ.loadHide();
+                    }else if(data.code==101){
+                        let dqurl=window.location.href;
+                        window.location.href=`${appPara.mwurl}/app/webchatCall?url=${dqurl}`
+                    }else{
+                        GJ.msg(data.msg,2000);
+                        GJ.loadHide()
+                    }
+
+                },
+                timeout: 20000,
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    GJ.loadHide();
+                    GJ.msg("网络太忙了，请稍后再试！",2000);
+                }
+            });
+        }
+
+    });
+    // 目的地切换
+    $(".dek_huh").click(function () {
+        if(cfd!==''&&mdd!==''){
+            [cfd,mdd]=[mdd,cfd];
+            $("#trigger1").text(cfd);
+            $("#trigger2").text(mdd);
+        }
+    });
+    // 头部切换
+    $(".dyk_top li").click(function () {
+        let val=$(this).val();
+        $(this).addClass("dyk_top_hov").siblings().removeClass("dyk_top_hov");
+        $(".cont"+val).show().siblings().hide();
+        if(val==3){
+            chush()
+        }
+        if(val==2){
+            let heig=document.documentElement.clientHeight;
+            let top_height=$(".dyk_top").outerHeight();
+            let dek_height=$(".cont2 .dek").outerHeight();
+            let dsk_top_height=$(".dsk_top").outerHeight();
+            let daoh_height=$(".daoh").outerHeight();
+            let heul=heig-top_height-dek_height-dsk_top_height-daoh_height;
+            $(".dsk_list").css({'max-height':heul})
+        }
+    });
+    // 专车地区联动
+    var mobileSelect3= new MobileSelect({
+        trigger: '#trigger3',
+        title: '出发地 → 目的地',
+        titleColor:"#3366FD",
+        ensureBtnColor:"#09BB07",
+        triggerDisplayData:false,
+        wheels: [
+            {data:[{id:1,value:'1'}]},
+            {data:[{id:1,value:'1'}]}
+        ],
+        position:[0], //初始化定位 打开时默认选中的哪个 如果不填默认为0
+        transitionEnd:function(indexArr, data){
+            // console.log(data);
+        },
+        callback:function(indexArr, data){
+            console.log(data);
+            startid=data[0].id;
+            endid=data[1].id;
+            chush();
+            myscroll.scrollTo(0,0,1);
+            // console.log(startid+"----"+endid)
+        }
+    });
+    // 价格分割
+    function amount(data) {
+        let amount=data.indexOf(".");
+        return amount
+    }
+    // 筛选接口
+    $.ajax({
+        url: appPara.mwurl + "app/getOpenCity",
+        type: 'POST',
+        dataType: 'json',
+        data: {
+            token:token,
+            linetype:1
+        },
+        success: function (data) {
+            console.log(data);
+            GJ.loadHide();
+            // console.log(JSON.stringify(data.data))
+            if(data.code==0){
+                let dats=data.data.map(item=>{return {id:item.id,value:item.name}});
+                // console.log(dats)
+                mobileSelect3.updateWheel(0, dats);
+                mobileSelect3.updateWheel(1, dats);
+            }else if(data.code==101){
+                let dqurl=window.location.href;
+                window.location.href=`${appPara.mwurl}/app/webchatCall?url=${dqurl}`
+            }else{
+                GJ.msg(data.msg,2000);
+                GJ.loadHide()
+            }
+
+
+        },
+        timeout: 20000,
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+            GJ.loadHide();
+            GJ.msg("网络太忙了，请稍后再试！",2000);
+        }
+    });
+
+    setTimeout(function () {
+
+        // $(".dsk_list").css({"max-height":heul})
+    },2000);
+
+    // //////////////////////////////////////////////初始化专车内容//////////////////////////////////////////////////////////////
+    // 初始化上拉加载
+    var myscroll = new iScroll("wrapper", {
+        onScrollMove: function () { //拉动时
+            //上拉加载
+            if (this.y < this.maxScrollY) {
+                $(".pull_loading span").text("释放加载");
+                $(".pull_loading").addClass("loading");
+                $(".pull_loading_img").show().addClass("pull_loading_img_xz");
+                $(".pull_loading_img1").hide();
+            } else {
+                $(".pull_loading span").text("上拉加载");
+                $(".pull_loading").removeClass("loading");
+                $(".pull_loading_img").show().removeClass("pull_loading_img_xz");
+                $(".pull_loading_img1").hide();
+            }
+        },
+        onScrollEnd: function () { //拉动结束时
+            //上拉加载
+            if ($(".pull_loading").hasClass('loading')) {
+                $(".pull_loading span").text("加载中...");
+                $(".pull_loading_img1").show();
+                $(".pull_loading_img").hide().removeClass("pull_loading_img_xz");
+                fenye();
+            }
+        },
+        onRefresh: function () {
+            let nr_height=$("#scroller").height()+$(".dyk_top").height()+$(".daoh").height();
+            if(nr_height<height){
+                $('.pull_loading').hide();
+            }else{
+                $('.pull_loading').show();
+            }
+        }
+    });
+    function chush(){
+        $.ajax({
+            url: appPara.mwurl + "app/specialline/getSendSpecialline",
+            type: 'POST',
+            dataType: 'json',
+            data: {
+                token:token,
+                page:1,
+                count:count,
+                startid:startid,
+                endid:endid,
+                ordertime:ordertime
+            },
+            success: function (data) {
+                console.log(data);
+                if(data.code==0){
+                    $(".dwk_ssjg_ts").text(data.count);
+                    index=data.data.length;
+                    let listcont="";
+                    data.data.forEach(item=>{
+                        listcont +=`
+                                     <li>
+                                            <ul>
+                                                <li class="dwk_ul_cfd_l"><div><span>${item.startname}</span> → <span>${item.endname}</span></div><span>${item.assignmentime}</span></li>
+                                                <li><span>车牌：</span><div>${item.licenceplate}</div></li>
+                                                <li><span>出 行 时 间：</span><div>${item.ordertime}</div></li>
+                                                <li class="dwk_ul_kczrs"><span>可 乘 坐 人 数：</span><div>${item.cannum}人</div></li>
+                                                <li class="dwk_ul_ms"  style="display: ${item.remark==null||item.remark==""?"none":'block'}"><div class="dwk_ul_ms_yc"><span class="wk_ul_ms_ckgd" style="display: ${webkd(item.remark)?"block":"none"}">查看更多</span>描述:${item.remark}<span class="wk_ul_ms_sq" style="display:none;">收起</span></div></li>
+                                                <li class="dwk_ul_chef"><span>车费：</span><div>￥<b>${item.price.substr(0,amount(item.price))}</b>${item.price.substr(amount(item.price))}/人</div></li>
+                                                <li class="dwk_ul_sj">
+                                                    <div class="dwk_ul_sj_l">
+                                                        <img src="${item.avatar}" alt="">
+                                                        <span>${item.username}</span>
+                                                    </div>
+                                                    <div>
+                                                        <a href="tel:${item.phone}">
+                                                            <span class="dwk_ul_sj_r_t">
+                                                            <i><img src="img/dianhua.png" alt=""></i>
+                                                            联系司机
+                                                            </span>
+                                                        </a>
+
+                                                        <span class="dwk_ul_sj_r_b" data-lineid="${item.lineid}" data-type="${item.type}" data-assignid="${item.assignid}">
+                                                        <i><img src="img/cheche.png" alt=""></i>
+                                                        乘车
+                                                    </span>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                    </li>
+                        `
+                    });
+                    ztlist=listcont;
+                    myscroll.refresh();
+                    $(".dwk_ul ul").html(ztlist);
+                }else if(data.code==101){
+                    let dqurl=window.location.href;
+                    window.location.href=`${appPara.mwurl}/app/webchatCall?url=${dqurl}`
+                }else{
+                    GJ.msg(data.msg,2000);
+                    GJ.loadHide()
+                }
+                myscroll.refresh();
+                GJ.loadHide();
+            },
+            timeout: 20000,
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                GJ.loadHide();
+                GJ.msg("网络太忙了，请稍后再试！",2000);
+            }
+        });
+    }
+    // 分页
+    function fenye() {
+        if(index==count){
+            page++;
+            console.log(page);
+            $.ajax({
+                url: appPara.mwurl + "app/specialline/getSendSpecialline",
+                type: 'POST',
+                dataType: 'json',
+                data: {
+                    token:token,
+                    page:page,
+                    count:count,
+                    startid:startid,
+                    endid:endid,
+                    ordertime:ordertime
+                },
+                success: function (data) {
+                    console.log(data);
+                    if(data.code==0){
+                        GJ.loadHide();
+                        $(".dwk_ssjg_ts").text(data.count);
+                        index=data.data.length;
+                        if(data.data.length==0){
+                            $(".pull_loading span").text("暂无更多数据");
+                            $(".pull_loading_img1").hide();
+                        }
+                        data.data.forEach(item=>{
+                            ztlist +=`
+                                     <li>
+                                            <ul>
+                                                <li class="dwk_ul_cfd_l"><div><span>${item.startname}</span> → <span>${item.endname}</span></div><span>${item.assignmentime}</span></li>
+                                                <li><span>车牌：</span><div>${item.licenceplate}</div></li>
+                                                <li><span>出 行 时 间：</span><div>${item.ordertime}</div></li>
+                                                <li class="dwk_ul_kczrs"><span>可 乘 坐 人 数：</span><div>${item.cannum}人</div></li>
+                                                <li class="dwk_ul_ms" style="display: ${item.remark==null||item.remark==""?"none":'block'}"><div class="dwk_ul_ms_yc"><span class="wk_ul_ms_ckgd" style="display: ${webkd(item.remark)?"block":"none"}">查看更多</span>描述:${item.remark}<span class="wk_ul_ms_sq" style="display:none;">收起</span></div></li>
+                                                <li class="dwk_ul_chef"><span>车费：</span><div>￥<b>${item.price.substr(0,amount(item.price))}</b>${item.price.substr(amount(item.price))}/人</div></li>
+                                                <li class="dwk_ul_sj">
+                                                    <div class="dwk_ul_sj_l">
+                                                        <img src="${item.avatar}" alt="">
+                                                        <span>${item.username}</span>
+                                                    </div>
+                                                    <div>
+                                                        <a href="tel:${item.phone}">
+                                                            <span class="dwk_ul_sj_r_t">
+                                                            <i><img src="img/dianhua.png" alt=""></i>
+                                                            联系司机
+                                                            </span>
+                                                        </a>
+
+                                                        <span class="dwk_ul_sj_r_b" data-lineid="${item.lineid}" data-type="${item.type}" data-assignid="${item.assignid}">
+                                                        <i><img src="img/cheche.png" alt=""></i>
+                                                        乘车
+                                                    </span>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                    </li>
+                        `
+                        });
+                        $(".dwk_ul ul").html(ztlist);
+                        myscroll.refresh();
+                    }else if(data.code==101){
+                        let dqurl=window.location.href;
+                        window.location.href=`${appPara.mwurl}/app/webchatCall?url=${dqurl}`
+                    }else{
+                        GJ.msg(data.msg,2000);
+                        GJ.loadHide()
+                    }
+                    GJ.loadHide();
+
+                },
+                timeout: 20000,
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    GJ.loadHide();
+                    GJ.msg("网络太忙了，请稍后再试！",2000);
+                }
+            });
+        }else{
+            $(".pull_loading span").text("暂无更多数据");
+            $(".pull_loading_img1").hide();
+            GJ.loadHide();
+        }
+    }
+    // 时间筛选
+    $("#timesx").click(function () {
+        let id=$(this).attr("data-id");
+        if(id==0){
+            $(this).children().attr("src",'img/paixu1.png');
+            $(this).attr("data-id",1);
+            ordertime=0;
+            chush()
+        }else if(id==1){
+            $(this).children().attr("src",'img/paixu2.png');
+            $(this).attr("data-id",2);
+            ordertime=1;
+            chush();
+        }else{
+            $(this).children().attr("src",'img/paixu.png');
+            $(this).attr("data-id",0);
+            ordertime='';
+            chush();
+        }
+        myscroll.scrollTo(0,0,1);
+    });
+    // 查看更多
+    $(document).on("click",'.wk_ul_ms_ckgd',function(){
+        $(this).parent().removeClass("dwk_ul_ms_yc");
+        $(this).hide();
+        $(this).siblings("span").show()
+    });
+    // 收起
+    $(document).on("click",'.wk_ul_ms_sq',function () {
+        $(this).hide();
+        $(this).siblings("span").show();
+        $(this).parent().addClass("dwk_ul_ms_yc");
+    });
+    // 乘车
+    $(document).on("click",".dwk_ul_sj_r_b",function(){
+        let lineid=$(this).attr("data-lineid");
+        let type=$(this).attr("data-type");
+        let assignid=$(this).attr("data-assignid");
+        localStorage.removeItem("cfd");
+        localStorage.removeItem("mdd");
+        window.location.href=`qrjc.html?lineid=${lineid}&type=${type}&assignid=${assignid}&zcbc=zuanche`
+    });
+    // 用于查看更多显示隐藏
+    function webkd(data) {
+        // console.log(data);
+        $("#dsadw").html(`<span>描述:${data}查看更多</span>`);
+        let height=$("#dsadw>span").height().toFixed(0);
+        let width=$("#dsadw>span").width().toFixed(0);
+        let zongwid=$(".dlk_fz>div").width().toFixed(0);
+        let zonghei=$(".dlk_fz>div").height().toFixed(0);
+        let zhonghe=Number(zonghei)+Number(zongwid);
+        let kasi=Number(height)+Number(width);
+        return kasi>zhonghe
+    }
+
+
+    //////////////////////////////////////////// 顺风车/////////////////////////////
+    // 删除缓存选的预约顺风车
+    localStorage.removeItem('shunfcyy');
+
+    $("#trigger7").click(function () {
+        yuyuehsijian();  //时间数据times文件
+        mobileSelect7.updateWheels(nyn_weekDay);
+    });
+    // 顺风车出发时间
+    var mobileSelect7= new MobileSelect({
+        trigger: '#trigger7',
+        title: '出发时间',
+        titleColor:"#3366FD",
+        ensureBtnColor:"#09BB07",
+        triggerDisplayData:false,
+        wheels: [
+            {data:[{
+                    id:0,
+                    value:"2019-9-4&nbsp;今天",
+                    childs:[{
+                        id:0,
+                        value:"14时",
+                        childs:[{
+                            id:0,
+                            value:"14分",
+                        }]
+                    }]
+                },{
+                    id:1,
+                    value:"2019-9-4&nbsp;今天",
+                    childs:[{
+                        id:1,
+                        value:"14时",
+                        childs:[{
+                            id:1,
+                            value:"14分",
+                        }]
+                    }]
+                }]
+            }
+        ],
+        position:[0], //初始化定位 打开时默认选中的哪个 如果不填默认为0
+        transitionEnd:function(indexArr, data){
+            // console.log(data);
+        },
+        callback:function(indexArr, data){
+             console.log(data);
+            $("#trigger7").text(`${(data[0].value).substr(-2)} ${(data[1].value).substr(0,2)}:${(data[2].value).substr(0,2)}`);
+            GJ.set_cache("shunfcyy",`{"id":"3","time":"${(data[0].value).substr(0,data[0].value.indexOf("&"))} ${(data[1].value).substr(0,2)}:${(data[2].value).substr(0,2)}"}`)
+            // console.log(startid+"----"+endid)
+        }
+    });
+    // 选择出发地
+    $(".shunf_cont_dyk_b_cf").click(function () {
+        window.location.href=`srmdd.html?city=${citys}&shfc=true`
+    });
+    if(shfc){
+        $(".dyk_top li").eq(3).addClass("dyk_top_hov").siblings().removeClass("dyk_top_hov");
+        $(".cont4").show().siblings().hide();
+        console.log(JSON.parse(GJ.get_cache("shfcgetLng")));
+        $(".shunf_cont_dyk_b_cf").text(`${JSON.parse(GJ.get_cache("shfcgetLng")).xiangxdz}`)
+    }
+    //选择目的地
+    $(".shunf_cont_dyk_b_hs").click(function () {
+        window.location.href=`srmdd.html?city=${citys}&shfc=true&sfmm=true`
+    });
+
+
+
+    // setTimeout(function () {
+    //     // $("#commonUILoading").show();
+    // },300);
+    document.onreadystatechange = function(){ //当页面加载状态改变的时候执行function
+        if(document.readyState == "complete"){ 　　//当页面加载状态为完全结束时进入
+            $("#page").show();
+            GJ.loadHide();
+        }
+    }
+</script>
+<script src="https://webapi.amap.com/maps?v=1.4.15&key=be83f8d0d2149d28be18794b6336d4a2&callback=init"></script>
+
+</html>

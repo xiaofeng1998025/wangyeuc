@@ -1,0 +1,77 @@
+body{
+    background: #fff;
+}
+.dyk{
+    line-height: 1.1rem;
+    text-align: center;
+    font-size: 0.34rem;
+    font-weight: 500;
+    padding: 0 0.2rem;
+}
+.dyk>a{
+    float: left;
+    margin-top: 0.4rem;
+}
+.dyk>a>img{
+    width: 0.18rem;
+    height: 0.3rem;
+}
+.dek{
+    padding: 0 0.4rem;
+}
+.dek>h2{
+    font-size: 0.48rem;
+    margin:  0.35rem 0;
+}
+.dek>p{
+    font-size: 0.3rem;
+    color: #999;
+}
+.dsk{
+    padding: 0 0.4rem;
+    margin-top: 1.85rem;
+}
+.dsk>div{
+    height: 1.1rem;
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-align: center;
+            align-items: center;
+    border-bottom: 1px solid #f2f2f2;
+}
+.dsk>div>span{
+    display: inline-block;
+    background: #EFEFEF;
+    width: 1.25rem;
+    height: 0.6rem;
+    font-size: 0.3rem;
+    color: #666;
+    text-align: center;
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+            justify-content: center;
+    border-radius: 2px;
+}
+.dsk>div>input{
+    margin-left: 0.45rem;
+    width: 5rem;
+    border: none;
+    font-size: 0.48rem;
+}
+
+.xyb{
+    width: 6.7rem;
+    line-height: 0.9rem;
+    text-align: center;
+    font-size: 0.36rem;
+    color: #fff;
+    margin: 1.5rem auto 0 auto;
+    background: #CCCCCC;
+    border-radius: 5px;
+}
+.xyb_hov{
+    background:#2B2C3E ;
+}

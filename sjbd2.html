@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title>同港网约车</title>
+    <meta name="renderer" content="webkit">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="email=no" name="format-detection">
+    <meta name="msapplication-tap-highlight" content="no">
+    <link rel="stylesheet" href="css/style.css?2019_08_14">
+    <link rel="stylesheet" href="css/sjbd.css?2019_08_14">
+    <script type="text/javascript" charset="utf-8" src="js/jquery.min.js"></script>
+</head>
+<body>
+<script type="text/javascript" charset="utf-8" src="js/style.js?2019_08_14"></script>
+<script type="text/javascript" charset="utf-8" src="js/gVerify.js"></script>
+<div id="page">
+    <!--     头部-->
+    <div class="dyk_top">
+        <a href="sjbd.html"><img src="img/zuofan.png" alt=""></a>
+        手机绑定
+    </div>
+    <div class="dek_cont">
+        <div>
+            <input type="text" id="txyzm" maxlength="4"  οnkeyup="value=value.replace(/[^\d\.]/g,'')"  placeholder="请输入图片验证码">
+            <div id="v_container"></div>
+        </div>
+        <div>
+            <input type="text" maxlength="6" id="dek_cont_val" οnkeyup="value=value.replace(/[^\d\.]/g,'')" placeholder="请输入短信验证码">
+            <div class="hqyzm">获取验证码</div>
+        </div>
+    </div>
+    <div class="tcdl">提交</div>
+</div>
+<script>
+    var verifyCode = new GVerify("v_container");  //调用验证码
+    let phone=GJ.getUrlString("phone");          //用户手机加密
+    let name=GJ.getUrlString("name");            //用户呢称
+    let newphone=GJ.getUrlString("xshh");        //用户输入的新手机号
+    let token=GJ.get_cache("token");         //用户id
+    let oldphone=GJ.get_cache("phone");         //原手机号未加密
+    let ysj_yzm=GJ.getUrlString("ysj_yzm");    //原手机号验证码
+    let phonecode=GJ.getUrlString("phonecode");  //原手机号验证返回值
+    let yzmhq=true;
+    let time_miao=60;
+    $(".dyk_top>a").attr("href",`sjbd.html?name=${name}&phone=${phone}`);
+    $(".hqyzm").click(function () {
+        let res=verifyCode.validate($("#txyzm").val());
+        if(res){
+            verifyCode.refresh();
+            $.ajax({
+                url: appPara.mwurl + "app/getyzcode",
+                type: 'POST',
+                dataType: 'json',
+                data: {
+                    token:token,
+                    phone:newphone,
+                    type:'4'
+                },
+                success: function (data) {
+                    console.log(data);
+                    if(data.code==0){
+                        GJ.msg("获取成功，60秒后重新获取",2000);
+                        yzmhq=false;
+                        var time=setInterval(function () {
+                            time_miao--;
+                            $(".hqyzm").text(time_miao+"s");
+                            if(time_miao==0){
+                                clearInterval(time);
+                                time_miao=60;
+                                yzmhq=true;
+                                $(".hqyzm").text("重新获取");
+                            }
+                        },1000);
+                    }else if(data.code==101){
+                        let dqurl=window.location.href;
+                        window.location.href=`${appPara.mwurl}/app/webchatCall?url=${dqurl}`
+                    }else{
+                        GJ.msg(data.msg,2000)
+                    }
+                    GJ.loadHide();
+                },
+                timeout: 20000,
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    GJ.loadHide();
+                    GJ.msg("网络太忙了，请稍后再试！",2000);
+                }
+            });
+
+        }else{
+            verifyCode.refresh();
+            GJ.msg("图形验证码错误",2000)
+        }
+    });
+   $(".tcdl").click(function () {
+       let newyzcode=$("#dek_cont_val").val();
+       $.ajax({
+           url: appPara.mwurl + "app/user/updatePhone",
+           type: 'POST',
+           dataType: 'json',
+           data: {
+               token:token,
+               oldphone:oldphone,
+               newphone:newphone,
+               oldyzcode:ysj_yzm,
+               newyzcode:newyzcode,
+               phonecode:phonecode
+           },
+           success: function (data) {
+               console.log(data);
+                if(data.code==0){
+                    GJ.msg("换绑成功",2000);
+                    window.location.href=`wdxx.html?name=${name}&phone=${phone}`
+                }else if(data.code==101){
+                    let dqurl=window.location.href;
+                    window.location.href=`${appPara.mwurl}/app/webchatCall?url=${dqurl}`
+                }else{
+                    GJ.msg(data.msg,2000)
+                }
+               GJ.loadHide();
+           },
+           timeout: 20000,
+           error: function (XMLHttpRequest, textStatus, errorThrown) {
+               GJ.loadHide();
+               GJ.msg("网络太忙了，请稍后再试！",2000);
+           }
+       });
+   })
+
+</script>
+</body>
+</html>

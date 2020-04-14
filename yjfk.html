@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title>意见反馈</title>
+    <meta name="renderer" content="webkit">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="email=no" name="format-detection">
+    <meta name="msapplication-tap-highlight" content="no">
+    <link rel="stylesheet" href="css/style.css?2019_08_14">
+    <link rel="stylesheet" href="css/yjfk.css?2019_08_14">
+    <script type="text/javascript" charset="utf-8" src="js/jquery.min.js"></script>
+</head>
+<body>
+<script type="text/javascript" charset="utf-8" src="js/style.js?2019_08_14"></script>
+<div id="page">
+    <div class="dyk">
+        <textarea height="auto" placeholder="请填写您的建议，感谢您的支持~（必填）" maxlength="300"></textarea>
+    </div>
+    <p class="title">添加图片证据，最多上传4张（选填）</p>
+    <div class="dek">
+        <ul>
+            <li class="dek_tj">
+                <input type="file" id="imgInp" multiple accept='image/*'>
+                <img src="img/addpicture.png" alt="">
+            </li>
+        </ul>
+    </div>
+    <div class="tijiao">提交</div>
+<!--    图片放大-->
+    <div class="dsk" style="display:none;">
+        <p>
+            <img src="" alt="">
+        </p>
+
+    </div>
+</div>
+<script>
+    let index=0;        //当前上传张数
+    let xzzs=4;         //上传限制的张数
+    $("#imgInp").change(function(){
+        index=$(".dek li").length-1;
+        readURL(this);
+    });
+    function readURL(input) {
+        let files=input.files;
+        // console.log(files);
+        if (input.files && input.files[0]) {
+            $.each(files,function(key,value){
+                var fr = new FileReader();
+                if(key<xzzs-index){
+                    fr.onload = function(e){
+                        // console.log(e)
+                        var  kb=((e.total)/1024).toFixed(0);    //换算图片大小
+                        if(kb<=10000){
+                            if(kb>2000){
+                                var image = new Image(); //新建一个img标签（还没嵌入DOM节点)
+                                image.src=e.target.result;
+
+                                console.log(image)
+                                image.onload = function() {
+                                    let canvas = document.createElement('canvas'),
+                                        context = canvas.getContext('2d'),
+                                        imageWidth = image.width / 2,    //压缩后图片的大小
+                                        imageHeight = image.height / 2,
+                                        data = '';
+                                    canvas.width = imageWidth;
+                                    canvas.height = imageHeight;
+
+                                    context.drawImage(image, 0, 0, imageWidth, imageHeight);
+                                    data = canvas.toDataURL('image/jpeg');
+                                    // console.log(data);
+                                    $(".dek ul").prepend(`<li class="dek_li"><img src="${data}" alt=""><i class="shanchu" ><img src="img/csc.png" alt=""></i></li>`)
+                                };
+                                console.log("压缩--上传成功")
+                            }else{
+
+                                // console.log(e.target.result);
+                                $(".dek ul").prepend(`<li class="dek_li"><img src="${e.target.result}" alt=""><i class="shanchu" ><img src="img/csc.png" alt=""></i></li>`);
+                                console.log("没压缩--上传成功")
+                            }
+                        }else{
+                            GJ.msg("上传图片不能大于15兆",2000)
+                        }
+                    };
+                    fr.readAsDataURL(value);
+                }
+            });
+        }
+    }
+    setTimeout(function () {
+    },2000);
+
+    $(document).on("click",".shanchu",function(){
+        $(this).parent("li").remove();
+        return false
+    });
+    $(document).on("click",".dek_li",function(){
+        let src=$(this).children("img").attr("src");
+        $(".dsk img").attr("src",src);
+        $(".dsk").show()
+    });
+    $(".dsk").click(function () {
+        $(this).hide();
+    });
+    // 提交
+    $(".tijiao").click(function () {
+        let token=GJ.get_cache("token");  //用户id
+        let index=$(".dek li").length-1;
+        let cont=$(".dyk textarea").val();
+        let img="";
+        for(var i=0;i<index;i++){
+            img+=$(".dek li").eq(i).children("img").attr("src")+"###"
+        }
+        GJ.loadShow();
+        $.ajax({
+            url: appPara.mwurl+'app/base64UploadFile',
+            type: 'POST',
+            dataType: 'json',
+            data: {
+                file:img
+            },
+            success: function (data) {
+                console.log(data);
+                if(data.code==0){
+                    $.ajax({
+                        url: appPara.mwurl + "app/addFeedback",
+                        type: 'POST',
+                        dataType: 'json',
+                        data: {
+                            token:token,
+                            content:cont,
+                            image:data.data.imgpath
+                        },
+                        success: function (data) {
+                            console.log(data);
+                            if(data.code==0){
+                                GJ.msg("反馈提交成功",2000);
+                                setTimeout(function () {
+                                    window.location.href=`grzx.html`
+                                },2000);
+                            }else{
+                                GJ.msg(data.msg,2000)
+                            }
+                            GJ.loadHide();
+                        },
+                        timeout: 20000,
+                        error: function (XMLHttpRequest, textStatus, errorThrown) {
+                            GJ.loadHide();
+                            GJ.msg("网络太忙了，请稍后再试！",2000);
+                        }
+                    });
+                }else{
+                    GJ.msg("上传失败",2000)
+                }
+                GJ.loadHide();
+            },
+            timeout: 20000,
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                GJ.loadHide();
+                GJ.msg("网络太忙了，请稍后再试！",2000);
+            }
+        });
+
+
+    })
+
+
+    // $("#imgInp").change(function () {
+    //     index=$(".dek li").length-1;
+    //     for(var i=0;i<xzzs-index;i++){
+    //         var objUrl = getObjectURL(this.files[i]);
+    //         $(".dek ul").prepend(`<li class="dek_li"><img src="${objUrl}" alt=""><i class="shanchu" ><img src="img/csc.png" alt=""></i></li>`);
+    //     }
+    //
+    //
+    // });
+    // function getObjectURL(file) {
+    //     var url = null;
+    //     if (window.createObjectURL != undefined) { // basic
+    //         url = window.createObjectURL(file);
+    //     } else if (window.URL != undefined) { // mozilla(firefox)
+    //         url = window.URL.createObjectURL(file);
+    //     } else if (window.webkitURL != undefined) { // webkit or chrome
+    //         url = window.webkitURL.createObjectURL(file);
+    //     }
+    //     return url;
+    // }
+</script>
+</body>
+</html>

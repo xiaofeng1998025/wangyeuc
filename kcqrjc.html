@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title>同港网约车</title>
+    <meta name="renderer" content="webkit">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="email=no" name="format-detection">
+    <meta name="msapplication-tap-highlight" content="no">
+    <link rel="stylesheet" href="css/style.css?2019_08_14">
+    <link rel="stylesheet" href="css/kcqrjc.css?2019_9_4">
+    <script type="text/javascript" charset="utf-8" src="js/jquery.min.js"></script>
+    <script src="https://webapi.amap.com/maps?v=1.4.15&key=be83f8d0d2149d28be18794b6336d4a2&plugin=AMap.Driving"></script>
+    <script type="text/javascript" charset="utf-8" src="js/style.js?2019_08_14"></script>
+    <script src="https://a.amap.com/jsapi_demos/static/demo-center/js/demoutils.js"></script>
+</head>
+<body>
+<div id="container"></div>
+<div class="top">
+    <img src="img/zuofan.png" alt=""> 确认呼叫
+</div>
+<div class="contxiao">
+    <div>
+        <div class="contxiao_dy">
+            <p>同港快车</p>
+            <div><img src="img/sdad.png" alt=""></div>
+            <div class="yuguje">预估 <span>00</span>元</div>
+        </div>
+        <div class="contxiao_hjkc">呼叫快车</div>
+    </div>
+    <img class="contxiao_dwei" src="img/hddingwe.png" alt="">
+</div>
+</body>
+<script>
+    let city=GJ.getUrlString("city");  //城市
+    let token=GJ.get_cache("token");  //用户id
+    let cfgetLng=JSON.parse(GJ.get_cache("cfgetLng"));  //出发地
+    let mdgetLng=JSON.parse(GJ.get_cache("mdgetLng"));  //目的地
+    let dingwei='';                                //定位
+    let vehicletype='';                             //车辆类型
+    let orderuptime='';                            //预约时间
+    let ordertype=JSON.parse(GJ.get_cache("sfyy")).id;    //预约类型
+    let predictDistance='';                             //预估距离
+    let predictTime="";                                 //预估时间
+    let areaid="";                                   //城市区域id
+    let orderamount="";                            //预估价格
+    if(GJ.get_cache("cxxz")){
+        vehicletype=JSON.parse(GJ.get_cache("cxxz")).id;
+    }
+    if(GJ.get_cache("xzsj")){
+        orderuptime=GJ.get_cache("xzsj")
+    }
+    // 初始化地图
+    var map = new AMap.Map('container', {
+        resizeEnable: true, //是否监控地图容器尺寸变化
+        zoom:15, //初始化地图层级
+    });
+    map.setZoomAndCenter(15, [cfgetLng.getlng,cfgetLng.getlat]);
+    // 初始化定位
+    AMap.plugin('AMap.Geolocation', function() {
+        var geolocation = new AMap.Geolocation({
+            enableHighAccuracy: true,//是否使用高精度定位，默认:true
+            zoom:15,
+            timeout: 10000,          //超过10秒后停止定位，默认：5s
+            buttonPosition: 'RB',    //定位按钮的停靠位置
+            buttonOffset: new AMap.Pixel(0, 0),//定位按钮与设置的停靠位置的偏移量，默认：Pixel(10, 20)
+            // zoomToAccuracy: true,   //定位成功后是否自动调整地图视野到定位点
+            showMarker:false,
+            showCircle:false,
+            showButton:false,
+            panToLocation:false
+        });
+        map.addControl(geolocation);
+        geolocation.getCurrentPosition(function(status,result){
+            if(status=='complete'){
+                onComplete(result)
+            }else{
+                onError(result)
+            }
+        });
+    });
+    function onComplete(data) {
+        console.log(data);
+        dingwei=data
+    }
+    // 点标记
+    let markers = [
+        {
+            icon: './img/user1.png',
+            position: [cfgetLng.getlng,cfgetLng.getlat]
+        },{
+            icon: './img/zhongdian.png',
+            position: [mdgetLng.getlng,mdgetLng.getlat]
+        }
+    ];
+    markers.forEach(function(marker) {
+        new AMap.Marker({
+            map: map,
+            icon: marker.icon,
+            position: [marker.position[0], marker.position[1]],
+            offset: new AMap.Pixel(-13, -30)
+        });
+    });
+    // 路线规划
+    AMap.plugin('AMap.Driving', function() {
+        var drivingOption = {
+            policy: AMap.DrivingPolicy.LEAST_TIME, // 其它policy参数请参考 https://lbs.amap.com/api/javascript-api/reference/route-search#m_DrivingPolicy
+            // ferry: 1, // 是否可以使用轮渡
+            map: map,
+            hideMarkers:true
+        };
+        // 构造路线导航类
+        var driving = new AMap.Driving(drivingOption);
+
+        // 根据起终点经纬度规划驾车导航路线
+        driving.search(new AMap.LngLat(cfgetLng.getlng,cfgetLng.getlat),new AMap.LngLat(mdgetLng.getlng,mdgetLng.getlat), function(status, result) {
+            // result 即是对应的驾车导航信息，相关数据结构文档请参考  https://lbs.amap.com/api/javascript-api/reference/route-search#m_DrivingResult
+            if (status === 'complete') {
+                log.success('绘制驾车路线完成');
+                console.log(result);
+                predictDistance=result.routes[0].distance;
+                predictTime=(result.routes[0].time/60).toFixed(0);
+                ysje()
+            } else {
+                log.error('获取驾车数据失败：' + result)
+            }
+        });
+    });
+    // 回到定位点
+    $(".contxiao_dwei").click(function () {
+        map.setZoomAndCenter(15, [cfgetLng.getlng,cfgetLng.getlat]);
+    });
+    // 顶部返回
+    $(".top>img").click(function () {
+        window.location.href=`srmdd.html?city=${city}`
+    });
+    // 获取预算价格
+    function ysje(){
+        $.ajax({
+            url: appPara.mwurl + "app/netcarorder/getEstimatePrice",
+            type: 'POST',
+            dataType: 'json',
+            data: {
+                token:token,
+                predictDistance:predictDistance,
+                predictTime:predictTime,
+                vehicletype:vehicletype,
+                province:cfgetLng.City.province,
+                city:cfgetLng.City.city,
+                district:cfgetLng.City.district
+            },
+            success: function (data) {
+                console.log(data);
+                GJ.loadHide();
+                if(data.code==0){
+                    GJ.loadHide();
+                    $(".yuguje>span").text(data.data.money);
+                    orderamount=data.data.money
+                    areaid=data.data.areaid
+                }else if(data.code==101){
+                    let dqurl=window.location.href;
+                    window.location.href=`${appPara.mwurl}/app/webchatCall?url=${dqurl}`
+                }else{
+                    GJ.msg(data.msg,2000);
+                    GJ.loadHide()
+                }
+            },
+            timeout: 20000,
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                GJ.loadHide();
+                GJ.msg("网络太忙了，请稍后再试！",2000);
+            }
+        });
+    }
+    // 呼叫快车
+    $(".contxiao_hjkc").click(function () {
+        GJ.loadShow()
+        $.ajax({
+            url: appPara.mwurl + "app/netcarorder/addNetcarOrder",
+            type: 'POST',
+            dataType: 'json',
+            data: {
+                token:token,
+                oderupaddress:cfgetLng.xiangxdz,
+                orderuplongitude:cfgetLng.getlng,
+                orderuplatitude:cfgetLng.getlat,
+                orderdownaddress:mdgetLng.xiangxdz,
+                orderdownlongitude:mdgetLng.getlng,
+                orderdownlatitude:mdgetLng.getlat,
+                orderamount:orderamount,
+                orderlength:predictDistance,
+                ordertimes:predictTime,
+                vehicletype:vehicletype,
+                areaid:areaid,
+                orderlongitude:dingwei.position.lng,
+                orderlatitude:dingwei.position.lat,
+                orderaddress:dingwei.formattedAddress,
+                ordertype:ordertype,
+                orderuptime:orderuptime,
+                userbenefitid:''
+            },
+            success: function (data) {
+                GJ.loadHide();
+                console.log(data);
+                if(data.code==0){
+                    window.location.href=`ddyd.html?orderid=${data.data.orderNum}`;
+                    localStorage.removeItem("cfgetLng");
+                    localStorage.removeItem("mdgetLng");
+                    GJ.loadHide();
+                }else if(data.code==101){
+                    let dqurl=window.location.href;
+                    window.location.href=`${appPara.mwurl}/app/webchatCall?url=${dqurl}`
+                }else{
+                    GJ.msg(data.msg,2000);
+                    GJ.loadHide()
+                }
+            },
+            timeout: 20000,
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                GJ.loadHide();
+                GJ.msg("网络太忙了，请稍后再试！",2000);
+            }
+        });
+    })
+    // 绑定上下滑动
+    GJ.shanglXia('contxiao',100)
+</script>
+</html>

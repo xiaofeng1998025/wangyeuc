@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title>个人中心</title>
+    <meta name="renderer" content="webkit">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="email=no" name="format-detection">
+    <meta name="msapplication-tap-highlight" content="no">
+    <link rel="stylesheet" href="css/style.css?2019_08_14">
+    <link rel="stylesheet" href="css/grzx.css?2019_08_14">
+    <script type="text/javascript" charset="utf-8" src="js/jquery.min.js"></script>
+</head>
+<body>
+<script type="text/javascript" charset="utf-8" src="js/style.js?2019_08_14"></script>
+<div id="page">
+<!--    第一块-->
+     <div class="dyk">
+         <div class="dyk_button">
+             <div class="dyk_toux"><img src="img/grzx_tx.png" alt=""></div>
+             <div class="dyk_ner">
+                 <p></p>
+                 <div>编辑个人资料</div>
+             </div>
+             <div class="dyk_ged"><img src="img/gengd.png" alt=""></div>
+         </div>
+     </div>
+<!--    第二块-->
+    <div class="dek">
+        <ul>
+            <li>
+                <a href="./cwsfcsj.html">
+                    <div class="scsedd">
+                        <i><img src="img/ziyuan.png" alt=""></i>
+                        成为顺风车司机
+                        <img src="img/hsgd.png" alt="">
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <div>
+                        <i><img src="img/youhuiquan@2x.png" alt=""></i>
+                        我的优惠卷
+                        <img src="img/hsgd.png" alt="">
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="tel:02368888887">
+                    <div>
+                        <i><img src="img/dianhua@2x.png" alt=""></i>
+                        服务热线
+                        <img src="img/hsgd.png" alt="">
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="./yjfk.html">
+                    <div>
+                        <i><img src="img/yijianfankui@2x.png" alt=""></i>
+                        意见反馈
+                        <img src="img/hsgd.png" alt="">
+                    </div>
+                </a>
+            </li>
+<!--            <li>-->
+<!--                <a href="">-->
+<!--                    <div>-->
+<!--                        <i><img src="img/jiaruwomen@2x.png" alt=""></i>-->
+<!--                        加入同港-->
+<!--                        <img src="img/hsgd.png" alt="">-->
+<!--                    </div>-->
+<!--                </a>-->
+<!--            </li>-->
+        </ul>
+    </div>
+
+    <!--    底部导航-->
+    <div class="daoh">
+        <div >
+            <a href="./index.html">
+                <i><img src="img/index1.png" alt=""></i>
+                <div>首页</div>
+            </a>
+        </div>
+        <div>
+            <a href="./wddd.html">
+                <i><img src="img/dingd1.png" alt=""></i>
+                <div>订单</div>
+            </a>
+        </div>
+        <div  class="db_hov">
+            <a href="./grzx.html">
+                <i><img src="img/name2.png" alt=""></i>
+                <div>我的</div>
+            </a>
+        </div>
+    </div>
+</div>
+<script>
+    let token=GJ.get_cache("token");  //用户id
+    let name='';       //用户呢称
+    let phone="";         //用户手机号
+    // 初始化加载
+    $.ajax({
+        url: appPara.mwurl + "app/user/getUserInfo",
+        type: 'POST',
+        dataType: 'json',
+        data: {
+            token:token
+        },
+        success: function (data) {
+            console.log(data);
+            if(data.code==0){
+                name=data.data.nickname;
+                phone=data.data.phone;
+                $(".dyk_toux img").attr("src",data.data.headimg);
+                $(".dyk_ner>p").text(data.data.phone);
+                GJ.set_cache('phone',data.data.oldphone)
+            }else if(data.code==101){
+                let dqurl=window.location.href;
+                window.location.href=`${appPara.mwurl}/app/webchatCall?url=${dqurl}`
+            }else{
+                GJ.msg(data.msg,2000)
+            }
+            GJ.loadHide();
+        },
+        timeout: 20000,
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+            GJ.loadHide();
+            GJ.msg("网络太忙了，请稍后再试！",2000);
+        }
+    });
+    $(".dyk_button").click(function () {
+        window.location.href=`wdxx.html?name=${name}&phone=${phone}`
+    })
+</script>
+</body>
+</html>

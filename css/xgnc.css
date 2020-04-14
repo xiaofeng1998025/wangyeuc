@@ -1,0 +1,41 @@
+body{
+    background:#efeff4 ;
+}
+.dyk_top{
+    line-height: 1.1rem;
+    text-align: center;
+    font-size: 0.34rem;
+    font-weight: 500;
+    padding: 0 0.2rem;
+    background: #fff;
+}
+.dyk_top>a{
+    float: left;
+    margin-top: 0.4rem;
+}
+.dyk_top>a>img{
+    width: 0.18rem;
+    height: 0.3rem;
+}
+.dek{
+    padding: 0 0.2rem;
+    background: #fff;
+    line-height: 1rem;
+    margin-top: 0.2rem;
+    font-size: 0.34rem;
+}
+.dek>div>input{
+    margin-left: 0.5rem;
+    width: 5.6rem;
+    border:none;
+}
+.tcdl{
+    width: 7.1rem;
+    line-height: 0.92rem;
+    text-align: center;
+    color: #fff;
+    background: #474c5a;
+    font-size:0.36rem ;
+    margin: 1rem auto 0 auto;
+    border-radius: 4px;
+}

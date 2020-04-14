@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title>同港网约车</title>
+    <meta name="renderer" content="webkit">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="email=no" name="format-detection">
+    <meta name="msapplication-tap-highlight" content="no">
+    <link rel="stylesheet" href="css/style.css?2019_08_14">
+    <link rel="stylesheet" href="css/xcjs.css?2019_9_4">
+    <script type="text/javascript" charset="utf-8" src="js/jquery.min.js"></script>
+
+    <script type="text/javascript" charset="utf-8" src="js/style.js?2019_08_14"></script>
+
+</head>
+<body>
+<div class="body" style="display: none">
+    <div id="container" ></div>
+    <!--头部司机信息-->
+    <div class="top_sj">
+        <div class="top_sj_cont">
+            <div>
+                <div class="top_cont_img">
+                    <img src="" alt="">
+                    <span></span>
+                </div>
+                <div class="top_cont_chep">
+                    <p></p>
+                    <div></div>
+                </div>
+            </div>
+            <a href="">拨打电话</a>
+        </div>
+    </div>
+    <!--订单详情 未评价-->
+    <div class="ddxq_wpj" style="display: none">
+        <div class="ddxq_wpj_cont">
+            <p>预估车费：￥<span>19.00</span></p>
+            <div class="ddxq_wpj_cont_con">
+                <p><span>行程结束</span></p>
+                <div class="ddxq_wpj_cont_con_li">
+                    <div class="ddxq_wpj_cont_con_li_t"><i></i><span>融科·橡树澜湾(西南门)</span></div>
+                    <div class="ddxq_wpj_cont_con_li_b"><i></i><span>重庆市江北机场</span></div>
+                </div>
+                <div class="ddxq_wpj_cont_con_xdsj">
+                    <p>下单时间：<span>2019-05-26 09:15</span></p>
+                    <div class="ddxq_wpj_cont_con_xdsj_s">上车时间：<span>2019-05-26 09:15</span></div>
+                    <div class="ddxq_wpj_cont_con_xdsj_x">下车时间：<span>2019-05-26 09:15</span></div>
+                    <div class="ddxq_wpj_cont_con_xdsj_j">行程距离：<span>2km</span></div>
+                    <div class="ddxq_wpj_cont_con_xdsj_l">行程时间：<span>4时16分</span></div>
+                    <div>订单编号：<span>PC1131111284919635968</span></div>
+                </div>
+                <div class="qpingj">去评价</div>
+            </div>
+        </div>
+        <a href="tel:110"><img src="img/baojing.png" alt=""></a>
+    </div>
+    <!--订单详情 以评价-->
+    <div class="ddxq_ypj" style="display: none">
+        <div class="ddxq_ypj_cont">
+            <p>车费：￥<span>19.00</span></p>
+            <div class="ddxq_wpj_cont_con">
+                <p><span>行程结束</span></p>
+                <div class="ddxq_wpj_cont_con_li">
+                    <div class="ddxq_wpj_cont_con_t"><i></i><span>融科·橡树澜湾(西南门)</span></div>
+                    <div class="ddxq_wpj_cont_con_b"><i></i><span>重庆市江北机场</span></div>
+                </div>
+                <div class="ddxq_wpj_cont_con_xdsj">
+                    <p>下单时间：<span>2019-05-26 09:15</span></p>
+                    <div class="ddxq_wpj_cont_con_xdsj_s">上车时间：<span>2019-05-26 09:15</span></div>
+                    <div class="ddxq_wpj_cont_con_xdsj_x">下车时间：<span>2019-05-26 09:15</span></div>
+                    <div class="ddxq_wpj_cont_con_xdsj_j">行程距离：<span>2km</span></div>
+                    <div class="ddxq_wpj_cont_con_xdsj_l">行程时间：<span>4时16分</span></div>
+                    <div class="ddxq_wpj_cont_con_xdsj_d">订单编号：<span>PC1131111284919635968</span></div>
+                </div>
+            </div>
+        </div>
+        <!--    匿名评价-->
+        <div class="dlk">
+            <div class="dlk_nmpj">
+                <h3>匿名评价</h3>
+                <div class="pjtcc_cont_xuanx dlk_pjtcc_cont_xuanx">
+                    <ul class="pjtcc_cont_xuanx_ul_dlk">
+                        <li value="0"><img src="img/pigjx1.png"  alt=""></li>
+                        <li value="1"><img src="img/pigjx1.png"  alt=""></li>
+                        <li value="2"><img src="img/pigjx1.png"  alt=""></li>
+                        <li value="3"><img src="img/pigjx1.png"  alt=""></li>
+                        <li value="4"><img src="img/pigjx1.png"  alt=""></li>
+                    </ul>
+                    <p></p>
+                </div>
+                <div class="pjtcc_cont_pjgjc dlk_pjtcc_cont_pjgjc">
+                    <ul>
+                        <!--                                        <li>车内整洁</li>-->
+                        <!--                                        <li>驾驶平稳</li>-->
+                        <!--                                        <li>服务恶劣</li>-->
+                        <!--                                        <li>车内异味</li>-->
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!--    评价弹出层-->
+    <div class="pjtcc" style="display: none">
+        <div class="pjtcc_mtk">
+            <div class="pjtcc_cont">
+                <div class="pjtcc_cont_gab"><i><img class="pjtcc_cont_gab_img" src="img/shanc.png" alt=""></i></div>
+                <div class="pjtcc_cont_titl">亲，您对您的行程还满意吗？<span>匿名</span></div>
+                <div class="pjtcc_cont_name">
+                    <i><img  class="pjtcc_cont_name_img" src="img/toux.png" alt=""></i>
+                    <span class="pjtcc_cont_name_nam"></span>
+                </div>
+                <div class="pjtcc_cont_xuanx">
+                    <ul class="pjtcc_cont_xuanx_ul">
+                        <li value="0"><img src="img/pigjx1.png"  alt=""></li>
+                        <li value="1"><img src="img/pigjx1.png"  alt=""></li>
+                        <li value="2"><img src="img/pigjx1.png"  alt=""></li>
+                        <li value="3"><img src="img/pigjx1.png"  alt=""></li>
+                        <li value="4"><img src="img/pigjx1.png"  alt=""></li>
+                    </ul>
+                    <p></p>
+                </div>
+                <div class="pjtcc_cont_pjgjc">
+                    <ul>
+                        <!--                        <li class="pjtcc_cont_pjgjc_hov">车内整洁</li>-->
+                        <!--                        <li>驾驶平稳</li>-->
+                        <!--                        <li class="pjtcc_cont_pjgjc_hov">服务恶劣</li>-->
+                        <!--                        <li>车内异味</li>-->
+                    </ul>
+                </div>
+                <div class="pjtcc_cont_tijia">匿名提交</div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+<script src="https://webapi.amap.com/maps?v=1.4.15&key=be83f8d0d2149d28be18794b6336d4a2&plugin=AMap.Driving"></script>
+<script src="https://a.amap.com/jsapi_demos/static/demo-center/js/demoutils.js"></script>
+<script>
+    GJ.loadShow();
+    let token=GJ.get_cache("token");  //用户id
+    let orderid=GJ.getUrlString("orderid");  //订单id
+    let pingj_index='';                    //选择评价星级
+    let startnum='';                       //获取评价的星级
+    let comments="";                       //获取评价内容
+    let status='';
+    $.ajax({
+        url: appPara.mwurl + "app/netcarorder/getOrderInfo",
+        type: 'POST',
+        dataType: 'json',
+        data: {
+            token:token,
+            orderid:orderid
+        },
+        success: function (data) {
+            GJ.loadHide();
+            console.log(data);
+            if(data.code==0){
+                GJ.loadHide();
+                status=data.data.status;
+                $(".top_cont_img>img").attr("src",data.data.avatar);
+                $(".top_cont_img>span").text(data.data.username);
+                $(".top_cont_chep>p").text(data.data.licenceplate);
+                $(".top_cont_chep>div").text(data.data.color);
+                $(".top_sj_cont>a").attr("href",`tel:${data.data.phone}`);
+                if(status==6){
+                    $(".ddxq_wpj").show();
+                    $(".ddxq_wpj_cont>p>span").text(data.data.payamount);
+                    $(".ddxq_wpj_cont_con_li_t>span").text(data.data.oderupaddress);
+                    $(".ddxq_wpj_cont_con_li_b>span").text(data.data.orderdownaddress);
+                    $(".ddxq_wpj_cont_con_xdsj>p>span").text(data.data.ordertime);
+                    $(".ddxq_wpj_cont_con_xdsj_s>span").text(data.data.uptime);
+                    $(".ddxq_wpj_cont_con_xdsj_x>span").text(data.data.downtime);
+                    $(".ddxq_wpj_cont_con_xdsj_j>span").text(data.data.reallength/1000+"km");
+                    $(".ddxq_wpj_cont_con_xdsj_l>span").text(xiaoshs(data.data.realtimes));
+                    $(".ddxq_wpj_cont_con_xdsj_d>span").text(data.data.order_num);
+                    marker1.setPosition([data.data.uplng,data.data.uplat]);
+                    marker2.setPosition([data.data.downlng,data.data.downlat]);
+                    map.add(marker1);
+                    map.add(marker2);
+                    map.setZoomAndCenter(15,[data.data.uplng,data.data.uplat]);   //回到定位起始点
+                    driving.search([data.data.uplng,data.data.uplat],[data.data.downlng,data.data.downlat], function(status, result) {
+                        // result 即是对应的驾车导航信息，相关数据结构文档请参考  https://lbs.amap.com/api/javascript-api/reference/route-search#m_DrivingResult
+                        if (status === 'complete') {
+                            log.success('绘制驾车路线完成');
+                            console.log(result);
+                        } else {
+                            log.error('获取驾车数据失败：' + result)
+                        }
+                    });
+                    $(".pjtcc_cont_name_img").attr("src",data.data.avatar);
+                    $(".pjtcc_cont_name_nam").text(data.data.username)
+                }else if(status==7){
+                    $("#container").hide();
+                    $(".ddxq_ypj").show();
+                    $(".ddxq_ypj_cont>p>span").text(data.data.payamount);
+                    $(".ddxq_wpj_cont_con_t>span").text(data.data.oderupaddress);
+                    $(".ddxq_wpj_cont_con_b>span").text(data.data.orderdownaddress);
+                    $(".ddxq_wpj_cont_con_xdsj>p>span").text(data.data.ordertime);
+                    $(".ddxq_wpj_cont_con_xdsj_s>span").text(data.data.uptime);
+                    $(".ddxq_wpj_cont_con_xdsj_x>span").text(data.data.downtime);
+                    $(".ddxq_wpj_cont_con_xdsj_j>span").text(data.data.reallength/1000+"km");
+                    $(".ddxq_wpj_cont_con_xdsj_l>span").text(xiaoshs(data.data.realtimes));
+                    $(".ddxq_wpj_cont_con_xdsj_d>span").text(data.data.order_num);
+                    startnum=data.data.startnum;
+                    comments=data.data.comments;
+
+                    pingjia()
+                }
+            }else if(data.code==101){
+                let dqurl=window.location.href;
+                window.location.href=`${appPara.mwurl}/app/webchatCall?url=${dqurl}`
+            }else{
+                GJ.msg(data.msg,2000);
+                GJ.loadHide()
+            }
+        },
+        timeout: 20000,
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+            GJ.loadHide();
+            GJ.msg("网络太忙了，请稍后再试！",2000);
+        }
+    });
+    // 初始化地图
+    var map = new AMap.Map('container', {
+        resizeEnable: true, //是否监控地图容器尺寸变化
+        zoom:15, //初始化地图层级
+    });
+    //乘客点
+    let marker1 = new AMap.Marker({
+        map: map,
+        icon: "./img/user1.png",
+        offset: new AMap.Pixel(-11, -16)
+    });
+    // 司机点
+    let marker2 = new AMap.Marker({
+        map: map,
+        icon: "./img/zhongdian.png",
+        offset: new AMap.Pixel(-10, -16)
+    });
+
+    // 司机接驾路线规划
+    var drivingOption = {
+        policy: AMap.DrivingPolicy.LEAST_TIME, // 其它policy参数请参考 https://lbs.amap.com/api/javascript-api/reference/route-search#m_DrivingPolicy
+        // ferry: 1, // 是否可以使用轮渡
+        map: map,
+        hideMarkers:true,
+        autoFitView:false
+    };
+    // 构造路线导航类
+    var driving = new AMap.Driving(drivingOption);
+    //去评价
+    $(".qpingj").click(function () {
+        $(".pjtcc").show()
+    });
+    $(".pjtcc_cont_gab_img").click(function () {
+        $(".pjtcc").hide()
+    });
+    let leval=0;
+    $(".pjtcc_cont_xuanx_ul li").click(function () {
+        let val=$(this).val();
+        pingj_index=val+1;
+        if(val==4){
+            $(".pjtcc_cont_xuanx>p").text("非常满意");
+            pjne(3);
+            leval=0;
+        }else if(leval==0){
+            leval++;
+            $(".pjtcc_cont_xuanx>p").text("不满意");
+            pjne(2);
+        }
+
+        for(let i=0;i<=4;i++){
+            if(i<=val){
+                $(".pjtcc_cont_xuanx_ul li").eq(i).children("img").attr("src","img/pigjx2.png");
+            }else{
+                $(".pjtcc_cont_xuanx_ul li").eq(i).children("img").attr("src","img/pigjx1.png");
+            }
+        }
+        function pjne(data) {
+            GJ.loadShow();
+            let pingj_list="";
+            $.ajax({
+                url: appPara.mwurl + "app/getAttrachinfo",
+                type: 'POST',
+                dataType: 'json',
+                data: {
+                    token:token,
+                    type:data
+                },
+                success: function (data) {
+                    console.log(data);
+                    if(data.code==0){
+                        let list=data.data;
+                        for(let key in list){
+                            pingj_list+=`
+                         <li data-zt="0">${list[key].name}</li>
+                    `;
+                        }
+                        $(".pjtcc_cont_pjgjc ul").html(pingj_list);
+                        $(".pjtcc_cont_pjgjc ul li").click(function () {
+                            let zt=$(this).attr("data-zt");
+                            if(zt==0){
+                                $(this).addClass("pjtcc_cont_pjgjc_hov");
+                                $(this).attr("data-zt",'1')
+                            }else{
+                                $(this).removeClass("pjtcc_cont_pjgjc_hov");
+                                $(this).attr("data-zt",'0')
+                            }
+                        });
+                        GJ.loadHide();
+                    }else if(data==101){
+                        let dqurl=window.location.href;
+                        window.location.href=`${appPara.mwurl}/app/webchatCall?url=${dqurl}`
+                    }else{
+                        GJ.msg(data.msg,2000);
+                    }
+
+                },
+                timeout: 20000,
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    GJ.loadHide();
+                    GJ.msg("网络太忙了，请稍后再试！",2000);
+                }
+            });
+        }
+    });
+    // 匿名评价
+    $(".pjtcc_cont_tijia").click(function () {
+        let list_name="";
+        $(".pjtcc_cont_pjgjc_hov").each(function () {
+            list_name+=$(this).text()+"#";
+        });
+        $.ajax({
+            url: appPara.mwurl + "app/netcarorder/evaluateOrder",
+            type: 'POST',
+            dataType: 'json',
+            data: {
+                token:token,
+                orderid:orderid,
+                starnum:pingj_index,
+                comments:list_name
+            },
+            success: function (data) {
+                console.log(data);
+                if(data.code==0){
+                    GJ.msg("评价成功",2000);
+                    $(".pjtcc").hide();
+                   window.location.href=`wddd.html`
+                }else if(data==101){
+                    let dqurl=window.location.href;
+                    window.location.href=`${appPara.mwurl}/app/webchatCall?url=${dqurl}`
+                }else{
+                    GJ.msg(data.msg,2000);
+                }
+                GJ.loadHide();
+            },
+            timeout: 20000,
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                GJ.loadHide();
+                GJ.msg("网络太忙了，请稍后再试！",2000);
+            }
+        });
+
+
+    });
+    // 评价内容渲染
+    function pingjia() {
+        let pingj_list='';
+        for(var i=0;i<=4;i++){
+            if(i<startnum){
+                $(".pjtcc_cont_xuanx_ul_dlk li").eq(i).children("img").attr("src","img/pigjx2.png");
+            }
+        }
+        for(k in comments){
+            pingj_list+=`<li>${comments[k]}</li>`
+        }
+        if(startnum==5){
+            $(".dlk_pjtcc_cont_xuanx>p").text("非常满意")
+        }else{
+            $(".dlk_pjtcc_cont_xuanx>p").text("不满意")
+        }
+        $(".dlk_pjtcc_cont_pjgjc ul").html(pingj_list)
+    }
+
+    document.onreadystatechange = function(){ //当页面加载状态改变的时候执行function
+        if(document.readyState == "complete"){ 　　//当页面加载状态为完全结束时进入
+            $(".body").show();
+            GJ.loadHide()
+        }
+    };
+    // 小时分钟换算
+   function xiaoshs(data){
+            if(data>=60){
+             let dats=(data/60>>0)+"小时"+(data%60)+"分钟";
+                return dats
+            }else{
+                return data+"分钟"
+            }
+    }
+    GJ.shanglXia('ddxq_wpj',130)
+
+</script>
+
+</html>

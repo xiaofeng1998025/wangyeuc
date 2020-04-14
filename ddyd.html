@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title>同港网约车</title>
+    <meta name="renderer" content="webkit">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="email=no" name="format-detection">
+    <meta name="msapplication-tap-highlight" content="no">
+    <link rel="stylesheet" href="css/style.css?2019_08_14">
+    <link rel="stylesheet" href="css/ddyd.css?2019_9_4">
+    <script type="text/javascript" charset="utf-8" src="js/jquery.min.js"></script>
+    <script src="https://webapi.amap.com/maps?v=1.4.15&key=be83f8d0d2149d28be18794b6336d4a2&plugin=AMap.Driving"></script>
+    <script type="text/javascript" charset="utf-8" src="js/style.js?2019_08_14"></script>
+    <script src="https://a.amap.com/jsapi_demos/static/demo-center/js/demoutils.js"></script>
+</head>
+<body>
+<div id="container"></div>
+<div class="top">
+    <img src="img/zuofan.png" alt=""> <span>等待应答</span>
+</div>
+<!--等待应答状态-->
+<div class="contxiao" style="display:none;">
+    <div  class="contxiao_chec" style="display:none;">
+        <div class="contxiao_dy">
+            <p>正在通知车辆...</p>
+            <div class="contxiao_dy_tet"><span>60</span>秒后将为您扩大通知范围</div>
+            <div class="qxdd">取消订单</div>
+        </div>
+    </div>
+<!--    顺风车-->
+    <div  class="contxiao_shunfc" style="display:none;">
+        <div class="contxiao_dy shunfche">
+            <p>正在通知车主接单...</p>
+            <div class="shunfche_sj"><span class="shunfche_sj_time"></span>出发,<span class="shunfche_sj_num"></span>人</div>
+            <div class="shunfche_cfmd">
+                <div class="shunfche_cf"><i></i><span></span></div>
+                <div class="shunfche_md"><i></i><span></span></div>
+            </div>
+            <div class="chaskd">
+                <p>看顺路司机</p>
+                <div class="qxdd">取消订单</div>
+            </div>
+
+        </div>
+    </div>
+    <div>
+
+    </div>
+    <img class="contxiao_dwei" src="img/hddingwe.png" alt="">
+</div>
+<!--等待接驾状态 行程中-->
+<div class="ddjj" style="display:none;">
+    <div>
+        <div class="ddjj_cont">
+            <p>预计<span>2分钟</span>后到达</p>
+            <div class="ddjj_cont_dy">师傅已经接单，距你<span>1.4</span>公里</div>
+            <div class="ddjj_cont_xc ddjj_shijie">若行程有变，你可以在<span>14:00</span>内取消</div>
+            <div class="ddjj_cont_sf">
+                <div class="ddjj_cont_sf_l">
+                    <img src="img/fdsf.jpg" alt="">
+                    <span>周师傅</span>
+                </div>
+                <div class="ddjj_cont_sf_r">
+                    <p>渝AT330L</p>
+                    <div>别克英朗,白色</div>
+                </div>
+            </div>
+            <div class="ddjj_cont_bo">
+                <div><a href="">拨打电话</a></div>
+                <div class="ddjj_cont_qxdd qxdd">取消行程</div>
+            </div>
+        </div>
+    </div>
+    <a class="baojing" href="tel:110"><img src="img/baojing.png" alt=""></a>
+    <img class="contxiao_dwei" src="img/hddingwe.png" alt="">
+</div>
+<!--支付车费行程结束-->
+<div class="zfcf" style="display: none">
+    <div>
+        <div class="zfcf_cont">
+            <p>￥<span>19.00</span></p>
+            <div class="zfcf_cont_zf">支付车费</div>
+            <div class="zfcf_cont_cont">
+                <p>今天 10:12 出发</p>
+                <div class="zfcf_cont_cont_t">
+                    <i></i>
+                    <span>融科·橡树澜湾(西南门)</span>
+                </div>
+                <div class="zfcf_cont_cont_b">
+                    <i></i>
+                    <span>重庆市江北机场</span>
+                </div>
+            </div>
+            <div class="ddjj_cont_sf">
+                <div class="ddjj_cont_sf_l">
+                    <img src="img/fdsf.jpg" alt="">
+                    <span>周师傅</span>
+                </div>
+                <div class="ddjj_cont_sf_r">
+                    <p>渝AT330L</p>
+                    <div>别克英朗,白色</div>
+                </div>
+            </div>
+            <div class="zfcf_cont_bddd">
+                <a href=""><img src="img/dianhua3.png" alt="">拨打电话</a>
+            </div>
+        </div>
+    </div>
+    <a class="baojing" href="tel:110"><img src="img/baojing.png" alt=""></a>
+</div>
+<!--    取消订单弹出层-->
+<div class="qxdd_dhk" style="display:none;">
+    <div class="qxdd_dhk_cont">
+        <p>亲，司机正在努力赶来！</p>
+        <div class="Eject_cont_bottom_qd">确认取消</div>
+        <div class="Eject_cont_bottom_qx qxdd_dhk_cont_qxiao">在等会儿</div>
+    </div>
+</div>
+<div class="qxddtcc" style="display: none">
+    <div class="qxddtcc_mtc">
+        <div class="qxddtcc_cont">
+            <div class="qxddtcc_cont_top">
+                <div>取消订单</div>
+                <p>请告知取消原因，我们将努力改善</p>
+                <ul>
+                    <!--                        <li class="yyxz_hov"><i></i>-->
+                    <!--                            行程有变，暂时不需要用车-->
+                    <!--                            <b><i></i></b>-->
+                    <!--                        </li>-->
+                    <!--                        <li><i></i>-->
+                    <!--                            填错了上下车点-->
+                    <!--                            <b><i></i></b>-->
+                    <!--                        </li>-->
+                    <!--&lt;!&ndash;                       -->
+                </ul>
+                <div class="qtyy" style="display: none;">
+                    <textarea placeholder="请输入原因" ></textarea>
+                </div>
+                <div class="qindqx">
+                    <div class="zbqx">暂不取消</div>
+                    <div class="qdqx">确定取消</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    let token=GJ.get_cache("token");  //用户id
+    let orderid=GJ.getUrlString("orderid");  //订单id
+    // let cfgetLng=JSON.parse(GJ.get_cache("cfgetLng"));  //出发地
+    // let mdgetLng=JSON.parse(GJ.get_cache("mdgetLng"));  //目的地
+    // 初始化地图
+    let ordertype='';
+    var map = new AMap.Map('container', {
+        resizeEnable: true, //是否监控地图容器尺寸变化
+        zoom:15, //初始化地图层级
+    });
+    // 点标记
+    let  marker = new AMap.Marker({
+        map:map,
+        content: `<div style="width:100px;height:100px;display: flex;justify-content: center;align-items:center;background: rgba(156,156,156,0.3);border-radius: 100%;"><img src="img/zongxind.png" style="width: 25px;height: 25px;" alt=""></div>`,
+        offset: new AMap.Pixel(-50, -50),
+
+    });
+    //乘客点
+    let marker1 = new AMap.Marker({
+        map: map,
+        icon: "./img/user1.png",
+        offset: new AMap.Pixel(-11, -16)
+    });
+    // 司机点
+    let marker2 = new AMap.Marker({
+        map: map,
+        icon: "./img/chdas.png",
+        offset: new AMap.Pixel(-10, -10)
+    });
+    // 终点
+    let marker3 = new AMap.Marker({
+        map: map,
+        icon: "./img/zhongdian.png",
+        offset: new AMap.Pixel(-11, -16)
+    });
+    // 司机接驾路线规划
+    var drivingOption = {
+        policy: AMap.DrivingPolicy.LEAST_TIME, // 其它policy参数请参考 https://lbs.amap.com/api/javascript-api/reference/route-search#m_DrivingPolicy
+        // ferry: 1, // 是否可以使用轮渡
+        map: map,
+        hideMarkers:true,
+        autoFitView:false
+    };
+    // 构造路线导航类
+    var driving = new AMap.Driving(drivingOption);
+    function jiaguihua(mdgetlng,mdgetlat){
+        marker1.setPosition([mdgetlng,mdgetlat]);
+        marker3.setPosition([mdgetlng,mdgetlat]);
+        function hqsjjwd(){
+                $.ajax({
+                    url: appPara.mwurl + "app/getLngLat",
+                    type: 'POST',
+                    dataType: 'json',
+                    data: {
+                        token:token,
+                        orderid:orderid
+                    },
+                    success: function (data) {
+                        GJ.loadHide();
+                        console.log(data);
+                        if(data.code==0){
+                            GJ.loadHide();
+                            sijilng=data.data.lng;
+                            sijilat=data.data.lat;
+                            guih(data.data.lng,data.data.lat,mdgetlng,mdgetlat);
+                        }else if(data.code==101){
+                            let dqurl=window.location.href;
+                            window.location.href=`${appPara.mwurl}/app/webchatCall?url=${dqurl}`
+                        }else{
+                            GJ.msg(data.msg,2000);
+                            GJ.loadHide()
+                        }
+                    },
+                    timeout: 20000,
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        GJ.loadHide();
+                        GJ.msg("网络太忙了，请稍后再试！",2000);
+                    }
+                });
+        }
+        hqsjjwd();
+        times=setInterval(function () {
+            hqsjjwd();
+        },7000);
+        // let sed=0.00012;              //测试
+        function guih(cfgetlng,cfgetlat,mdgetlng,mdgetlat){
+            // sed+=0.00030;
+            marker2.setPosition([cfgetlng,cfgetlat]);
+            driving.search([cfgetlng,cfgetlat],[mdgetlng,mdgetlat], function(status, result) {
+                // result 即是对应的驾车导航信息，相关数据结构文档请参考  https://lbs.amap.com/api/javascript-api/reference/route-search#m_DrivingResult
+                if (status === 'complete') {
+                    log.success('绘制驾车路线完成');
+                    console.log(result);
+                    $(".ddjj_cont>p>span").text((result.routes[0].time/60).toFixed(0)+"分钟");
+                    $(".ddjj_cont_dy>span").text((result.routes[0].distance/1000).toFixed(1));
+                } else {
+                    log.error('获取驾车数据失败：' + result)
+                }
+            });
+
+        }
+
+    }
+    // 等待应答//////////////////////////////////////
+    // 初始化获取订单状态
+    let Dddyd=true;      //用于控制函数只执行一次  等待应答
+    let Dddjia=true;      //用于控制函数只执行一次   等待接驾
+    let Dxcz=true;        //用于控制函数只执行一次   行程中
+    let Dzfcf=true;       //用于控制函数只执行一次   支付车费
+    let times='';        //规划定时器
+    let sijilng='';        //司机经度
+    let sijilat="";        //司机纬度
+    jtzt();
+    let time=setInterval(jtzt,3000);
+    function jtzt(){
+        $.ajax({
+            url: appPara.mwurl + "app/netcarorder/getOrderInfo",
+            type: 'POST',
+            dataType: 'json',
+            data: {
+                token:token,
+                orderid:orderid
+            },
+            success: function (data) {
+                GJ.loadHide();
+                // console.log(data);
+                if(data.code==0){
+                      GJ.loadHide();
+                      let  status=data.data.status;
+                        orderid=data.data.orderid;
+                        ordertype=data.data.ordertype;
+                        if(status==0&&Dddyd==true){
+                            map.setZoomAndCenter(15,[data.data.uplng,data.data.uplat]);   //回到定位起始点
+                            ddyd(data.data)
+                        }else if(status==1&&Dddyd==true){
+                            map.setZoomAndCenter(15,[data.data.uplng,data.data.uplat]);   //回到定位起始点
+                            ddyd(data.data);
+                        } else if(status==2&&Dddjia==true){
+                            ddjia(data.data);
+                        }else if(status==3&&Dddjia==true){
+                            ddjia(data.data);
+                        } else if(status==4&&Dxcz==true){
+                            xingcz(data.data);
+                        }else if(status==5&&Dzfcf==true){
+                            zhifucf(data.data);
+                            map.setZoomAndCenter(15,[data.data.uplng,data.data.uplat]);   //回到定位起始点
+                        }
+                }else if(data.code==1005){
+                    window.location.href=`xcjs.html?orderid=${orderid}`
+                }else if(data.code==101){
+                    let dqurl=window.location.href;
+                    window.location.href=`${appPara.mwurl}/app/webchatCall?url=${dqurl}`
+                }else{
+                    GJ.msg(data.msg,2000);
+                    GJ.loadHide()
+                }
+            },
+            timeout: 20000,
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                GJ.loadHide();
+                GJ.msg("网络太忙了，请稍后再试！",2000);
+            }
+        });
+    }
+    // 等待应答
+    function ddyd(data){
+        console.log("ddyd");
+        Dddyd=false;
+        Dddjia=true;
+        Dzfcf=true;
+        Dxcz=true;
+        $(".contxiao").show();
+        $(".ddjj").hide();
+        driving.clear(); //清除路线规划
+        clearInterval(times);   //清除规划路线定时器
+        map.add(marker);       //调用点
+        map.remove(marker1);   //清除乘客点
+        map.remove(marker2);   //清除司机点
+        map.remove(marker3);   //清除终点
+        marker.setPosition([data.uplng,data.uplat]);
+        function dengdyd(){
+            // 定时
+            let miaoshu=60;
+            function times() {
+                miaoshu--;
+                $(".contxiao_dy_tet>span").text(miaoshu);
+                if(miaoshu==0){
+                    $(".contxiao_dy_tet").text("以为您扩大通知范围请耐心等待");
+                    clearInterval(time)
+                }
+            }
+            let time=setInterval(times,1000);
+        }
+        dengdyd();
+        $(".top>span").text(`等待应答`);
+        $(".contxiao>img").click(function () {
+            map.setZoomAndCenter(15,[data.data.uplng,data.data.uplat]);   //回到定位起始点
+        });
+        $(".shunfche_sj_time").text(data.orderuptime);
+        $(".shunfche_sj_num").text(data.num);
+        $(".shunfche_cf>span").text(data.oderupaddress);
+        $(".shunfche_md>span").text(data.orderdownaddress);
+        if(data.ordertype==2||data.ordertype==3){
+            $(".contxiao_shunfc").show();
+        }else{
+            $(".contxiao_chec").show();
+        }
+        $(".chaskd>p").click(function () {
+            window.location.href=`xxdt.html?orderid=${orderid}`
+        })
+    }
+    //等待接驾
+    function ddjia(data){
+        console.log("ddjia");
+        Dddjia=false;
+        Dxcz=true;
+        Dddyd=true;
+        Dzfcf=true;
+        $(".contxiao").hide();
+        $(".zfcf").hide();
+        $(".ddjj").show();
+        map.add(marker1);   //调用乘客点
+        map.add(marker2);   //调用司机点
+        map.remove(marker3);   //清除终点
+        map.remove(marker);  //清除附近定位点
+        $(".top>span").text(`等待接驾`);
+        $(".ddjj_cont_sf_l>img").attr("src",data.avatar);
+        $(".ddjj_cont_sf_l>span").text(data.username);
+        $(".ddjj_cont_sf_r>p").text(data.licenceplate);
+        $(".ddjj_cont_sf_r>div").text(data.color);
+        $(".ddjj_cont_bo>div>a").attr("href",`tel:${data.phone}`);
+        $(".ddjj_cont_dy").html(`师傅已经接单，距你<span></span>公里`);
+        let Data= new Date();
+        let  hh = Data.getHours(),
+             mm = Data.getMinutes()+10;
+        if(mm>60){
+            mm=mm-60;
+            hh++
+        }
+        if(hh<10){
+            hh="0"+hh
+        }else if(mm<10){
+            mm="0"+mm
+        }
+        $(".ddjj_cont_xc").html(`若行程有变，你可以在<span>${hh}:${mm}前</span>取消`);
+        // console.log(hh+":"+mm);
+        jiaguihua(data.uplng,data.uplat);
+        $(".contxiao_dwei").click(function () {
+            map.setZoomAndCenter(15,[sijilng,sijilat]);   //回到at司机点
+        });
+        setTimeout(function () {
+            map.setZoomAndCenter(15,[sijilng,sijilat]);   //回到定位起始点
+        },500);
+    }
+    // 行程中
+    function xingcz(data){
+        console.log("xingcz");
+        Dddjia=true;
+        Dddyd=true;
+        Dxcz=false;
+        Dzfcf=true;
+        $(".contxiao").hide();
+        $(".zfcf").hide();
+        $(".ddjj").show();
+        clearInterval(times);   //清除规划路线定时器
+        map.add(marker3);   //调用终点
+        map.add(marker2);   //调用司机点
+        map.remove(marker);  //清除附近定位点
+        map.remove(marker1);   //清除上车点
+        $(".top>span").text(`行程中`);
+        $(".ddjj_cont_sf_l>img").attr("src",data.avatar);
+        $(".ddjj_cont_sf_l>span").text(data.username);
+        $(".ddjj_cont_sf_r>p").text(data.licenceplate);
+        $(".ddjj_cont_sf_r>div").text(data.color);
+        $(".ddjj_cont_bo>div").html(`<a href="tel:${data.phone}"><img src="img/dianhua3.png" alt="">拨打电话</a>`);
+        $(".ddjj_cont_xc").text("行程开始，请系好安全带，遇到危险点击立即报警");
+        $(".ddjj_cont_dy").html(`距离目的地<span>1.4</span>公里`);
+        $(".ddjj_cont_bo .ddjj_cont_qxdd").hide();
+        jiaguihua(data.downlng,data.downlat);
+        $(".contxiao_dwei").click(function () {
+            map.setZoomAndCenter(15,[sijilng,sijilat]);   //回到at司机点
+        });
+        setTimeout(function () {
+            map.setZoomAndCenter(15,[sijilng,sijilat]);   //回到定位起始点
+        },500);
+
+    }
+    // 支付车费
+    function   zhifucf(data){
+        console.log("zhifucf");
+        Dddjia=true;
+        Dddyd=true;
+        Dxcz=true;
+        Dzfcf=false;
+        $(".contxiao").hide();
+        $(".ddjj").hide();
+        $(".zfcf").show();
+        driving.clear(); //清除路线规划
+        clearInterval(times);   //清除规划路线定时器
+        map.remove(marker);      //清除定位点
+        map.remove(marker1);   //清除乘客点
+        map.remove(marker2);   //清除司机点
+        map.remove(marker3);   //清除终点
+        $(".top>span").text(`支付车费`);
+        $.ajax({
+            url: appPara.mwurl + "app/netcarorder/getOrderInfo",
+            type: 'POST',
+            dataType: 'json',
+            data: {
+                token:token,
+                orderid:orderid
+            },
+            success: function (data) {
+                GJ.loadHide();
+                console.log(data)
+                if(data.code==0){
+                    GJ.loadHide();
+                    $(".zfcf_cont>p>span").text(`${data.data.payamount}`);
+                    $(".zfcf_cont_cont_t>span").text(data.data.oderupaddress);
+                    $(".zfcf_cont_cont_b>span").text(data.data.orderdownaddress);
+                    $(".ddjj_cont_sf_l>img").attr("src",data.data.avatar);
+                    $(".ddjj_cont_sf_l>span").text(data.data.username);
+                    $(".ddjj_cont_sf_r>p").text(data.data.licenceplate);
+                    $(".ddjj_cont_sf_r>div").text(data.data.color);
+                    $(".zfcf_cont_bddd>a").attr("href",`tel:${data.data.phone}`);
+                    $(".zfcf_cont_cont>p").text("出发时间：" +data.data.uptime);
+                    marker1.setPosition([data.data.uplng,data.data.uplat]);
+                    marker3.setPosition([data.data.downlng,data.data.downlat]);
+                    map.add(marker1);
+                    map.add(marker3);
+                    driving.search([data.data.uplng,data.data.uplat],[data.data.downlng,data.data.downlat], function(status, result) {
+                        // result 即是对应的驾车导航信息，相关数据结构文档请参考  https://lbs.amap.com/api/javascript-api/reference/route-search#m_DrivingResult
+                        if (status === 'complete') {
+                            log.success('绘制驾车路线完成');
+                            console.log(result);
+                        } else {
+                            log.error('获取驾车数据失败：' + result)
+                        }
+                    });
+                }else if(data.code==101){
+                    let dqurl=window.location.href;
+                    window.location.href=`${appPara.mwurl}/app/webchatCall?url=${dqurl}`
+                }else{
+                    GJ.msg(data.msg,2000);
+                    GJ.loadHide()
+                }
+            },
+            timeout: 20000,
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                GJ.loadHide();
+                GJ.msg("网络太忙了，请稍后再试！",2000);
+            }
+        });
+
+        // 点击支付
+        $(".zfcf_cont_zf").click(function () {
+            if(ordertype==2||ordertype==3){
+                $.ajax({
+                    url: appPara.mwurl + "app/netcarorder/prepayLiftOrder",
+                    type: 'POST',
+                    dataType: 'json',
+                    data: {
+                        token:token,
+                        orderid:orderid,
+                        payplatform:0
+                    },
+                    success: function (data) {
+                        GJ.loadHide();
+                        console.log(data);
+                        if(data.code==0){
+                            GJ.loadHide();
+                            let appId=data.data.appId;
+                            let timeStamp=data.data.timeStamp;
+                            let nonceStr=data.data.nonceStr;
+                            let package=data.data.package;
+                            let signType=data.data.signType;
+                            let paySign=data.data.paySign;
+                            if (typeof WeixinJSBridge == "undefined"){
+                                if( document.addEventListener ){
+                                    document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
+                                }else if (document.attachEvent){
+                                    document.attachEvent('WeixinJSBridgeReady', onBridgeReady);
+                                    document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
+                                }
+                            }else{
+                                onBridgeReady(appId,timeStamp,nonceStr,package,signType,paySign);
+                            }
+                        }else if(data.code==101){
+                            let dqurl=window.location.href;
+                            window.location.href=`${appPara.mwurl}/app/webchatCall?url=${dqurl}`
+                        }else{
+                            GJ.msg(data.msg,2000);
+                            GJ.loadHide()
+                        }
+                    },
+                    timeout: 20000,
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        GJ.loadHide();
+                        GJ.msg("网络太忙了，请稍后再试！",2000);
+                    }
+                });
+            }else{
+                $.ajax({
+                    url: appPara.mwurl + "app/netcarorder/prepayOrder",
+                    type: 'POST',
+                    dataType: 'json',
+                    data: {
+                        token:token,
+                        orderid:orderid,
+                        payplatform:0
+                    },
+                    success: function (data) {
+                        GJ.loadHide();
+                        console.log(data);
+                        if(data.code==0){
+                            GJ.loadHide();
+                            let appId=data.data.appId;
+                            let timeStamp=data.data.timeStamp;
+                            let nonceStr=data.data.nonceStr;
+                            let package=data.data.package;
+                            let signType=data.data.signType;
+                            let paySign=data.data.paySign;
+                            if (typeof WeixinJSBridge == "undefined"){
+                                if( document.addEventListener ){
+                                    document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
+                                }else if (document.attachEvent){
+                                    document.attachEvent('WeixinJSBridgeReady', onBridgeReady);
+                                    document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
+                                }
+                            }else{
+                                onBridgeReady(appId,timeStamp,nonceStr,package,signType,paySign);
+                            }
+                        }else if(data.code==101){
+                            let dqurl=window.location.href;
+                            window.location.href=`${appPara.mwurl}/app/webchatCall?url=${dqurl}`
+                        }else{
+                            GJ.msg(data.msg,2000);
+                            GJ.loadHide()
+                        }
+                    },
+                    timeout: 20000,
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        GJ.loadHide();
+                        GJ.msg("网络太忙了，请稍后再试！",2000);
+                    }
+                });
+            }
+
+        });
+
+        function onBridgeReady(appId,timeStamp,nonceStr,package,signType,paySign) {
+            WeixinJSBridge.invoke("getBrandWCPayRequest",{
+                "appId":appId,  //公众号名称，由商户传入
+                "timeStamp":timeStamp, //时间戳 这里随意使用了一个值
+                "nonceStr":nonceStr, //随机串
+                "package":package,
+                "signType":signType, //微信签名方式:MD5
+                "paySign":paySign //微信签名
+            },function(res){
+                if(res.err_msg == "get_brand_wcpay_request:fail"){
+                    //支付失败
+                }else if (res.err_msg == "get_brand_wcpay_request:cancel"){
+                    //支付过程中用户取消
+                }else if(res.err_msg == "get_brand_wcpay_request:ok"){
+                    //支付成功
+                    window.location.href=`xcjs.html?orderid=${orderid}`;
+                }
+            });
+        }
+    }
+    // 绑定上下滑动
+    GJ.shanglXia('zfcf',120);
+    GJ.shanglXia('ddjj',100);
+    GJ.shanglXia('contxiao',70);
+    // 返回
+    $(".top img").click(function () {
+        window.location.href=`wddd.html`
+    });
+    // 取消订单
+    $(".qxdd").click(function () {
+        $(".qxdd_dhk").show()
+    });
+    $(".Eject_cont_bottom_qx").click(function () {
+        $(".qxdd_dhk").hide();
+    });
+    $(".Eject_cont_bottom_qd").click(function () {
+        $(".qxdd_dhk").hide();
+        $(".qxddtcc").show();
+        let qxddyy="";
+        $.ajax({
+            url: appPara.mwurl + "app/getAttrachinfo",
+            type: 'POST',
+            dataType: 'json',
+            data: {
+                token:token,
+                type:'1'
+            },
+            success: function (data) {
+                console.log(data);
+                if(data.code==0){
+                    list=data.data;
+                    for(key in list){
+                        qxddyy +=`
+                        <li><i></i>
+                        <span>${list[key].name}</span>
+                    <b><i></i></b>
+                    </li>
+                    `
+                    }
+
+                    $(".qxddtcc_cont_top ul").html(qxddyy);
+                    huqdyy();
+                    GJ.loadHide();
+                }else if(data.code==101){
+                    let dqurl=window.location.href;
+                    window.location.href=`${appPara.mwurl}/app/webchatCall?url=${dqurl}`
+                }else{
+                    GJ.msg(data.msg,2000);
+                    GJ.loadHide()
+                }
+            },
+            timeout: 20000,
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                GJ.loadHide();
+                GJ.msg("网络太忙了，请稍后再试！",2000);
+            }
+        });
+    });
+    function huqdyy() {
+        let qxyy="";
+        $(".qxddtcc_cont_top ul>li").click(function () {
+            $(this).addClass("yyxz_hov").siblings().removeClass("yyxz_hov");
+            if($(this).children("span").text()=="其他"){
+                $(".qtyy").show();
+            }else{
+                $(".qtyy").hide();
+            }
+        });
+        $(".zbqx").click(function () {
+            $(".qxddtcc").hide();
+        });
+        $(".qdqx").click(function () {
+            if($(".yyxz_hov span").text()!=="其他"){
+                qxyy=$(".yyxz_hov span").text();
+            }else{
+                qxyy=$(".qtyy textarea").val()
+            }
+            if(ordertype==2||ordertype==3){
+                $.ajax({
+                    url: appPara.mwurl + "app/netcarorder/cancleLiftOrder",
+                    type: 'POST',
+                    dataType: 'json',
+                    data: {
+                        token:token,
+                        orderid:orderid,
+                        canclereson:qxyy
+                    },
+                    success: function (data) {
+                        console.log(data);
+                        if(data.code==0){
+                            GJ.msg("取消成功",2000);
+                            window.location.href=`index.html`
+                        }else if(data.code==101){
+                            let dqurl=window.location.href;
+                            window.location.href=`${appPara.mwurl}/app/webchatCall?url=${dqurl}`
+                        }else{
+                            GJ.msg(data.msg,2000)
+                        }
+                        GJ.loadHide();
+                    },
+                    timeout: 20000,
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        GJ.loadHide();
+                        GJ.msg("网络太忙了，请稍后再试！",2000);
+                    }
+                });
+            }else{
+                $.ajax({
+                    url: appPara.mwurl + "app/netcarorder/cancleOrder",
+                    type: 'POST',
+                    dataType: 'json',
+                    data: {
+                        token:token,
+                        orderid:orderid,
+                        canclereson:qxyy
+                    },
+                    success: function (data) {
+                        console.log(data);
+                        if(data.code==0){
+                            GJ.msg("取消成功",2000);
+                            window.location.href=`index.html`
+                        }else if(data.code==101){
+                            let dqurl=window.location.href;
+                            window.location.href=`${appPara.mwurl}/app/webchatCall?url=${dqurl}`
+                        }else{
+                            GJ.msg(data.msg,2000)
+                        }
+                        GJ.loadHide();
+                    },
+                    timeout: 20000,
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        GJ.loadHide();
+                        GJ.msg("网络太忙了，请稍后再试！",2000);
+                    }
+                });
+            }
+        })
+    }
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

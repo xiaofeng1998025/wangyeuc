@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title>同港网约车</title>
+    <meta name="renderer" content="webkit">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="email=no" name="format-detection">
+    <meta name="msapplication-tap-highlight" content="no">
+    <link rel="stylesheet" href="css/style.css?2019_08_14">
+    <link rel="stylesheet" href="css/cwsfcsj.css?2019_9_4">
+    <link rel="stylesheet" href="css/mobileSelect.css?2019_08_14">
+</head>
+<body>
+<div class="top">
+    <a href="javascript:void(0)">
+        <img src="img/zuofan.png" alt=""> 注册成功
+    </a>
+</div>
+<div class="page">
+    <div class="siji_img">
+        <img src="img/img.png" alt="">
+    </div>
+    <div class="zcheche">
+        <p>恭喜您，注册成功！</p>
+        <div>您可用手机号<span></span>登录同港服务</div>
+
+    </div>
+    <div class="xzsj">
+        下载司机端APP
+    </div>
+    <p class="wxts">友情提示：请尽快登录司机端个人中心，完善相关信息并提交审核</p>
+</div>
+<script type="text/javascript" charset="utf-8" src="js/jquery.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/style.js?2019_08_14"></script>
+<script>
+    let phone=GJ.getUrlString("phone");
+    $(".zcheche>div>span").text(phone);
+    $(".top>a>img").click(function () {
+        window.location.href=`cwsfcsj.html`
+    });
+    $(".xzsj").click(function () {
+        window.location.href=`appxiaz.html`
+    })
+</script>
+</body>
+</html>

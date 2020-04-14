@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title>同港网约车</title>
+    <meta name="renderer" content="webkit">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="email=no" name="format-detection">
+    <meta name="msapplication-tap-highlight" content="no">
+    <link rel="stylesheet" href="css/style.css?2019_08_14">
+    <link rel="stylesheet" href="css/dengl.css?2019_08_14">
+    <script type="text/javascript" charset="utf-8" src="js/jquery.min.js"></script>
+</head>
+<body>
+<script type="text/javascript" charset="utf-8" src="js/style.js?2019_08_14"></script>
+
+<div id="page">
+<!--    第一块账号登录-->
+    <div class="dyk">
+        <a href="index.html"><img src="img/zuofan.png" alt=""></a>
+         账号登录
+    </div>
+    <div class="dek">
+        <h2>请输入你的手机号</h2>
+        <p>为了方便进行联系，请输入您的常用手机号码</p>
+    </div>
+    <div class="dsk">
+        <div>
+            <span>+86</span>
+            <input class="dsk_shj" type="text" maxlength="11" οnkeyup="value=value.replace(/[^\d]/g,'')" placeholder="请输入手机号码" oninput="inputval()">
+        </div>
+    </div>
+<!--   高亮 xyb_hov-->
+    <div class="xyb ">
+        下一步
+    </div>
+</div>
+<script>
+    let xyb=false;
+    let val='';
+   function inputval(){
+        val=$(".dsk_shj").val();
+       if(val.length==11){
+           $(".xyb").addClass("xyb_hov");
+           xyb=true
+       }else{
+           $(".xyb").removeClass("xyb_hov");
+           xyb=false
+       }
+   }
+   $(".xyb").click(function () {
+       if(xyb){
+           GJ.loadShow();
+           $.ajax({
+               url: appPara.mwurl + "app/getyzcode",
+               type: 'POST',
+               dataType: 'json',
+               data: {
+                   phone:val,
+                   type:'0',
+                   token: GJ.get_cache("token")
+               },
+               success: function (data) {
+                   GJ.loadHide();
+                   console.log(data);
+                   if(data.code==0){
+                       window.location.href=`dengl2.html?sjh=${val}`;
+                   }else{
+                       GJ.msg(data.msg,2000)
+                   }
+               },
+               timeout: 20000,
+               error: function (XMLHttpRequest, textStatus, errorThrown) {
+                   GJ.loadHide();
+                   GJ.msg("网络太忙了，请稍后再试！",2000);
+               }
+           });
+
+       }
+   })
+</script>
+</body>
+</html>

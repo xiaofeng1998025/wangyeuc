@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title>同港网约车</title>
+    <meta name="renderer" content="webkit">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="email=no" name="format-detection">
+    <meta name="msapplication-tap-highlight" content="no">
+    <link rel="stylesheet" href="css/style.css?2019_08_14">
+    <link rel="stylesheet" href="css/wdxx.css?2019_08_14">
+    <script type="text/javascript" charset="utf-8" src="js/jquery.min.js"></script>
+</head>
+<body>
+<script type="text/javascript" charset="utf-8" src="js/style.js?2019_08_14"></script>
+<div id="page">
+<!--     头部-->
+    <div class="dyk_top">
+        <a href="grzx.html"><img src="img/zuofan.png" alt=""></a>
+        我的信息
+    </div>
+    <div class="dek">
+        <div class="dek_t">昵称
+            <span class="dek_name"></span>
+        </div>
+        <div class="dek_b">手机绑定
+            <span class="dek_phone"></span>
+        </div>
+    </div>
+    <div class="tcdl">退出登录</div>
+    <!--    对话框弹出层-->
+    <div class="Eject" style="display: none">
+        <div  class="Eject_mtk">
+            <div class="Eject_cont">
+                <div class="Eject_cont_top">退出登录</div>
+                <p>确认要退出登录吗？</p>
+                <div class="Eject_cont_bottom">
+                    <span class="Eject_cont_bottom_qx">取消</span>
+                    <span class="Eject_cont_bottom_qd">确定</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    let name=GJ.getUrlString("name");
+    let phone=GJ.getUrlString("phone");
+    $(".dek_name").html(`${name}<i><img src="img/hsgd.png" alt=""></i>`);
+    $(".dek_phone").html(`${phone}<i><img src="img/hsgd.png" alt=""></i>`);
+    $(".dek_t").click(function () {
+        window.location.href=`xgnc.html?name=${name}&phone=${phone}`
+    });
+    $(".dek_b").click(function () {
+        window.location.href=`sjbd.html?name=${name}&phone=${phone}`
+    });
+    //退出登录
+    $(".tcdl").click(function () {
+        $(".Eject").show();
+    });
+    $(".Eject_cont_bottom_qx").click(function () {
+        $(".Eject").hide();
+    });
+    $(".Eject_cont_bottom_qd").click(function () {
+        GJ.msg("退出登录成功",2000);
+        localStorage.removeItem('token');
+        window.location.href=`dengl.html`
+    })
+</script>
+</body>
+</html>
